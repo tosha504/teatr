@@ -14,4 +14,4 @@ jobs:
           server: ftp.newnow.smarthost.pl
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /public_html/teatr/wp-content/themes/teatr/
+          server-dir: /teatr/wp-content/themes/teatr/
