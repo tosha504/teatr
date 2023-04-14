@@ -1,0 +1,14 @@
+{
+  "name": "acf/news",
+  "title": "News",
+  "description": "A custom news block.",
+  "style": [ "file:../css/news.css" ],
+  "category": "formatting",
+  "icon": "archive",
+  "keywords": ["news"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "news.php"
+  },
+  "align": "full"
+}

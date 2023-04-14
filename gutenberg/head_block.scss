@@ -1,0 +1,15 @@
+@import "../scss/components/_varibles";
+
+.custom {
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    h3 {
+      font-size: 39px;
+    }
+  }
+}

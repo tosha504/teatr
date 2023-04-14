@@ -1,0 +1,14 @@
+{
+  "name": "acf/show",
+  "title": "Show block",
+  "description": "A custom show block.",
+  "style": [ "file:../css/shows.css" ],
+  "category": "formatting",
+  "icon": "post-status",
+  "keywords": ["show"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "show.php"
+  },
+  "align": "full"
+}

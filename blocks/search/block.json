@@ -1,0 +1,14 @@
+{
+  "name": "acf/search",
+  "title": "Search block",
+  "description": "A custom search block.",
+  "style": [ "file:../css/search.css" ],
+  "category": "formatting",
+  "icon": "post-status",
+  "keywords": ["search"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "search.php"
+  },
+  "align": "full"
+}

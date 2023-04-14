@@ -1,0 +1,62 @@
+.searchNav {
+  font-family: $ala;
+ 
+  padding: 20px 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+  }
+  .search-field , .btn {
+    font-family: $ala
+  }
+
+  label {
+    position: relative;
+    margin-left: 30px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      // background-color: red;
+      background: url('../assets/image/wyszukiwarka-ikona-teatr-muzyczny.svg') no-repeat center/cover;
+    }
+  }
+  .search-field {
+    border: none;
+    border-bottom: 1px solid $dark;
+    padding: 10px 0;
+    font-size: 16px;
+    margin: 10px; 
+    @media (min-width:$bp1) {
+      margin: 0 10px; 
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    @media (min-width:$bp3) {
+      gap: 40px;
+    }
+    a{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        max-width: 50px;
+      }
+      
+      color: $primary;
+      
+    }
+  }
+}

@@ -1,0 +1,48 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Poppins:wght@300;400;700&display=swap');
+
+$ala: 'Alata', sans-serif;
+$pop: 'Poppins', sans-serif;
+
+//Colors    
+$primary: #D81D4A;
+$milk: #F4F2EF;
+$dark:#2D2D2D;
+
+//break-points
+$bp1: 575px + 0.98;
+$bp2: 767px + 0.98;
+$bp3: 991px + 0.98;
+$bp4: 1199px + 0.98;
+$bp5: 1439px + 0.98;
+
+$width: 1200px;
+
+@mixin fontz($fmx,$fmn){
+    font-size: calc(#{$fmx} + (#{$fmn} * (100vw / 1980)));
+}
+
+@mixin line($lmx,$lmn){
+    line-height: calc(#{$lmx} + (#{$lmn} * (100vw / 1400)));
+}
+
+.btn {
+    // max-width: 150px;
+    font-size: 14px;
+    line-height: 110%;
+    // white-space: nowrap;
+    border: none;
+    padding: 10px 35px;
+    background-color: $primary;
+    border-radius: 50px;
+    color: $milk;
+    transition: .3s;
+    border: 1px solid transparent;
+    @media (min-width:$bp3) {
+        &:hover {
+            background-color: transparent;
+            color: $primary;
+            border: 1px solid $primary;
+        }
+    }
+}

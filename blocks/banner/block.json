@@ -1,0 +1,15 @@
+{
+  "name": "acf/banner",
+  "title": "Banner",
+  "description": "A custom banner block.",
+  "style": [ "file:../css/banner.css" ],
+  "viewScript": ["file:../css/index.js", "banner"],
+  "category": "formatting",
+  "icon": "admin-site",
+  "keywords": ["banner", "quote"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "banner.php"
+  },
+  "align": "full"
+}

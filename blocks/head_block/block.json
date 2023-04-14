@@ -1,0 +1,14 @@
+{
+  "name": "acf/head",
+  "title": "Head block",
+  "description": "A custom head block.",
+  "style": [ "file:../css/head_block.css" ],
+  "category": "formatting",
+  "icon": "menu",
+  "keywords": ["custom head"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "head_block.php"
+  },
+  "align": "full"
+}

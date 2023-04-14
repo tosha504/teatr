@@ -1,0 +1,102 @@
+@import "../scss/components/_varibles", './slick.scss';
+
+.newses {
+  padding: 20px 0 50px;
+
+
+  &__items {
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    
+    a {
+      color: $dark;
+    }
+
+    h4 {
+      @include fontz( 20px, 9);
+      font-weight: 400;
+      @media (min-width:$bp1) {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background: url('../../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+          bottom: 15px;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    &_left, &_right {
+      flex: 1 1 100%;
+      @media (min-width:$bp3) {
+        flex: 1 1 47%;
+      }
+      .categories {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 10px;
+        p {
+          padding: 10px 20px;
+          border: 1px solid #ccc;
+          border-radius: 50px;  
+          transition: 0.35s;
+          &:not(:last-child) {
+            background: #ccc;
+          }
+
+        }
+      }
+      @media (min-width:$bp3) {
+        a {
+          &:hover {
+            h4 {
+              color: $primary;
+            }
+            .categories { 
+              p {
+                background: #ccc;
+                &:not(:last-child) {
+                  background: transparent;
+                }
+      
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_left {
+      article {
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 20px; 
+        }
+      }
+    }
+
+    &_right { 
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      article {
+        padding: 20px 0;
+        &:not(:last-child) {
+          border-bottom: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}
