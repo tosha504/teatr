@@ -5,7 +5,9 @@
     nav = jQuery('.header__nav'),
     minus = jQuery('.header__wcag_minus'),
     plus = jQuery('.header__wcag_plus'),
-    contrast = jQuery('.header__wcag_contrast');
+    contrast = jQuery('.header__wcag_contrast'),
+    arr = document.querySelector('.searchNav');
+  ;
   burger.on('click', function () {
     burger.toggleClass('active');
     nav.toggleClass('active');
@@ -86,40 +88,41 @@
       }]
     });
   }
-  var options = {};
-  function opt() {
-    if (jQuery(window).width() > 1400) {
-      options = {
-        threshold: 0.92
-      };
-    }
-    if (jQuery(window).width() < 1400) {
-      options = {
-        threshold: 0.8
-      };
-    }
-    if (jQuery(window).width() < 1005) {
-      options = {
-        threshold: 0.3
-      };
-    }
-  }
-  jQuery(window).resize(function () {
-    opt();
-  });
-  var arr = document.querySelector('.searchNav');
-  var callback = function callback(entries, observer) {
-    entries.forEach(function (entry) {
-      var isIntersecting = entry.isIntersecting,
-        intersectionRatio = entry.intersectionRatio;
-      if (isIntersecting) {
-        arr.style.cssText += "position: sticky;top:".concat(document.querySelector(".header").clientHeight - 1, "px;background-color:white;z-index:99999");
+  if (arr) {
+    var opt = function opt() {
+      if (jQuery(window).width() > 1400) {
+        options = {
+          threshold: 0.92
+        };
       }
+      if (jQuery(window).width() < 1400) {
+        options = {
+          threshold: 0.8
+        };
+      }
+      if (jQuery(window).width() < 1005) {
+        options = {
+          threshold: 0.3
+        };
+      }
+    };
+    var options = {};
+    jQuery(window).resize(function () {
+      opt();
     });
-  };
-  var observer = new IntersectionObserver(callback, options);
-  if (jQuery(window).width() > 996) {
-    observer.observe(arr);
-    opt();
+    var callback = function callback(entries, observer) {
+      entries.forEach(function (entry) {
+        var isIntersecting = entry.isIntersecting,
+          intersectionRatio = entry.intersectionRatio;
+        if (isIntersecting) {
+          arr.style.cssText += "position: sticky;top:".concat(document.querySelector(".header").clientHeight - 1, "px;background-color:white;z-index:99999");
+        }
+      });
+    };
+    var observer = new IntersectionObserver(callback, options);
+    if (jQuery(window).width() > 996) {
+      observer.observe(arr);
+      opt();
+    }
   }
 })(jQuery);

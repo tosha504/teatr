@@ -222,7 +222,9 @@ function register_acf_blocks()
 	register_block_type(dirname(__FILE__) . '/blocks/news/block.json');
 	register_block_type(dirname(__FILE__) . '/blocks/head_block/block.json');
 	register_block_type(dirname(__FILE__) . '/blocks/show/block.json');
-	register_block_type(dirname(__FILE__) . '/blocks/search/block.json');
+	register_block_type(dirname(__FILE__) . '/blocks/breadcrumbs/block.json');
+	register_block_type(dirname(__FILE__) . '/blocks/people/block.json');
+
 
 	// if ( has_block( 'acf/banner' , 87) ) {
 	// 	wp_enqueue_script( 'banner', get_template_directory_uri() . "/blocks/banner/banner.js" , array(), '1.0.0', true );

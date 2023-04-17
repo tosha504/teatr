@@ -54,9 +54,12 @@
       img {
         max-width: 50px;
       }
-      
       color: $primary;
-      
+      @media (min-width:$bp3) {
+        &:hover{
+          color: $dark;
+        }
+      }
     }
   }
 }

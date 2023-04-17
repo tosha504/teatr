@@ -4,7 +4,9 @@ const sassFiles = [
   'gutenberg/news.scss',
   'gutenberg/head_block.scss',
   'gutenberg/shows.scss',
-  'gutenberg/search.scss',
+  'gutenberg/breadcrumbs.scss',
+  'gutenberg/people.scss',
+
 ];
 
 mix.sass('scss/index.scss', 'src')

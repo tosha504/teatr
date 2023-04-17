@@ -1,0 +1,14 @@
+{
+  "name": "acf/people",
+  "title": "People block",
+  "description": "A custom people block.",
+  "style": [ "file:../css/people.css" ],
+  "category": "formatting",
+  "icon": "post-status",
+  "keywords": ["people"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "people.php"
+  },
+  "align": "full"
+}

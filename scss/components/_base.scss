@@ -38,7 +38,7 @@ html,body{
   }
 
   &.wcag_contrast {
-    div, section, input, textarea, ul, header, footer, a, p {
+    div, section, input, textarea, ul, header, footer, a, p, button {
       svg {
         fill : rgb(255, 217, 0) !important;
         .st0 {

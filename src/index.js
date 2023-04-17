@@ -5,7 +5,9 @@
   nav = jQuery( '.header__nav' ),
   minus = jQuery( '.header__wcag_minus' ),
   plus = jQuery( '.header__wcag_plus' ),
-  contrast = jQuery( '.header__wcag_contrast' );  
+  contrast = jQuery( '.header__wcag_contrast' ),
+  arr = document.querySelector('.searchNav');
+  ;  
 
   burger.on( 'click', function ( ) {
     burger.toggleClass( 'active' );
@@ -100,45 +102,46 @@
   
   }
 
-  let options = { }
-  function opt() {
-    if(jQuery( window ).width() > 1400) {
-      options = {
-        threshold: 0.92
+ 
+
+  if(arr) {
+    let options = { }
+    function opt() {
+      if(jQuery( window ).width() > 1400) {
+        options = {
+          threshold: 0.92
+        }
+      } 
+      if(jQuery( window ).width() < 1400) {
+        options = {
+          threshold: 0.8
+        }
       }
-    } 
-    if(jQuery( window ).width() < 1400) {
-      options = {
-        threshold: 0.8
+      if(jQuery( window ).width() < 1005) {
+        options = {
+          threshold: 0.3
+        }
       }
+  
     }
-    if(jQuery( window ).width() < 1005) {
-      options = {
-        threshold: 0.3
-      }
+    jQuery( window ).resize(function() {
+      opt();
+    })
+    const callback = function (entries, observer) {
+      entries.forEach( entry => {
+        const { isIntersecting, intersectionRatio} = entry;
+        if(isIntersecting ) {
+          arr.style.cssText += `position: sticky;top:${document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`
+        }
+      });
     }
-
+  
+    let observer = new IntersectionObserver(callback, options);
+  
+    if( jQuery( window ).width()  > 996 ) {
+      observer.observe(arr);
+      opt();
+    }   
   }
-
-  jQuery( window ).resize(function() {
-    opt();
-  })
-  let arr = document.querySelector('.searchNav');
-  const callback = function (entries, observer) {
-    entries.forEach( entry => {
-      const { isIntersecting, intersectionRatio} = entry;
-      if(isIntersecting ) {
-        arr.style.cssText += `position: sticky;top:${document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`
-      }
-    });
-  }
-
-  let observer = new IntersectionObserver(callback, options);
-
-  if( jQuery( window ).width()  > 996 ) {
-    observer.observe(arr);
-    opt();
-
-  }      
-  console.log(1);
+    
 })( jQuery );

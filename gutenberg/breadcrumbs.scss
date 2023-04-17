@@ -1,0 +1,30 @@
+@import "../scss/components/_varibles";
+
+
+.breadcrumbs {
+  margin: 20px 0;
+  &__content{ 
+    padding: 20px 20px 50px 20px;
+    &_wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      h1 {
+        @include fontz(25px, 15);
+        font-weight: 400;
+      }
+
+      p {
+        color: $primary;
+        font-size: 14px;
+        @media (min-width:$bp3) {
+          max-width: 700px;
+          margin-right: 100px;
+        }
+      }
+    }
+    
+  }
+}

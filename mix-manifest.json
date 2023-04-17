@@ -1,9 +1,10 @@
 {
-    "/blocks/css/search.css": "/blocks/css/search.css",
+    "/blocks/css/breadcrumbs.css": "/blocks/css/breadcrumbs.css",
     "/blocks/css/shows.css": "/blocks/css/shows.css",
     "/blocks/css/head_block.css": "/blocks/css/head_block.css",
     "/blocks/css/news.css": "/blocks/css/news.css",
     "/blocks/css/banner.css": "/blocks/css/banner.css",
     "/src/index.css": "/src/index.css",
+    "/blocks/css/people.css": "/blocks/css/people.css",
     "/src/js/index.js": "/src/js/index.js"
 }
