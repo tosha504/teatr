@@ -46,11 +46,11 @@
         margin-bottom: 10px;
         p {
           padding: 10px 20px;
-          border: 1px solid #ccc;
+          border: 1px solid $milk;
           border-radius: 50px;  
           transition: 0.35s;
           &:not(:last-child) {
-            background: #ccc;
+            background: $milk;
           }
 
         }
@@ -63,7 +63,7 @@
             }
             .categories { 
               p {
-                background: #ccc;
+                background: $milk;
                 &:not(:last-child) {
                   background: transparent;
                 }
