@@ -38,6 +38,13 @@ html,body{
   }
 
   &.wcag_contrast {
+    .header__wcag_contrast {
+      width: 25px;
+      height: 25px;
+      border: 2px solid rgb(255, 217, 0);
+      background: linear-gradient(90deg, transparent 50%, rgb(255, 217, 0) 50%);
+      border-radius: 50%;
+    }
     div, section, input, textarea, ul, header, footer, a, p, button {
       svg {
         fill : rgb(255, 217, 0) !important;

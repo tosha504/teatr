@@ -3,7 +3,7 @@ jQuery('.banner__slider').slick({
   slidesToScroll: 1,
   autoplay:true,
   autoplaySpeed: 5000,
-  dots: false,
+  dots: true,
   fade: true,
   cssEase: 'linear',
   // adaptiveHeight: true,

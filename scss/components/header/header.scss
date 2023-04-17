@@ -11,16 +11,31 @@
   }
   
   &__wcag {
-    // @media (max-width: $bp2) {
-    //   display: none;
-    //   &.mob {
-    //     display: flex;
-    //   }
-    // }
     display: flex;
     align-items: center;
-    // padding-left: 20px;
-    // border-left: 1px solid #000;
+    a {
+      color: #fff;
+      line-height: 105%;
+    }
+    &_plus, &_minus {
+      a {
+        font-size: 25px;
+        font-weight: 500;
+      }
+    }
+
+    &_contrast {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff;
+      background: linear-gradient(90deg, transparent 50%, #FFF 50%);
+      border-radius: 50%;
+      @media (min-width:$bp3) {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
     @media (max-width: $bp4) {
       border-left:none;
       padding-left: 0px;

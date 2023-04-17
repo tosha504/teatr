@@ -132,7 +132,7 @@
 .slick-dots{
     display: flex;
     position: absolute;
-    bottom: -40px;
+    top: 470px;
     left: 50%;
     transform: translateX(-50%);
     border: none;
@@ -142,7 +142,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: #ccc;
+        background-color: $milk;
         transition: 0.3s;
         button {
             display: none;
