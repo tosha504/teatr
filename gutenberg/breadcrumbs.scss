@@ -4,13 +4,26 @@
 .breadcrumbs {
   margin: 20px 0;
   &__content{ 
-    padding: 20px 20px 50px 20px;
+    padding: 20px 40px 50px 40px;
     &_wrap {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      padding: 20px 0;
+      @media (min-width:$bp1) {
+        position: relative;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          background: url('../../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+          top: -20px;
+          right: 0;
+        }
+      }
+
       h1 {
         @include fontz(25px, 15);
         font-weight: 400;

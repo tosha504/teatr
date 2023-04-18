@@ -7,7 +7,18 @@
   plus = jQuery( '.header__wcag_plus' ),
   contrast = jQuery( '.header__wcag_contrast' ),
   arr = document.querySelector('.searchNav');
-  ;  
+  console.log(jQuery('.header__logo a img'));
+
+  jQuery(window).scroll(function() {
+    var scrollTop = jQuery(window).scrollTop();
+    if ( scrollTop > 40 ) { 
+      jQuery('.header__logo a img.normal').removeClass('active');
+      jQuery('.header__logo a img.sticky').addClass('active');
+    } else {
+      jQuery('.header__logo a img.normal').addClass('active');
+      jQuery('.header__logo a img.sticky').removeClass('active');
+    }
+  });
 
   burger.on( 'click', function ( ) {
     burger.toggleClass( 'active' );
@@ -131,7 +142,7 @@
       entries.forEach( entry => {
         const { isIntersecting, intersectionRatio} = entry;
         if(isIntersecting ) {
-          arr.style.cssText += `position: sticky;top:${document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`
+          arr.style.cssText += `position: sticky;top:jQuery{document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`
         }
       });
     }

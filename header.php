@@ -56,11 +56,14 @@
 					<?php
 					$header = get_field('header', 'options');
 					$logo = $header['logo'];
+					$logo_sticky = $header['logo_sticky'];
 					if ($logo) { ?>
 						<div class="header__logo">
 							<a href="<?php echo esc_url(home_url('/')) ?>">
-								<?php echo $logo_svg;
-								echo wp_get_attachment_image($logo, 'thumbnail'); ?>
+								<?php 
+									echo wp_get_attachment_image($logo, 'thumbnail', false, array('class' => 'normal')); 
+									echo wp_get_attachment_image($logo_sticky, 'thumbnail', false, array('class' => 'sticky'));
+								?>
 							</a>
 						</div>
 					<?php } ?>

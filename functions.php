@@ -20,15 +20,15 @@ if (!defined('_S_VERSION')) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function garden_setup()
+function teatr_setup()
 {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on start, use a find and replace
-		* to change 'garden' to the name of your theme in all the template files.
+		* to change 'teatr' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain('start', get_template_directory() . '/languages');
+	load_theme_textdomain('teatr', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support('automatic-feed-links');
@@ -76,7 +76,7 @@ function garden_setup()
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'garden_custom_background_args',
+			'teatr_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -102,7 +102,7 @@ function garden_setup()
 		)
 	);
 }
-add_action('after_setup_theme', 'garden_setup');
+add_action('after_setup_theme', 'teatr_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,24 +111,24 @@ add_action('after_setup_theme', 'garden_setup');
  *
  * @global int $content_width
  */
-function garden_content_width()
+function teatr_content_width()
 {
-	$GLOBALS['content_width'] = apply_filters('garden_content_width', 640);
+	$GLOBALS['content_width'] = apply_filters('teatr_content_width', 640);
 }
-add_action('after_setup_theme', 'garden_content_width', 0);
+add_action('after_setup_theme', 'teatr_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function garden_widgets_init()
+function teatr_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'garden'),
+			'name'          => esc_html__('Sidebar', 'teatr'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__('Add widgets here.', 'garden'),
+			'description'   => esc_html__('Add widgets here.', 'teatr'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -136,7 +136,7 @@ function garden_widgets_init()
 		)
 	);
 }
-add_action('widgets_init', 'garden_widgets_init');
+add_action('widgets_init', 'teatr_widgets_init');
 
 /**
  * Disable Gutenberg
@@ -237,9 +237,7 @@ function search_nav()
 {
 	$links = get_field('links', 'options');
 	$my_link = '';
-	$current_image = '';
-	foreach ($links as $key => $link) {
-		// var_dump($link['image']);
+	foreach ($links as $link) {
 		$link_url = $link['link'] ? $link['link']['url'] : '#';
 		$link_title = $link['link'] ? $link['link']['title'] : 'Your title';
 		$my_link .= '<li><a href="' . esc_url($link_url) . '">' . wp_get_attachment_image($link['image'], 'thumbnail') . '<span>' . $link_title . '</span></a></li>';

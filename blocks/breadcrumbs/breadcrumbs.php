@@ -13,7 +13,7 @@
  */
 
 // Load values and assign defaults.
-$bg_color = get_field('bg_color') ?: '#ccc';
+$bg_color = get_field('bg_color') ?: '#f4f2ef';
 $description = get_field('description') ?: 'Youe description...'; ?>
 
 <section class="breadcrumbs">
