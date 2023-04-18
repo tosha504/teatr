@@ -1,11 +1,11 @@
 @import "../scss/components/_varibles", './slick.scss';
 
 .newses {
-  padding: 20px 0 50px;
+  padding: 15px 0;
 
 
   &__items {
-    padding: 20px 0;
+    // padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 50px;

@@ -7,7 +7,7 @@
     plus = jQuery('.header__wcag_plus'),
     contrast = jQuery('.header__wcag_contrast'),
     arr = document.querySelector('.searchNav');
-  console.log(jQuery('.header__logo a img'));
+  console.log(arr);
   jQuery(window).scroll(function () {
     var scrollTop = jQuery(window).scrollTop();
     if (scrollTop > 40) {
@@ -122,10 +122,11 @@
     });
     var callback = function callback(entries, observer) {
       entries.forEach(function (entry) {
+        console.log(1);
         var isIntersecting = entry.isIntersecting,
           intersectionRatio = entry.intersectionRatio;
         if (isIntersecting) {
-          arr.style.cssText += "position: sticky;top:jQuery{document.querySelector(\".header\").clientHeight -1}px;background-color:white;z-index:99999";
+          arr.style.cssText += "position: sticky;top:".concat(document.querySelector(".header").clientHeight - 1, "px;background-color:white;z-index:99999");
         }
       });
     };
