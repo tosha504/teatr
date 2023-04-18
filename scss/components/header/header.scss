@@ -17,11 +17,11 @@
         width: 100%;
         left: 0;
         height: 100%;
-        &.normal,  &.sticky  {
+        // &.normal,  &.sticky  {
           opacity: 0;
           visibility: hidden;
           transition: 0.3s;
-        }
+        // }
         &.active {
           opacity: 1;
           visibility: visible; 

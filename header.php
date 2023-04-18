@@ -61,7 +61,7 @@
 						<div class="header__logo">
 							<a href="<?php echo esc_url(home_url('/')) ?>">
 								<?php 
-									echo wp_get_attachment_image($logo, 'thumbnail', false, array('class' => 'normal')); 
+									echo wp_get_attachment_image($logo, 'thumbnail', false, array('class' => 'normal active')); 
 									echo wp_get_attachment_image($logo_sticky, 'thumbnail', false, array('class' => 'sticky'));
 								?>
 							</a>
