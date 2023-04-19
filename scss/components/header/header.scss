@@ -17,11 +17,9 @@
         width: 100%;
         left: 0;
         height: 100%;
-        // &.normal,  &.sticky  {
-          opacity: 0;
-          visibility: hidden;
-          transition: 0.3s;
-        // }
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.35s;
         &.sticky {
           max-width: 80px;
         }

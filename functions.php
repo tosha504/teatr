@@ -256,3 +256,5 @@ function search_nav()
 	</div>';
 }
 add_shortcode('search_nav', 'search_nav');
+
+

@@ -19,7 +19,7 @@ $shows = get_field('shows') ?: 'Your shows..';
   <div class="shows">
     <?php foreach ($shows as $key => $show) {
       // var_dump($show);
-      $image = get_the_post_thumbnail($show->ID, 'full') ?: '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-muzyczny-zdjecie.webp' . ' alt="alternative_name">';
+      $image = get_the_post_thumbnail($show->ID, 'full') ?: '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="teatr-nowy brak zdjecia">';
       echo '<div class="shows__item">' . '<a href=" ' . get_permalink($show->ID) . '">' .
         $image . '</a>' .
         '<p class="categories">Categories</p>' .

@@ -7,7 +7,6 @@
   plus = jQuery( '.header__wcag_plus' ),
   contrast = jQuery( '.header__wcag_contrast' ),
   arr = document.querySelector('.searchNav');
-  console.log(arr);
   jQuery(window).scroll(function() {
     var scrollTop = jQuery(window).scrollTop();
     if ( scrollTop > 40 ) { 
@@ -139,7 +138,6 @@
     })
     const callback = function (entries, observer) {
       entries.forEach( entry => {
-        console.log(1);
         const { isIntersecting, intersectionRatio} = entry;
         if(isIntersecting ) {
           arr.style.cssText += `position: sticky;top:${document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`

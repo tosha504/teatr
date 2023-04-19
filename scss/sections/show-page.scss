@@ -1,0 +1,152 @@
+.shows-page {
+  .pages {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    a {
+      color: $dark;
+      padding: 5px 20px;
+      border: 1px solid $milk;
+      font-size: 14px;
+      border-radius: 50px;
+      &.active {
+        background: $primary;
+        color: $milk;
+        border: 1px solid transparent;
+      }
+      @media (min-width:$bp3) {
+        &:hover {
+          background: $primary;
+          color: $milk;
+          border: 1px solid transparent;
+          &.active {
+            color: $dark;
+            padding: 5px 20px;
+            border: 1px solid $milk;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .shows-list {
+    padding: 5px 30px;
+    background: $milk;
+    display: inline-block;
+    border-radius: 50px;
+    margin-bottom: 20px;
+
+    &__categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 20px;
+      a {
+        color: $primary;
+        font-size: 14px;
+        text-transform: capitalize;
+        @media (min-width:$bp3) {
+          &:hover {
+            color: $dark;
+          }
+        }
+      }
+    }
+  }
+
+  .performances {
+    // background-color: red;
+    padding: 20px 0;
+    border-top:1px solid $milk;
+    border-bottom:1px solid $milk;
+
+    .performance  {
+      &:not(:last-child) {
+        border-bottom: 1px solid $milk;
+      }
+      &__header, &__body {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        h6 {
+          @include fontz(16px,4);
+        }
+      }
+
+      &__header {
+        align-items: center;
+        padding: 20px 10px 10px;
+
+        // &_title, &_cast, &_category {
+        //   flex: 1 1 100%;
+        // }
+
+        &_cast {
+          font-size: 14px;
+          padding: 5px 20px;
+          border: 1px solid $milk;
+          border-radius: 50px;
+          display: inline-block;
+          flex: 1 1 60%;
+          max-width: 100px;
+          text-align: center;
+          color: $dark;
+        }
+        &_category {
+          text-align: center;
+          max-width: 100px;
+          font-size: 14px;
+          color: $primary;
+          position: relative;
+          &::before {
+            position: absolute;
+            content: '';
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url(../assets/categories/spektakl-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            width: 39px;
+            height: 39px;
+
+          }
+          &:first-letter {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      &__body {
+        padding: 10px;
+
+        &_date {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-family: $ala;
+          font-weight: 500;
+          font-size: 20px;
+          span {
+            font-size: 30px;
+            color: $primary;
+          }
+
+          .btn {
+            font-family: $pop;
+            font-weight: normal !important;
+            padding: 10px !important;
+            text-align: center;
+            width: 80%;
+          }
+        }
+
+        &_image {
+          display: none;  
+          @media (min-width:$bp3) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
