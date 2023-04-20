@@ -46,6 +46,7 @@
         color: $primary;
         font-size: 14px;
         text-transform: capitalize;
+       
         @media (min-width:$bp3) {
           &:hover {
             color: $dark;
@@ -57,7 +58,7 @@
 
   .performances {
     // background-color: red;
-    padding: 20px 0;
+    // padding: 20px 0;
     border-top:1px solid $milk;
     border-bottom:1px solid $milk;
 
@@ -78,9 +79,11 @@
         align-items: center;
         padding: 20px 10px 10px;
 
-        // &_title, &_cast, &_category {
-        //   flex: 1 1 100%;
-        // }
+        &_title, &_cast {
+          @media (min-width:$bp1) {
+            flex: 0 1 30%;
+          }
+        }
 
         &_cast {
           font-size: 14px;
@@ -88,7 +91,6 @@
           border: 1px solid $milk;
           border-radius: 50px;
           display: inline-block;
-          flex: 1 1 60%;
           max-width: 100px;
           text-align: center;
           color: $dark;
@@ -99,6 +101,10 @@
           font-size: 14px;
           color: $primary;
           position: relative;
+          width: 100%;
+          @media (min-width:$bp1) {
+            top: 40px;
+          }
           &::before {
             position: absolute;
             content: '';
@@ -110,6 +116,22 @@
             height: 39px;
 
           }
+          &.musical {
+            &::before {
+              background: url(../assets/categories/musical-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          } 
+          &.monodram-muzyczny {
+            &::before {
+              background: url(../assets/categories/monodram-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          } 
+          &.koncert {
+            &::before {
+              background: url(../assets/categories/koncert-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          } 
+          
           &:first-letter {
             text-transform: uppercase;
           }
@@ -118,14 +140,16 @@
 
       &__body {
         padding: 10px;
-
+        
         &_date {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
           font-family: $ala;
           font-weight: 500;
           font-size: 20px;
+          // margin-right: 50px;
+          flex: 1 1 100%;
+          @media (min-width:$bp1) {
+            flex: 0 1 200px;
+          }
           span {
             font-size: 30px;
             color: $primary;
@@ -141,9 +165,49 @@
         }
 
         &_image {
-          display: none;  
+          display: none;
+          flex: 1 1 30%;
+          text-align: center;
           @media (min-width:$bp3) {
             display: block;
+          }
+        }
+        &_content {
+          h6 {
+            color: $dark;
+          }
+          flex: 1 1 100%;
+          @media (min-width:$bp1) {
+            flex: 1 1 30%;
+          }
+          .btns {
+            padding: 50px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;  
+            @media (min-width:$bp1) {
+              gap: 100px;
+            }
+            align-items: center;
+
+            &__btn {
+              color: $primary;
+              font-weight: 500;
+              font-size: 17px;
+              @media (min-width:$bp1) {
+                position: relative;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  width: 20px;
+                  height: 20px;
+                  background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+                  right: -50px;
+                  bottom: 50%;
+                  transform: translateY(50%);
+                }
+              }
+            }
           }
         }
       }
