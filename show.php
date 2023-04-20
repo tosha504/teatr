@@ -17,12 +17,41 @@
         echo '<pre>';
         // var_dump($perfomances);
         echo '</pre>';
+        $variable = 'musical';
+        // musical
+        // rock-opera
+        // koncert
+        // musical dla dzieci
+        // operetka
+        // spektakl komediowo-muzyczny
+        // widowisko muzyczne
+        // monodram muzyczny
+        // spektakl baletowy
+        // wykład / warsztat
+        // spektakl
+        // wystawa
+        // $class_cat = '';
+        // switch ($variable) {
+        //   case 'musical':
+        //     $class_cat = "musical";
+        //     break;
+        //     case 'rock-opera':
+        //       $class_cat = "rock-opera";
+        //       break;
+        //       case 'koncert':
+        //         $class_cat =  "koncert";
+        //         break;
+        //   default:
+        //   $class_cat = "test";
+        //     break;
+        // }
         $uniq_categories = [];
         $list_html = '';
         $list_html .= '<div class="performances">';
         foreach ($perfomances as $date => $datePerfomaces) {
           foreach ($datePerfomaces as $perfomance) {
             // var_dump($perf);
+            $cat_slug = sanitize_title($perfomance->category);
             $date = date('d/m/y',strtotime($perfomance->date_time));
             $time= date('H:i',strtotime($perfomance->date_time));
             
@@ -34,7 +63,7 @@
               <div class="performance__header">
                 <h6 class="performance__header_title title">Repertuar</h6>
                 <a href="#" class="performance__header_cast">Obsada</a>
-                <p class="performance__header_category">$perfomance->category</p>
+                <p class="performance__header_category {$cat_slug}">$perfomance->category</p>
               </div>
               <div class="performance__body">
                 <div class="performance__body_date">
@@ -42,14 +71,18 @@
                     <span>$date</span><br>
                     $time
                   </p>
-                  <a href="#" class="btn">Kup bilet</a>
                 </div>
                 <div class="performance__body_image">
-                  $image
+                  <a href="#">
+                    $image
+                  </a>
                 </div>
                 <div class="performance__body_content">
-                  <h6>$title</h6>
-                  <a href="#">Wiecej</a>
+                  <a href="#"><h6>$title</h6> </a>
+                  <div class="btns">
+                    <a class="btns__btn" href="#">Wiecej</a>
+                    <a href="#" class="btn">Kup bilet</a>
+                  </div>
                 </div>
               </div>
             </div>
