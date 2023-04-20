@@ -12,7 +12,7 @@
   <section class="shows-page">
     <div class="container">
       <?php 
-      $perfomances = file_get_contents('http://teater/wp-json/teatr_muzyczny/v1/perfomances');
+      $perfomances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/perfomances');
       $perfomances = json_decode($perfomances);
         echo '<pre>';
         // var_dump($perfomances);
