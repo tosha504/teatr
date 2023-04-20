@@ -15,7 +15,7 @@
         color: $milk;
         border: 1px solid transparent;
       }
-      @media (min-width:$bp1) {
+      @media (min-width:$bp3) {
         &:hover {
           background: $primary;
           color: $milk;
@@ -33,12 +33,10 @@
 
   .shows-list {
     padding: 5px 30px;
+    background: $milk;
     display: inline-block;
     border-radius: 50px;
     margin-bottom: 40px;
-    @media (min-width:$bp1) {
-    background: $milk;
-    }
 
     &__categories {
       display: flex;
@@ -104,6 +102,7 @@
           color: $primary;
           position: relative;
           width: 100%;
+          top: 10px;
           @media (min-width:$bp1) {
             top: 40px;
           }
