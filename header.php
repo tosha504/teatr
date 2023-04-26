@@ -24,6 +24,9 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
+	<div id="singlePerfomanceCard">
+	<?php echo singlePerfomanceCard(); ?>
+	</div>
 	<div id="page" class="wrapper">
 		<div class="topBar">
 			<div class="container">

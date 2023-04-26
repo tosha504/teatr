@@ -35,3 +35,81 @@ if (!function_exists('teatr_scripts')) {
 	}
 }
 add_action('wp_enqueue_scripts', 'teatr_scripts',);
+
+add_action( 'wp_ajax_get_category_person', 'get_category_person' );
+add_action( 'wp_ajax_nopriv_get_category_person', 'get_category_person' );
+
+function get_category_person() {
+	if(isset( $_POST['category_id']) && !empty( $_POST['category_id'])) {
+		$taxonomy = 'categories';
+    $args = array(
+      'post_type' => 'people',
+      'tax_query' => array(
+        array(
+          'taxonomy' => $taxonomy,
+          'field'    => 'id',
+          'terms'    => $_POST['category_id']
+        )
+      )
+    );
+    $query = new WP_Query( $args );
+
+		$terms = get_terms(  $taxonomy, [
+			'parent'    => $_POST['category_id'],
+			'hide_empty' => true,
+		] ) ;
+
+		if($_POST['category_id'] == 4 || $_POST['category_id'] == 5) {
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$avatar = get_the_post_thumbnail() ? 
+					get_the_post_thumbnail() : 
+					'<img src="' . get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp" alt="avtar-image">';
+					echo '<div class="people__items_item">
+						<a href="' .  get_permalink() . '">' .
+							$avatar . '
+							<p>'. get_the_title(). '</p>
+						</a>
+					</div>';
+				}
+			}
+		} else if($terms) { 
+			foreach ($terms as $term) {
+				if($term->count != 0) {
+					echo '<div class="category__wrap">';
+					echo '<div class="category__wrap-name">' . $term->name . '</div>';
+					$args = array(
+						'post_type' => 'people',
+						'tax_query' => array(
+							array(
+								'taxonomy' => $taxonomy,
+								'field'    => 'id',
+								'terms'    => $term->term_id
+								)
+								)
+							);
+							echo '<div class="category__wrap-items">';
+							$n_query = new WP_Query( $args );
+							if ( $n_query->have_posts() ) {
+								while ( $n_query->have_posts() ) {
+							$n_query->the_post();
+							$link = get_the_content() ? '<a href="' . get_permalink() .'">' .get_the_title() . '</a>' : '<p>' . get_the_title() . '</p>';
+							echo $link ;
+							
+							
+						}
+						echo '</div>';
+					}
+					echo '</div>';
+					wp_reset_postdata();
+				}
+			}
+		}
+		else {
+			echo 'Tu nic nie ma!';
+		}
+		wp_reset_postdata();
+	}
+  die();
+}

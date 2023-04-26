@@ -5,7 +5,6 @@ const sassFiles = [
   'gutenberg/head_block.scss',
   'gutenberg/shows.scss',
   'gutenberg/breadcrumbs.scss',
-  'gutenberg/people.scss',
 
 ];
 

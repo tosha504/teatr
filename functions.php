@@ -258,3 +258,31 @@ function search_nav()
 add_shortcode('search_nav', 'search_nav');
 
 
+function create_taxonomy() {
+	register_taxonomy('categories', 'people', array(
+		'hierarchical'  	=> true,
+		'label' 					=> 'Kategorie',
+		'public'					=> false,
+		'show_ui'       	=> true,
+	));
+
+}
+
+add_action( 'init', 'create_taxonomy' );
+function register_post_types()
+{
+	$labels = array(
+		'name' => 'People',
+		'menu_name'     => 'Ludzie',
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+		'rewrite' => array('slug'=>'ludzie',)
+	);
+
+	register_post_type('people', $args);
+}
+add_action( 'init', 'register_post_types' );

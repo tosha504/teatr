@@ -1,6 +1,6 @@
 <?php 
 /**
- *Template Name: Shows
+ *Template Name: Perfomances
  * @package teatr
  */
 
@@ -19,20 +19,16 @@
         $list_html .= '<div class="performances">';
         foreach ($perfomances as $date => $datePerfomaces) {
           foreach ($datePerfomaces as $perfomance) {
+            // var_dump($perf);
             $cat_slug = sanitize_title($perfomance->category);
             $date = date('d/m/y',strtotime($perfomance->date_time));
             $time= date('H:i',strtotime($perfomance->date_time));
-            $image = !empty($perfomance->show_image) ?
-            '<img src=' . $perfomance->show_image . ' width="213" height="300" alt="alternative_name">' : 
+            $image = !empty(get_the_post_thumbnail($perfomance->show, 'medium')) ?
+            get_the_post_thumbnail($perfomance->show, 'medium') : 
             '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' width="213" height="300" alt="alternative_name">';
             $uniq_categories[$perfomance->category] = '';
-            $item_html = str_replace('{title}',$perfomance->show_title,singlePerfomanceCard());
+            $item_html = str_replace('{title}',$perfomance->title,singlePerfomanceCard());
             $item_html = str_replace('{category}',$perfomance->category,$item_html);
-            $item_html = str_replace('{category-slug}',$perfomance->category_slug,$item_html);
-            $item_html = str_replace('{show_url}',$perfomance->show_url,$item_html);
-            // $item_html = str_replace('{show_url}',$perfomance->show_url,$item_html);
-            $item_html = str_replace('{buy}',$perfomance->buy,$item_html);
-            $item_html = str_replace('{show_image}',$image,$item_html);
             $item_html = str_replace('{date}',$date,$item_html);
             $item_html = str_replace('{time}',$time,$item_html);
             $list_html .= $item_html;

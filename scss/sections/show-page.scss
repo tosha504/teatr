@@ -1,3 +1,6 @@
+#singlePerfomanceCard {
+  display: none;
+}
 .shows-page {
   .pages {
     display: flex;
@@ -32,24 +35,39 @@
   }
 
   .shows-list {
-    padding: 5px 30px;
     background: $milk;
     display: inline-block;
     border-radius: 50px;
     margin-bottom: 40px;
-
+    
     &__categories {
+      padding: 0 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 5px 20px;
-      a {
-        color: $primary;
-        font-size: 14px;
-        text-transform: capitalize;
-       
-        @media (min-width:$bp3) {
-          &:hover {
+      // gap: 0px 10px;
+      li {
+        &.active {
+          background-color: #cdc9c4;
+          a {
             color: $dark;
+          }
+        }
+        &.disabled {
+          a {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+        padding: 5px 10px;
+        a {
+          color: $primary;
+          font-size: 14px;
+          text-transform: capitalize;
+         
+          @media (min-width:$bp3) {
+            &:hover {
+              color: $dark;
+            }
           }
         }
       }
@@ -57,8 +75,7 @@
   }
 
   .performances {
-    // background-color: red;
-    // padding: 20px 0;
+    margin-bottom: 20px;
     border-top:1px solid $milk;
     border-bottom:1px solid $milk;
 
@@ -132,6 +149,46 @@
               background: url(../assets/categories/koncert-ikona-teatr-muzyczny.svg) no-repeat center/cover;
             }
           } 
+          &.musical-dla-dzieci {
+            &::before {
+              background: url(../assets/categories/musical-dla-dzieci-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.operetka {
+            &::before {
+              background: url(../assets/categories/operetka-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.spektakl-komediowo-muzyczny {
+            &::before {
+              background: url(../assets/categories/spektakl-komediowo-muzyczny-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.widowisko-muzyczne {
+            &::before {
+              background: url(../assets/categories/widowisko-muzyczne-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.spektakl-baletowy {
+            &::before {
+              background: url(../assets/categories/spektakl-baletowy-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.wyklad-warsztat {
+            &::before {
+              background: url(../assets/categories/wyklad-warsztat-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.spektakl {
+            &::before {
+              background: url(../assets/categories/spektakl-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
+          &.wystawa {
+            &::before {
+              background: url(../assets/categories/wystawa-ikona-teatr-muzyczny.svg) no-repeat center/cover;
+            }
+          }
           
           &:first-letter {
             text-transform: uppercase;
