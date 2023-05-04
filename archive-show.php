@@ -1,17 +1,18 @@
 <?php 
 /**
- *Template Name: Shows
- * @package teatr
- */
-
- get_header(); ?>
+*Template Name: Shows
+* @package teatr
+*/
+$description = get_field('description', 'options');
+get_header(); ?>
  
 <main id="primary" class="site-main">
 
-  <?php the_content(); ?>
   <section class="shows-page">
-    <div class="container">
       <?php 
+      echo search_nav();
+      echo breadcrumb_block('Spektakle', $description);
+      echo '<div class="container">';
       $shows = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/shows');
       $shows = json_decode($shows);
         $list_html = '';
@@ -21,7 +22,6 @@
           $short_descr = wp_trim_words( $show->short , $trim_words );
           $descr = wp_trim_words( $show->descr , $trim_words );
           $description = !empty($show->short) ? '<p>' . $short_descr . '</p>' : '<p>' . $descr . '</p>';
-          $uniq_categories[$show->category] = '';
           $date = $show->premiere_date ? date('d/m/y',strtotime($show->premiere_date)) : '';
           $image = !empty($show->image) ?
             '<img src=' . $show->image . ' width="213" height="300" alt="alternative_name">' : 
@@ -61,7 +61,6 @@
 
      <?php echo pageSwitcher(); ?>
 
-      <div class="box"><div class="loader"></div></div>
       <?php echo $list_html; ?>
     </div>
   </section>

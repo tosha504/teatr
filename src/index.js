@@ -8,8 +8,12 @@
   contrast = jQuery( '.header__wcag_contrast' ),
   arr = document.querySelector('.searchNav'),
   homeUrl = window.location.protocol + "//" + window.location.host + "/",
-  apiUrl = 'wp-json/teatr_muzyczny/v1/perfomances';
+  apiUrl = 'wp-json/teatr_muzyczny/v1/perfomances',
+  hash =  window.location.hash;
 
+  if(hash) {
+    jQuery("html, body").animate({ scrollTop: jQuery(hash).offset().top -200 }, 2000); 
+  }
   jQuery(window).scroll(function() {
     var scrollTop = jQuery(window).scrollTop();
     if ( scrollTop > 40 ) { 
@@ -146,66 +150,22 @@
       opt();
     }   
   }
-  const singlePerfomanceCard = jQuery('#singlePerfomanceCard').html();
-  function checkValueCustomSearch(target) {
-    //AJAX
-    const url = target == 'wszystkie' ? 
-    homeUrl + apiUrl : 
-    homeUrl + apiUrl + '?category=' + target;
-    jQuery.ajax({
-      type: 'get',
-      url: url,
-      contentType: "application/json",
-      dataType: 'json',
-      beforeSend: function (response) {
-        // body.addClass("fixed-page");
-        jQuery('.performance').hide()
-        jQuery('.box').addClass('active')
-        jQuery('.shows-list__categories li').addClass('disabled') 
-      },
-      success: function(response) {
-        console.log(response);
-        let content = '';
-        for (const date in response) {
-          // console.log(`${date}: ${response[date]}`);
-          for (const perf of response[date]) {
-            console.log( perf.show_image);
-            let image = perf.show_image ?
-            '<img src="' + perf.show_image + '" width="213" height="300" alt="alternative_name">' : 
-            '<img src="/wp-content/themes/teatr/assets/image/teatr-nowy-brak-zdjecia.webp" width="213" height="300" alt="alternative_name">';
-            const [itemDate,itemTime]  = perf.date_time.split(' ');
-            let [y,mo,d] = itemDate.split('-');
-            const [h,m] = itemTime.split(':');
-            let copyCard = singlePerfomanceCard;
-            content += copyCard.replace('{title}', perf.show_title)
-                               .replace('{date}',`${d}/${mo}/${y.toString().substring(2)}`)
-                               .replace('{time}', `${h}:${m}` )
-                               .replace('{category}', perf.category)
-                               .replace('{category-slug}', perf.category_slug)   
-                               .replace('{show_image}', image)            
-                               .replace('{show_url}', perf.show_url)
-          }
-        }
-        jQuery('.box').removeClass('active')
-        jQuery('.performances').hide().html(content).fadeIn(1000);
-        jQuery('.shows-list__categories li').removeClass('disabled') 
-      },
-      error: function (jqXhr, textStatus, errorMessage) {
-        // jQuery('.box').removeClass('active')
-        // jQuery('.box').after('<p class="error">Something went wrong</p>');
-      }
-              
-    });
+
+  const queryString = window.location.search;
+  if(queryString.length) {
+  const target = jQuery('#filter_form');
+    jQuery("html, body").animate({ scrollTop: jQuery(target).offset().top -200 }, 0); 
   }
-  
-  jQuery('.shows-list__categories li a').on('click', function (e) {
+  jQuery('.shows-list__categories li button').on('click', function (e) {
     e.preventDefault();
-    if(jQuery(e.target).parent().siblings().hasClass('active')) {
-      jQuery(e.target).parent().siblings().removeClass('active')
+    const attrName = jQuery(e.target).attr('name');
+    if(attrName === 'filter_month') {
+      jQuery('#filter_category').val('');
     }
-    jQuery(e.target).parent().addClass('active');
-    
-    checkValueCustomSearch(jQuery(e.target).text())
+    jQuery(`#${attrName}`).val(jQuery(e.target).val());
+    jQuery('#filter_form').submit();
+    // const target = jQuery('#filter_form');
+    // jQuery("html, body").animate({ scrollTop: jQuery(target).offset().top }, 1000);       
   })
 
   function cardsPeopleCatergories(target) {
@@ -250,5 +210,70 @@
     
     cardsPeopleCatergories(jQuery(e.target).attr('data-term-id'))
   })
+
+  function findVideos() {
+    let videos = document.querySelectorAll('.video');
+
+    for (let i = 0; i < videos.length; i++) {
+      setupVideo(videos[i]);
+    }
+      
+  }
+
+  function setupVideo(video) {
+    let link = video.querySelector('.video__link');
+    let media = video.querySelector('.video__media');
+    let button = video.querySelector('.video__button');
+    let id = parseMediaURL(media);
+
+    video.addEventListener('click', () => {
+      let iframe = createIframe(id);
+      link.remove();
+      button.remove();
+      video.appendChild(iframe);
+    });
+
+    link.removeAttribute('href');
+  }
+
+  function parseMediaURL(media) {
+    let regexp = /https:\/\/i\.ytimg\.com\/vi\/([a-zA-Z0-9_-]+)\/maxresdefault\.jpg/i;
+    let url = media.src;
+    let match = url.match(regexp);
+
+    return match[1];
+  }
+
+  function createIframe(id) {
+    let iframe = document.createElement('iframe');
+
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay');
+    iframe.setAttribute('src', generateURL(id));
+    iframe.classList.add('video__media');
+
+    return iframe;
+  }
+
+  function generateURL(id) {
+    let query = '?rel=0&showinfo=0&autoplay=1';
+    return 'https://www.youtube.com/embed/' + id + query;
+  }
+
+  findVideos();
+
+  jQuery('.show__slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay:true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    cssEase: 'linear',
+    // adaptiveHeight: true,
+    // focusOnSelect: true,
+    arrows: false,
+    swipeToSlide: true,
+  });
   
 })( jQuery );

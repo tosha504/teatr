@@ -1,6 +1,12 @@
 #singlePerfomanceCard {
   display: none;
 }
+// body.page-template-perfomances {
+//   .performance__header_buttons { 
+//     justify-content: center !important;
+//   }
+// }
+
 .shows-page {
   .pages {
     display: flex;
@@ -33,31 +39,38 @@
       }
     }
   }
-
+  
+  
   .shows-list {
     background: $milk;
     display: inline-block;
     border-radius: 50px;
     margin-bottom: 40px;
-    
     &__categories {
       padding: 0 30px;
       display: flex;
       flex-wrap: wrap;
+      &:last-child {
+        align-items: center;
+      }
+      
       // gap: 0px 10px;
       li {
         &.active {
           background-color: #cdc9c4;
-          a {
+          button {
             color: $dark;
           }
         }
-        &.disabled {
-          a {
-            opacity: 0.5;
-            pointer-events: none;
-          }
+        button, p {
+          border: none;
+          background: transparent;
+          font-family: $ala;
+          color: $primary;
+          font-size: 14px;
+          text-transform: capitalize;
         }
+       
         padding: 5px 10px;
         a {
           color: $primary;
@@ -96,14 +109,14 @@
         align-items: center;
         padding: 20px 10px 10px;
         gap: 10px;
-        &_title, &_cast {
+        &_title, &_buttons {
           @media (min-width:$bp1) {
             flex: 0 1 30%;
           }
         }
-
-        &_cast {
-          font-size: 14px;
+        
+        .cast {
+          font-size: 12px;
           padding: 5px 20px;
           border: 1px solid $milk;
           border-radius: 50px;
@@ -111,6 +124,25 @@
           max-width: 100px;
           text-align: center;
           color: $dark;
+        }
+        &_buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: flex-end;
+          a {
+            font-size: 12px;
+            padding: 5px 20px;
+            border: 1px solid $milk;
+            border-radius: 50px;
+            display: inline-block;
+            max-width: 100px;
+            text-align: center;
+            color: $dark;
+            &.dark{
+              background-color: $milk;
+            }
+          }
+
         }
         &_category {
           text-align: center;
@@ -233,8 +265,12 @@
         &_content {
           padding-right: 100px;
           h6 {
-            color: $dark;
-          
+            color: $dark;          
+          }
+          p {
+            font-size: 14px;
+            // line-height: 110%;
+            padding:50px 0 0;
           }
           flex: 1 1 100%;
           @media (min-width:$bp1) {

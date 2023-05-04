@@ -42,18 +42,18 @@
 
 	<div class="container">
 		<div class="single-artist">
-			<?php if($people_field) { ?>
 			<div class="single-artist__fields">
 				<?php 
-					foreach ($people_field as $key => $field) {
-						echo '<p>' . $field['title'] . '</p><br>';
-						foreach ($field['advantages'] as $key => $advantage) {
-							echo '<p><span>' . $advantage['advantages_title'] . '</span>' . $advantage['advantages_description'] . '</p>';
+					if($people_field) { 
+						foreach ($people_field as $key => $field) {
+							echo '<p>' . $field['title'] . '</p><br>';
+							foreach ($field['advantages'] as $key => $advantage) {
+								echo '<p><span>' . $advantage['advantages_title'] . '</span>' . $advantage['advantages_description'] . '</p>';
+							}
 						}
 					}
 				?>
 			</div>
-			<?php } ?>
 			<div class="single-artist__content">
 				<?php 
 					the_post_thumbnail();

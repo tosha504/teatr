@@ -1,10 +1,3 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 (function () {
   console.log("ready!");
   var burger = jQuery('.burger span'),
@@ -15,7 +8,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     contrast = jQuery('.header__wcag_contrast'),
     arr = document.querySelector('.searchNav'),
     homeUrl = window.location.protocol + "//" + window.location.host + "/",
-    apiUrl = 'wp-json/teatr_muzyczny/v1/perfomances';
+    apiUrl = 'wp-json/teatr_muzyczny/v1/perfomances',
+    hash = window.location.hash;
+  if (hash) {
+    jQuery("html, body").animate({
+      scrollTop: jQuery(hash).offset().top - 200
+    }, 2000);
+  }
   jQuery(window).scroll(function () {
     var scrollTop = jQuery(window).scrollTop();
     if (scrollTop > 40) {
@@ -136,73 +135,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       opt();
     }
   }
-  var singlePerfomanceCard = jQuery('#singlePerfomanceCard').html();
-  function checkValueCustomSearch(target) {
-    //AJAX
-    var url = target == 'wszystkie' ? homeUrl + apiUrl : homeUrl + apiUrl + '?category=' + target;
-    jQuery.ajax({
-      type: 'get',
-      url: url,
-      contentType: "application/json",
-      dataType: 'json',
-      beforeSend: function beforeSend(response) {
-        // body.addClass("fixed-page");
-        jQuery('.performance').hide();
-        jQuery('.box').addClass('active');
-        jQuery('.shows-list__categories li').addClass('disabled');
-      },
-      success: function success(response) {
-        console.log(response);
-        var content = '';
-        for (var date in response) {
-          // console.log(`${date}: ${response[date]}`);
-          var _iterator = _createForOfIteratorHelper(response[date]),
-            _step;
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var perf = _step.value;
-              console.log(perf.show_image);
-              var image = perf.show_image ? '<img src="' + perf.show_image + '" width="213" height="300" alt="alternative_name">' : '<img src="/wp-content/themes/teatr/assets/image/teatr-nowy-brak-zdjecia.webp" width="213" height="300" alt="alternative_name">';
-              var _perf$date_time$split = perf.date_time.split(' '),
-                _perf$date_time$split2 = _slicedToArray(_perf$date_time$split, 2),
-                itemDate = _perf$date_time$split2[0],
-                itemTime = _perf$date_time$split2[1];
-              var _itemDate$split = itemDate.split('-'),
-                _itemDate$split2 = _slicedToArray(_itemDate$split, 3),
-                y = _itemDate$split2[0],
-                mo = _itemDate$split2[1],
-                d = _itemDate$split2[2];
-              var _itemTime$split = itemTime.split(':'),
-                _itemTime$split2 = _slicedToArray(_itemTime$split, 2),
-                h = _itemTime$split2[0],
-                m = _itemTime$split2[1];
-              var copyCard = singlePerfomanceCard;
-              content += copyCard.replace('{title}', perf.show_title).replace('{date}', "".concat(d, "/").concat(mo, "/").concat(y.toString().substring(2))).replace('{time}', "".concat(h, ":").concat(m)).replace('{category}', perf.category).replace('{category-slug}', perf.category_slug).replace('{show_image}', image).replace('{show_url}', perf.show_url);
-            }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
-          }
-        }
-        jQuery('.box').removeClass('active');
-        jQuery('.performances').hide().html(content).fadeIn(1000);
-        jQuery('.shows-list__categories li').removeClass('disabled');
-      },
-      error: function error(jqXhr, textStatus, errorMessage) {
-        // jQuery('.box').removeClass('active')
-        // jQuery('.box').after('<p class="error">Something went wrong</p>');
-      }
-    });
+  var queryString = window.location.search;
+  if (queryString.length) {
+    var target = jQuery('#filter_form');
+    jQuery("html, body").animate({
+      scrollTop: jQuery(target).offset().top - 200
+    }, 0);
   }
-  jQuery('.shows-list__categories li a').on('click', function (e) {
+  jQuery('.shows-list__categories li button').on('click', function (e) {
     e.preventDefault();
-    if (jQuery(e.target).parent().siblings().hasClass('active')) {
-      jQuery(e.target).parent().siblings().removeClass('active');
+    var attrName = jQuery(e.target).attr('name');
+    if (attrName === 'filter_month') {
+      jQuery('#filter_category').val('');
     }
-    jQuery(e.target).parent().addClass('active');
-    checkValueCustomSearch(jQuery(e.target).text());
+    jQuery("#".concat(attrName)).val(jQuery(e.target).val());
+    jQuery('#filter_form').submit();
+    // const target = jQuery('#filter_form');
+    // jQuery("html, body").animate({ scrollTop: jQuery(target).offset().top }, 1000);       
   });
+
   function cardsPeopleCatergories(target) {
     //AJAX
     console.log();
@@ -241,5 +192,56 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
     jQuery(e.target).addClass('active');
     cardsPeopleCatergories(jQuery(e.target).attr('data-term-id'));
+  });
+  function findVideos() {
+    var videos = document.querySelectorAll('.video');
+    for (var i = 0; i < videos.length; i++) {
+      setupVideo(videos[i]);
+    }
+  }
+  function setupVideo(video) {
+    var link = video.querySelector('.video__link');
+    var media = video.querySelector('.video__media');
+    var button = video.querySelector('.video__button');
+    var id = parseMediaURL(media);
+    video.addEventListener('click', function () {
+      var iframe = createIframe(id);
+      link.remove();
+      button.remove();
+      video.appendChild(iframe);
+    });
+    link.removeAttribute('href');
+  }
+  function parseMediaURL(media) {
+    var regexp = /https:\/\/i\.ytimg\.com\/vi\/([a-zA-Z0-9_-]+)\/maxresdefault\.jpg/i;
+    var url = media.src;
+    var match = url.match(regexp);
+    return match[1];
+  }
+  function createIframe(id) {
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay');
+    iframe.setAttribute('src', generateURL(id));
+    iframe.classList.add('video__media');
+    return iframe;
+  }
+  function generateURL(id) {
+    var query = '?rel=0&showinfo=0&autoplay=1';
+    return 'https://www.youtube.com/embed/' + id + query;
+  }
+  findVideos();
+  jQuery('.show__slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    fade: true,
+    cssEase: 'linear',
+    // adaptiveHeight: true,
+    // focusOnSelect: true,
+    arrows: false,
+    swipeToSlide: true
   });
 })(jQuery);
