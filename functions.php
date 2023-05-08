@@ -271,18 +271,33 @@ function create_taxonomy() {
 add_action( 'init', 'create_taxonomy' );
 function register_post_types()
 {
-	$labels = array(
-		'name' => 'People',
-		'menu_name'     => 'Ludzie',
-	);
+	// $labels = array(
+	// 	'name' => 'People',
+	// 	'menu_name'     => 'Ludzie',
+	// );
 
-	$args = array(
-		'labels' => $labels,
+	// $args = array(
+	// 	'labels' => $labels,
+	// 	'public' => true,
+	// 	'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+	// 	'rewrite' => array('slug'=>'ludzie',)
+	// );
+
+	register_post_type('people', array(
+		'label' => 'Ludzie',
 		'public' => true,
 		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
 		'rewrite' => array('slug'=>'ludzie',)
-	);
+	));
 
-	register_post_type('people', $args);
+	register_post_type( 'education', array(
+		'label' 							=> 'Edukacja',
+		'supports'            => [ 'title', 'editor', 'custom-fields', 'thumbnail'], 
+		'has_archive'         => true,
+		'public'              => true,
+		'hierarchical'        => true,
+		'show_in_rest'				=> true,
+		'menu_icon'           => 'dashicons-database',
+	));
 }
 add_action( 'init', 'register_post_types' );
