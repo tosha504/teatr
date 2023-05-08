@@ -17,12 +17,15 @@ $shows = get_field('shows') ?: 'Your shows..';
 ?>
 <section class="container">
   <div class="shows">
-    <?php foreach ($shows as $key => $show) {
-      // var_dump($show);
-      $image = get_the_post_thumbnail($show->ID, 'full') ?: '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="teatr-nowy brak zdjecia">';
+    <?php
+    
+    foreach ($shows as $key => $show) {
+      $current_show = get_field('show', $show->ID);
+      $category = get_field('category', $show->ID);
+      $image = get_the_post_thumbnail($current_show->ID, 'full') ?  get_the_post_thumbnail($current_show->ID, 'full') : '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="teatr-nowy brak zdjecia">';
       echo '<div class="shows__item">' . '<a href=" ' . get_permalink($show->ID) . '">' .
         $image . '</a>' .
-        '<p class="categories">Categories</p>' .
+        '<p class="categories">' . $category['value'] . '</p>' .
         '<a href=" ' . get_permalink($show->ID) . '"><h4>' . $show->post_title . '</h4></a>
       <div class="buy"><a href="#">Kup bilet</a></div>
       </div>';

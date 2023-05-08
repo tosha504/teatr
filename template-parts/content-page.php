@@ -13,4 +13,3 @@
 
 	<?php
 	the_content();
-echo 'sdfsd';

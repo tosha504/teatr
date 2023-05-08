@@ -39,9 +39,7 @@ get_header(); ?>
             </div>
             <div class="performance__body">
               <div class="performance__body_date">
-                <p>
-                  <span>' . $date . '</span><br>
-                </p>
+                <p><span>Premiera:</span><br>' . $date . '</p>
               </div>
               <div class="performance__body_image">
                 <a href="' . $show->url .'">' . $image . '</a>

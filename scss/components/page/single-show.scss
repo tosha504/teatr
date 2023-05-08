@@ -34,14 +34,14 @@ body {
         }
         p {
           margin: 10px 0;
-          font-weight: 600;
+          font-weight: 500;
         }
         .position-job {
           border-radius: 50px;
           display: inline;
           font-weight: normal;
           padding: 5px 20px;
-          background-color: #ccc;
+          background-color: $milk;
           font-size: 14px;
           span {
             font-weight: 600;

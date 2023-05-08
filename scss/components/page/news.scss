@@ -1,0 +1,76 @@
+body {
+  &.single-post, &.single-education {
+    a {
+      color: $primary;
+    }
+  }
+
+  &.blog , &.search-results, &.post-type-archive-education {
+    .news {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 25px 0;
+      justify-content: space-between;
+      gap: 15px;
+      @media (min-width:$bp2) {
+        padding: 50px 0;
+        gap: 30px;
+      }
+      article {
+        a {
+          color: $dark;
+        }
+        padding: 25px 0;
+        flex: 1 1 100%;
+        border-top: 1px solid $milk;
+        @media (min-width:$bp1) {
+          flex: 1 1 45%;
+        }
+        @media (min-width:$bp3) {
+          flex: 1 1 30%;
+          max-width: 30%;
+        }
+        .categories {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          margin-bottom: 10px;
+          p {
+            padding: 5px 20px;
+            border: 1px solid $milk;
+            border-radius: 50px;  
+            transition: 0.35s;
+            &:not(:last-child) {
+              background: $milk;
+            }
+          }
+        }
+        h4 {
+          @include fontz( 20px, 9);
+          font-weight: 400;
+          @media (min-width:$bp3) {
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              width: 15px;
+              height: 15px;
+              background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+              bottom: 15px;
+              margin-left: 20px;
+            }
+          }
+        }
+        @media (min-width:$bp3) {
+          a {
+            &:hover {
+              h4 {
+                color: $primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
 
 function pageSwitcher($type = null) {
   $show = is_post_type_archive( 'show' )  ? 'class="active"' : '';
-  $perfomances =  $type !== 'out' ? 'class="active"' : '';
+  $perfomances =  $type !== 'out' && ! is_post_type_archive( 'show' ) ? 'class="active"' : '';
   $perfomances_out =  $type === 'out' ? 'class="active"' : '';
 
   $url = get_site_url();
@@ -80,8 +80,8 @@ function perfomances_calendar() { ?>
 		</section>
 <?php }
 
-function breadcrumb_block($title,$description) {
-
+function breadcrumb_block($title,$description = null) {
+ 	$description = $description !==null ? '<p>' . $description . '</p>' : '';
 	$bread = '';
 	 if (function_exists('yoast_breadcrumb')) {
 		$bread = yoast_breadcrumb('<nav class="breadcrumbs-nav"><p id="breadcrumbs">', '</p></nav>', false);
@@ -93,7 +93,7 @@ function breadcrumb_block($title,$description) {
 			{$bread}
 				<div class="breadcrumbs__content_wrap">
 					<h1>{$title}</h1>
-					<p>{$description}</p>
+					{$description}
 				</div>
 			</div>
 		</div>

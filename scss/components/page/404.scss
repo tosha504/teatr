@@ -1,0 +1,17 @@
+.error {
+  &_content-title {
+    color: $dark;
+    @include fontz(20px,10);
+    font-weight: 500;
+  }
+}
+
+.e404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include fontz(100px,200);
+  a {
+    color:$primary;
+  }
+}

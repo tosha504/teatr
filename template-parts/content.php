@@ -48,7 +48,6 @@
 				wp_kses_post(get_the_title())
 			)
 		);
-		echo 'sdfsssd11';
 		// wp_link_pages(
 		// 	array(
 		// 		'before' => '<div class="page-links">' . esc_html__('Pages:', 'start'),

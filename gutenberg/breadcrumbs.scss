@@ -47,8 +47,19 @@
         font-weight: 400;
       }
 
-      p {
+      a,p {
         color: $primary;
+      }
+
+      a {
+        @media (min-width:$bp3) {
+          &:hover {
+            color: $dark;
+          }
+        }
+      }
+
+      p {
         font-size: 14px;
         @media (min-width:$bp3) {
           max-width: 700px;

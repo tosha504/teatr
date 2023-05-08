@@ -6,30 +6,15 @@
  *
  * @package teatr
  */
-
+$trim_words = 20;
+$excerpt = !empty(get_the_excerpt()) ? wp_trim_words( get_the_excerpt() , $trim_words ) : wp_trim_words( get_field('show', get_the_ID())->post_excerpt , $trim_words );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			start_posted_on();
-			start_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php start_post_thumbnail(); ?>
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php start_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+<article>
+	<a href="<?php echo esc_url( get_permalink() ); ?>">
+		<?php 
+			echo '<h4>' . get_the_title(get_the_ID()) . '</h4>';
+			echo '<p>' . $excerpt . '</p>'; 
+		?>
+	</a>
 </article><!-- #post-<?php the_ID(); ?> -->

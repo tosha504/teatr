@@ -62,10 +62,11 @@ $content = apply_filters( 'the_content', $content );
 						foreach ($preson_con as $key => $person) {
 							$actor = $person["person"];
 							$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
-							$line_content_actors .= $actor_name . '</p></li>';
+							$line_content_actors .= $actor_name .'</br>';
+							// var_dump($line_content_actors);
 						}	
 					}
-					$line_content_actors .= '</ul>';
+					$line_content_actors .= '</p></li></ul>';
 					echo 	$line_content_actors;
 					}
 				?>
