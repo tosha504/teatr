@@ -28,8 +28,8 @@ $image_after = $pre_footer['image_after'];
 ?>
 
 	<footer id="colophon" class="footer">
-	<!-- Newsletter start -->
-	<section class="newsletter">
+		<!-- Newsletter start -->
+		<section class="newsletter">
       <div class="container">
         <form class="items">
         <h5>Newsletter</h5>
@@ -73,6 +73,7 @@ $image_after = $pre_footer['image_after'];
       .'</div>';?>
     </section>
 		<!-- Newsletter end -->
+
 		<!-- Partners start -->
 		<section class ="partners">
 			<div class="partners__items container">
@@ -155,6 +156,15 @@ $image_after = $pre_footer['image_after'];
 			<p class="copyright"><?php echo $footer['copyright']; ?><a href="https://thenewlook.pl/" target="_blank" rel="noopener noreferrer">THENEWLOOK</a></p>
 		</div>
 	</footer><!-- #colophon -->
+
+	<div class="cookies">
+			<!-- <div class="container"> -->
+			<div class="cookies__flex">
+				<p>Serwis używa informacji zapisanych za pomocą plików cookie oraz innych rozwiązań informatycznych, pozwalających na dostosowanie treści do potrzeb użytkownika oraz w celach statystycznych.. Jeżeli nie wyrażają Państwo zgody na ich zapisywanie, należy opuścić stronę lub zmienić w przeglądarce ustawienia dotyczące cookies. Szczegółowe informacje można znaleźć w naszej <a href="http://" target="_blank" rel="noopener noreferrer"> polityce cookies</a> .</p>	
+				<a href="javascript:;"  class="cookies__btn btn submit">Akceptuję</a>
+				<!-- </div> -->
+		</div><!-- cookies -->
+	</div>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

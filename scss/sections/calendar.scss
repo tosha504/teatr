@@ -1,0 +1,149 @@
+.calendar {
+  background: $milk;
+  @media (max-width:$bp4) {
+    padding-top: 20px;
+  }
+  .shows-list {
+    li {
+      padding: 0 5px;
+    }
+    &__categories {
+      margin: 0 auto;
+      width: 300px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      @media (max-width:$bp3) {
+        justify-content: center;
+      }
+    }
+    button {
+      width: 20px;
+      border: none;
+      height: 20px;
+      &.next {
+        transform: rotate(180deg);
+        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+      }
+
+      &.prev {
+        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+      }
+    }
+  }
+  
+  
+  &__items{
+    font-size: 16px;
+    font-family: $ala;
+    display: flex;
+    justify-content: center;
+    @media (max-width:$bp4) {
+      flex-wrap: wrap;
+    }
+    @media (min-width:$bp4) {
+      justify-content: space-between;
+    }
+    align-items: center;
+    &_nav {
+      display: flex;
+
+    }
+    @media (max-width:$bp3) {
+      position: relative;
+    }
+
+  }
+
+  
+  .days {
+    @media (max-width:$bp3) {
+      overflow-x: auto;
+      width: 100%;
+    }
+    
+    ul {
+      display: flex;
+    }
+    li{
+      display: inline-block;
+      padding: 15px 7px;
+      transition: 0.35s;
+      @media (min-width:$bp3) {
+        position: relative;
+      }
+      a {
+        color: $primary;
+      }
+      &.active {
+        background: $dark !important;
+        color: $milk;
+      }
+      &.has-event {
+        font-weight: 900;
+        &:hover {
+          cursor: pointer;
+          background-color: $primary;
+          color: $milk;
+          .shows-display {
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+          
+          }
+        }
+      }
+      &.none-event {
+        font-weight: 300;
+        pointer-events: none;
+      }
+      
+      
+      .shows-display {
+        display: flex;
+        display: none;
+        background-color: $milk;
+        z-index: 99;
+        top: 100%;
+        position: absolute;
+        top: 100%;
+        width: 300px;
+        padding: 10px 20px; 
+        align-items: flex-start;
+        visibility: hidden;
+        opacity: 0;
+        gap: 20px;
+        transition: 0.15s;
+        @media (min-width:$bp3) {
+          width: 400px;
+
+        }
+        p {
+          color: $dark;
+        }
+        // flex-direction: column;
+        // flex-wrap: wrap;
+        p {
+          font-size: 56px;
+        
+        }
+
+        .span-wrap {
+          display: flex;
+          flex-direction: column;
+          color: $primary;
+          div {
+            padding: 10px 0;
+            &:not(:last-child) {
+              border-bottom: 1px solid $dark;
+            }
+          }
+          span{ 
+            color: $dark;
+          }
+        }
+      }
+    }
+  }
+
+}
