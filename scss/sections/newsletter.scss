@@ -80,5 +80,11 @@
 }
 
 .blockImage {
+  @media (max-width:$bp2) {
+    display: none;
+  }
   display: flex;
+  img {
+    width: 100%;
+  }
 }

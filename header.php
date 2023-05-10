@@ -98,7 +98,7 @@
 		</header><!-- #masthead -->
 
 		<?php  
-			$p = is_front_page() ? $performances : 'no';
+			if (is_front_page()) {
 			if(isset($_GET['month']) && !empty($_GET['month'])) {
 				$month = $_GET['month'];
 			}else {
@@ -134,14 +134,12 @@
 			$last_month_date = clone $current_month_date;
 			$last_month_date->modify('last day of this month');
 			$last_month_date_formated = $last_month_date->format('Y-m-d');
-			// $params_str = http_build_query($parmas_array);
 
-			$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
+			$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?');
 			$performances = json_decode($performances);
 			
 			$ul = '<div class="days"><ul>';
 			while($first_month_date_formated <= $last_month_date_formated) {
-				// $date_perfonace = $performances->$first_month_date_formated ? $first_month_date_formated : 'nie ma daty'  ;
 				$display_shows = '<div class="shows-display"' . $right_class .'>';
 				$right_class = $first_month_date->format('d') > 15 ? 'style="right:0"' : 'style="left:0"';
 				
@@ -179,6 +177,6 @@
 				</div>
 			</div>
 		</section>
-		
+		<?php } ?>
 		
 			

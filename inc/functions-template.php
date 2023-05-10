@@ -155,7 +155,7 @@ function performance_render_template($month) {
 					$date = date('d/m/y',strtotime($perfomance->date_time));
 					$time= date('H:i',strtotime($perfomance->date_time));
 	 
-					$buy_button = $current_date_time < $perfomance->date_time ? '<a href="' . $perfomance->buy . '" class="btn">Kup bilet</a>' : '';
+					$buy_button = $current_date_time < $perfomance->date_time && !empty($perfomance->buy) ? '<a href="' . esc_url($perfomance->buy) . '" class="btn">Kup bilet</a>' : '';
 					$image = !empty($perfomance->show_image) ?
 					'<img src=' . $perfomance->show_image . ' width="213" height="300" alt="alternative_name">' : 
 					'<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' width="213" height="300" alt="alternative_name">';

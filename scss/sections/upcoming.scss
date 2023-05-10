@@ -1,0 +1,50 @@
+.upcoming {
+  padding: 50px 0;
+
+  h3 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__items  {
+    border-top: 1px solid $milk;
+    border-bottom: 1px solid $milk;
+
+    &_item {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      gap: 20px;
+      font-size: 16px;
+      &:not(:last-child) {
+        border-bottom: 1px solid $milk;
+      }
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        flex: 1 1 70%;
+        @media (max-width:$bp2) {
+          flex: 1 1 100%;
+        }
+        &_buy {
+          flex: 1 1 20%;
+          text-align: end;
+          @media (max-width:$bp2) {
+            flex: 1 1 100%;
+            text-align: left;
+          }
+        }
+      }
+      &-date, &-day, &-time, &-title, &-buy {
+        // flex: 0 1 25%;
+        // text-align: center;
+      }
+      &-title {
+        // max-width: 400px;
+      }
+    }
+  }
+}

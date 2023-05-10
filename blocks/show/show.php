@@ -27,7 +27,7 @@ $shows = get_field('shows') ?: 'Your shows..';
         $image . '</a>' .
         '<p class="categories">' . $category['value'] . '</p>' .
         '<a href=" ' . get_permalink($show->ID) . '"><h4>' . $show->post_title . '</h4></a>
-      <div class="buy"><a href="#">Kup bilet</a></div>
+      <div class="buy"><a href="#">Wiecej</a></div>
       </div>';
     } ?>
   </div>
