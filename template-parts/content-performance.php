@@ -57,8 +57,7 @@ if(!empty($performances)){
 	$upcom .= '		</div>
 							</div>
 						</section>';
-}
-?>
+} ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php echo do_shortcode('[search_nav]'); ?>
 	<div class="container">
@@ -85,7 +84,9 @@ if(!empty($performances)){
 						foreach ($people as $key => $individual) {
 							$person = $individual["person"];
 							$preson_name = $individual["person"] !== false ? $person->post_title : $individual["person_text"];
-							$line_content .= $preson_name . '</p></li>';
+							$person_link = get_permalink($person->ID);
+							$link = $person->ID ?  "<a href='{$person_link}'>" . $preson_name . "</a> &#10230": $preson_name ;
+							$line_content .= $link . '</p></li>';
 						}					
 					}
 					$line_content .= '</ul>';
@@ -99,7 +100,9 @@ if(!empty($performances)){
 						foreach ($preson_con as $key => $person) {
 							$actor = $person["person"];
 							$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
-							$line_content_actors .= $actor_name .'</br>';
+							$actor_link = get_permalink($actor->ID);
+							$link = $actor->ID ?  "<a href='{$actor_link}'>" . $actor_name . "</a> &#10230": $actor_name ;
+							$line_content_actors .= $link .'</br>';
 						}	
 					}
 					$line_content_actors .= '</p></li></ul>';
