@@ -18,15 +18,52 @@ $realists = get_field('realists') ;
 $contractors = get_field('contractors') ; 
 $content = trim(get_the_content(get_the_ID()));
 $content = empty($content) ? get_field('show')->post_content : '';
+$current_day = date_i18n('Y-m-d');
 $content = apply_filters( 'the_content', $content );
+
+$parmas_array = [];
+$parmas_array['show_id'] = $id;
+$parmas_array['datefrom'] = $current_day;
+$params_str = http_build_query($parmas_array);
+$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
+$performances = json_decode($performances);
+$upcom = '';
+if(!empty($performances)){ 
+	$upcom = '<section class="upcoming">
+							<div class="container">
+								<h3>Najbliższe spektakle</h3>
+								<div class="upcoming__items">';
+
+						
+	foreach ($performances as $key => $performance) {
+		foreach ($performance as $key => $perf) {
+			$date = date('d.m.Y',strtotime($perf->date_time));
+			$day = __(date('l',strtotime($perf->date_time)));
+			$performance_time= date('H:i',strtotime($perf->date_time));
+			$tiket = !empty($perf->buy) ? "<a class='btn' href='{$perf->buy}' target='_blank' rel='noopener noreferrer'>Kup bilet</a>" : '';
+			$upcom .= "<div class='upcoming__items_item'>
+										<div class='upcoming__items_item-wrap'>
+											<div class='upcoming__items_item-date'>{$date}</div>
+											<div class='upcoming__items_item-day'>{$day}</div>
+											<div class='upcoming__items_item-time'>{$performance_time}</div>
+											<div class='upcoming__items_item-title'>{$perf->show_title}</div>
+											</div>
+											<div class='upcoming__items_item-wrap_buy'>
+												{$tiket}
+										</div>
+									</div>";
+		}
+	}
+	$upcom .= '		</div>
+							</div>
+						</section>';
+}
 ?>
-
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php echo do_shortcode('[search_nav]'); ?>
 	<div class="container">
 		<div class="top_info">
-			<?php 
+			<?php  
 				if (function_exists('yoast_breadcrumb')) {
 					yoast_breadcrumb('<nav class="breadcrumbs-nav top_info__left">
 					<p id="breadcrumbs">', '</p>
@@ -63,7 +100,6 @@ $content = apply_filters( 'the_content', $content );
 							$actor = $person["person"];
 							$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
 							$line_content_actors .= $actor_name .'</br>';
-							// var_dump($line_content_actors);
 						}	
 					}
 					$line_content_actors .= '</p></li></ul>';
@@ -108,4 +144,5 @@ $content = apply_filters( 'the_content', $content );
 				?>
 			</div>
 		<?php } ?>
+		<?php echo  $upcom; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
