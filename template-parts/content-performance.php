@@ -116,7 +116,7 @@ if(!empty($performances)){
 			 echo $content;?>
 			</div>
 		</div>
-		
+		<?php echo  $upcom; ?>
 		<?php if($video) { ?>
 			<div class="video">
 				<a class="video__link" href="https://youtu.be/<?php echo $video ?>">
@@ -144,5 +144,5 @@ if(!empty($performances)){
 				?>
 			</div>
 		<?php } ?>
-		<?php echo  $upcom; ?>
+		
 </article><!-- #post-<?php the_ID(); ?> -->

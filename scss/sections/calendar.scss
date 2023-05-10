@@ -57,6 +57,7 @@
 
   
   .days {
+    font-family: $pop;
     @media (max-width:$bp3) {
       overflow-x: auto;
       width: 100%;
@@ -96,6 +97,7 @@
       &.none-event {
         font-weight: 300;
         pointer-events: none;
+        opacity: 0.7;
       }
       
       
