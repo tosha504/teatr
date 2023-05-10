@@ -55,6 +55,9 @@ body {
       border-bottom:1px solid $milk;
       
       &__people {
+        a {
+          color: $primary;
+        }
         color: $primary;
         flex: 1 1 100%;
         @media (min-width:$bp3) {
