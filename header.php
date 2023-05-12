@@ -156,7 +156,6 @@
 				$ul .= '<li class="' . $active_class . $bold . '"><p>' . $first_month_date->format('j') . '</p>' . $display_shows . '</li>';
 				$first_month_date ->modify('+1 day');
 				$first_month_date_formated = $first_month_date->format('Y-m-d');
-				
 			}
 			$ul .=  '</ul></div>';
 		?>
