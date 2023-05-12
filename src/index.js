@@ -1,5 +1,4 @@
 ( function () {
-  console.log( "ready!" );
   const burger = jQuery( '.burger span' ),
   body = jQuery( 'body' ),
   nav = jQuery( '.header__nav' ),
@@ -18,7 +17,6 @@
   jQuery(window).scroll(function() {
     var scrollTop = jQuery(window).scrollTop();
     jQuery('.calendar').css({'position':'sticky','top':`${document.querySelector(".header").clientHeight -1}px`, 'z-index':'99999'})
-    // jQuery('.calendar').style.cssText += `position: sticky;top:${document.querySelector(".header").clientHeight -1}px;background-color:white;z-index:99999`;
     if ( scrollTop > 40 ) { 
       jQuery('.header__logo a img.normal').removeClass('active');
       jQuery('.header__logo a img.sticky').addClass('active');
@@ -166,14 +164,11 @@
       jQuery('#filter_category').val('');
     }
     jQuery(`#${attrName}`).val(jQuery(e.target).val());
-    jQuery('#filter_form').submit();
-    // const target = jQuery('#filter_form');
-    // jQuery("html, body").animate({ scrollTop: jQuery(target).offset().top }, 1000);       
+    jQuery('#filter_form').submit();   
   })
 
   function cardsPeopleCatergories(target) {
     //AJAX
-    console.log();
     jQuery.ajax({
       type: 'post',
       url: localizedObject.ajaxurl,
@@ -182,13 +177,11 @@
         category_id:  target,
       },
       beforeSend: function (response) {
-        // body.addClass("fixed-page");
         jQuery('.box').addClass('active')
         jQuery('.people__categories li a').addClass('disabled') 
         jQuery('.people__items').hide()
       },
       success: function(response) {
-        console.log(response);
         jQuery('.box').removeClass('active')
         jQuery('.people__items').html(response).fadeIn(1500);
         jQuery('.people__categories li a').removeClass('disabled') 
@@ -202,10 +195,7 @@
   }
 
   jQuery('.people__categories li a').on('click', function (e) {
-    // console.log(jQuery(e.target).text());
     e.preventDefault();
-    console.log(jQuery(e.target).parent().siblings().children());
-    console.log(jQuery(e.target).attr('data-term-id'))
     if(jQuery(e.target).parent().siblings().children().hasClass('active')) {
       jQuery(e.target).parent().siblings().children().removeClass('active')
     }

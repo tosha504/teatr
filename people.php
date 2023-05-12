@@ -46,34 +46,18 @@ get_header(); ?>
             while ( $query->have_posts() ) {
               $query->the_post();
              if($query->tax_query->queries[0]['terms'][0] == 4 || $query->tax_query->queries[0]['terms'][0] == 5) {
-
-              // var_dump($query->tax_query->queries[0]['terms'][0]);
-              $avatar = get_the_post_thumbnail() ? 
-              get_the_post_thumbnail() : 
-              '<img src="' . get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp" alt="avtar-image">';
-              ?>
-              <div class="people__items_item">
-                <a href="<?php echo get_permalink(); ?>">
-                  <?php echo $avatar; ?>
-                  <p><?php the_title(); ?></p>
-                </a>
-              </div>
-              <?php
-            }
-              // else {
-              //   var_dump( $query->tax_query->queries[0]['terms'][0]);
-              //   $ck = get_term_children( $query->tax_query->queries[0]['terms'][0],  $taxonomy );
-              //   var_dump($ck);
-              //   foreach ( $ck as $child  ) {
-              //     $term_child = get_term_by( 'id', $child,$taxonomy );
-              //     echo '<a class="knowledge__item" href="' . get_term_link( $term_child ) . '">
-              //       <div class="knowledge__item_img" style="background: url(' . get_template_directory_uri() . '/assets/img/tlo-kafelki.svg">
-              //       <p>' . esc_html( $term_child->name ) . '</p>
-              //       </div>
-                    
-              //     </a>';
-              //     } 
-              // }
+                $avatar = get_the_post_thumbnail() ? 
+                get_the_post_thumbnail() : 
+                '<img src="' . get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp" alt="avtar-image">'; ?>
+                <div class="people__items_item">
+                  <a href="<?php echo get_permalink(); ?>">
+                    <?php echo $avatar; ?>
+                    <p><?php the_title(); ?></p>
+                  </a>
+                </div>
+                <?php
+              }
+              
             }
           }
           else {

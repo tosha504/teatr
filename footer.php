@@ -24,7 +24,6 @@ $logos = $footer["logos"];
 $logos_right = $footer['logos_right'];
 $content_right = $footer['content_right'];
 $image_after = $pre_footer['image_after'];
-// var_dump($pre_footer['image_after']);
 ?>
 
 	<footer id="colophon" class="footer">

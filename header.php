@@ -141,13 +141,13 @@
 			$ul = '<div class="days"><ul>';
 			while($first_month_date_formated <= $last_month_date_formated) {
 				$display_shows = '<div class="shows-display"' . $right_class .'>';
-				$right_class = $first_month_date->format('d') > 15 ? 'style="right:0"' : 'style="left:0"';
+				$right_class = $first_month_date->format('d') > 15 ? ' style="right:0"' : ' style="left:0"';
 				
 				$date = $performances->$first_month_date_formated ? date('j',strtotime($first_month_date_formated)) : '';
 				$display_shows .= '<p>' . $date . '</p><div class="span-wrap">';
 				if($performances->$first_month_date_formated) foreach ($performances->$first_month_date_formated as $key => $show) {
 					$time= date('H:i',strtotime($show->date_time));
-					$display_shows .= '<div><a href="' . $show->show_url . '">' . $show->title . '</br><span>godz. ' . $time . '</span></div></a>';
+					$display_shows .= '<div><a href="' . $show->show_url . '">' . $show->title . '<br><span>godz. ' . $time . '</span></div></a>';
 				}
 				$display_shows .= '</div></div>';
 				$display_shows = $performances->$first_month_date_formated ? $display_shows : '';
@@ -165,8 +165,8 @@
 				<div class="calendar__items">
 					<form id="filter_form">
 						<div class="shows-list">
+							<input type="text" id="filter_month" name="month" style="display:none" value="<?php echo $month?>" />  
 							<ul class="shows-list__categories">
-								<input type="text" id="filter_month" name="month" style="display:none" value="<?php echo $month?>" />  
 								<?php echo $prev_month_btn; ?>
 								<li><p><b>Repertuar</b> | <?php _e($current_month_date_formated) ?></p></li>
 								<?php echo $next_month_btn; ?>
@@ -177,6 +177,6 @@
 				</div>
 			</div>
 		</section>
-		<?php } ?>
+	<?php } ?>
 		
 			

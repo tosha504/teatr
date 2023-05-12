@@ -26,7 +26,6 @@ get_header(); ?>
           $image = !empty($show->image) ?
             '<img src=' . $show->image . ' width="213" height="300" alt="alternative_name">' : 
             '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' width="213" height="300" alt="alternative_name">';
-          // var_dump($show);
           $list_html .= '
           <div class="performance">
             <div class="performance__header">
