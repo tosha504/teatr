@@ -14,6 +14,11 @@
       scrollTop: jQuery(hash).offset().top - 200
     }, 2000);
   }
+
+  // if(jQuery('body').hasClass('home')){
+  //   jQuery('.calendar').css({'position':'sticky','top':`${document.querySelector(".header").clientHeight + arr.clientHeight -4}px`, 'z-index':'99999'})
+  // }
+
   jQuery(window).scroll(function () {
     var scrollTop = jQuery(window).scrollTop();
     jQuery('.calendar').css({
@@ -139,8 +144,9 @@
       opt();
     }
   }
-  var queryString = window.location.search;
-  if (queryString.length) {
+  var searchParams = new URLSearchParams(window.location.search);
+  var param = searchParams.get('u');
+  if (param === '1') {
     var target = jQuery('#filter_form');
     jQuery("html, body").animate({
       scrollTop: jQuery(target).offset().top - 200

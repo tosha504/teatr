@@ -61,9 +61,9 @@
 					if ($logo) { ?>
 						<div class="header__logo">
 							<a href="<?php echo esc_url(home_url('/')) ?>">
-								<?php 
-									echo wp_get_attachment_image($logo, 'thumbnail', false, array('class' => 'normal active')); 
-									echo wp_get_attachment_image($logo_sticky, 'thumbnail', false, array('class' => 'sticky'));
+								<?php
+								echo wp_get_attachment_image($logo, 'thumbnail', false, array('class' => 'normal active'));
+								echo wp_get_attachment_image($logo_sticky, 'thumbnail', false, array('class' => 'sticky'));
 								?>
 							</a>
 						</div>
@@ -97,11 +97,14 @@
 			</div>
 		</header><!-- #masthead -->
 
-		<?php  
-			if (is_front_page()) {
-			if(isset($_GET['month']) && !empty($_GET['month'])) {
+		<?php
+
+
+		if (is_front_page()) {
+			// echo do_shortcode('[search_nav]');
+			if (isset($_GET['month']) && !empty($_GET['month'])) {
 				$month = $_GET['month'];
-			}else {
+			} else {
 				$month = date_i18n('Y-m-d');
 			}
 			$current_month_date = new DateTime($month);
@@ -110,20 +113,20 @@
 			$prev_month = clone $current_month_date;
 			$prev_month->modify('first day of last month');
 			$prev_month_formated = $prev_month->format('Y-m');
-			
+
 			$next_month = clone $current_month_date;
 			$next_month->modify('first day of next month');
 			$next_month_formated = $next_month->format('Y-m');
 
 			$this_month_int = intval(date_i18n('Ym'));
-			$prev_month_int = intval( $prev_month->format('Ym'));
+			$prev_month_int = intval($prev_month->format('Ym'));
 			$next_month_int = intval($next_month->format('Ym'));
 			$prev_month_btn = '';
 			$next_month_btn = '';
-			if($this_month_int - $prev_month_int < 1){
+			if ($this_month_int - $prev_month_int < 1) {
 				$prev_month_btn = "<li><button class='prev' value=\"$prev_month_formated\" name=\"filter_month\"></button></li>";
 			}
-			if($next_month_int - $this_month_int < 4){
+			if ($next_month_int - $this_month_int < 4) {
 				$next_month_btn = "<li><button class='next' value=\"$next_month_formated\" name=\"filter_month\"></button></li>";
 			}
 
@@ -137,45 +140,45 @@
 
 			$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?');
 			$performances = json_decode($performances);
-			
+
 			$ul = '<div class="days"><ul>';
-			while($first_month_date_formated <= $last_month_date_formated) {
-				$display_shows = '<div class="shows-display"' . $right_class .'>';
+			while ($first_month_date_formated <= $last_month_date_formated) {
+				$display_shows = '<div class="shows-display"' . $right_class . '>';
 				$right_class = $first_month_date->format('d') > 15 ? ' style="right:0"' : ' style="left:0"';
-				
-				$date = $performances->$first_month_date_formated ? date('j',strtotime($first_month_date_formated)) : '';
+
+				$date = $performances->$first_month_date_formated ? date('j', strtotime($first_month_date_formated)) : '';
 				$display_shows .= '<p>' . $date . '</p><div class="span-wrap">';
-				if($performances->$first_month_date_formated) foreach ($performances->$first_month_date_formated as $key => $show) {
-					$time= date('H:i',strtotime($show->date_time));
+				if ($performances->$first_month_date_formated) foreach ($performances->$first_month_date_formated as $key => $show) {
+					$time = date('H:i', strtotime($show->date_time));
 					$display_shows .= '<div><a href="' . $show->show_url . '">' . $show->title . '<br><span>godz. ' . $time . '</span></div></a>';
 				}
 				$display_shows .= '</div></div>';
 				$display_shows = $performances->$first_month_date_formated ? $display_shows : '';
 				$bold = !empty($display_shows) ? 'has-event' : 'none-event';
-				$active_class  = intval(date_i18n('Ymd')) == intval($first_month_date->format('Ymd')) ? 'active ' : '' ;
+				$active_class  = intval(date_i18n('Ymd')) == intval($first_month_date->format('Ymd')) ? 'active ' : '';
 				$ul .= '<li class="' . $active_class . $bold . '"><p>' . $first_month_date->format('j') . '</p>' . $display_shows . '</li>';
-				$first_month_date ->modify('+1 day');
+				$first_month_date->modify('+1 day');
 				$first_month_date_formated = $first_month_date->format('Y-m-d');
 			}
 			$ul .=  '</ul></div>';
 		?>
-		<section class="calendar">
-			<div class="container">
-				<div class="calendar__items">
-					<form id="filter_form">
-						<div class="shows-list">
-							<input type="text" id="filter_month" name="month" style="display:none" value="<?php echo $month?>" />  
-							<ul class="shows-list__categories">
-								<?php echo $prev_month_btn; ?>
-								<li><p><b>Repertuar</b> | <?php _e($current_month_date_formated) ?></p></li>
-								<?php echo $next_month_btn; ?>
-							</ul>
-						</div>
-					</form>
-					<?php echo $ul; ?>
+			<section class="calendar">
+				<div class="container">
+					<div class="calendar__items">
+						<form id="filter_form">
+							<div class="shows-list">
+								<input type="text" id="filter_month" name="month" style="display:none" value="<?php echo $month ?>" />
+								<ul class="shows-list__categories">
+									<?php echo $prev_month_btn; ?>
+									<li>
+										<p><b>Repertuar</b> | <?php _e($current_month_date_formated) ?></p>
+									</li>
+									<?php echo $next_month_btn; ?>
+								</ul>
+							</div>
+						</form>
+						<?php echo $ul; ?>
+					</div>
 				</div>
-			</div>
-		</section>
-	<?php } ?>
-		
-			
+			</section>
+		<?php } ?>
