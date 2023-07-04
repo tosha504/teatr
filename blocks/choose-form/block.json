@@ -1,0 +1,14 @@
+{
+  "name": "acf/choose-form",
+  "title": "Choose-form block",
+  "description": "A custom choose-form block.",
+  "style": [ "file:../css/choose-form.css" ],
+  "category": "formatting",
+  "icon": "post-status",
+  "keywords": ["choose-form"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "choose-form.php"
+  },
+  "align": "full"
+}

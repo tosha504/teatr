@@ -5,7 +5,7 @@ const sassFiles = [
   'gutenberg/head_block.scss',
   'gutenberg/shows.scss',
   'gutenberg/breadcrumbs.scss',
-
+  'gutenberg/choose-form.scss',
 ];
 
 mix.sass('scss/index.scss', 'src')

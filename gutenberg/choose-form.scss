@@ -1,0 +1,29 @@
+@import "../scss/components/_varibles";
+.choose-form {
+  &__forms {
+    select {
+      max-width: 200px;
+      display: flex;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      position: relative;
+      outline:0;
+      box-shadow:none;
+      padding: 5px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 113%;
+      text-align: left;
+      cursor:pointer;
+      border-bottom: 1px solid $primary;
+      width: 100%;
+     
+      option {
+        border: none;
+        @include fontz(13px, 3);
+      }
+    }
+  }
+}

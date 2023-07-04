@@ -218,6 +218,7 @@ function register_acf_blocks()
 	register_block_type(dirname(__FILE__) . '/blocks/show/block.json');
 	register_block_type(dirname(__FILE__) . '/blocks/breadcrumbs/block.json');
 	register_block_type(dirname(__FILE__) . '/blocks/people/block.json');
+	register_block_type(dirname(__FILE__) . '/blocks/choose-form/block.json');
 }
 add_action('init', 'register_acf_blocks');
 
@@ -246,17 +247,17 @@ function search_nav()
 add_shortcode('search_nav', 'search_nav');
 
 
-function create_taxonomy() {
+function create_taxonomy()
+{
 	register_taxonomy('categories', 'people', array(
 		'hierarchical'  	=> true,
 		'label' 					=> 'Kategorie',
 		'public'					=> false,
 		'show_ui'       	=> true,
 	));
-
 }
 
-add_action( 'init', 'create_taxonomy' );
+add_action('init', 'create_taxonomy');
 function register_post_types()
 {
 	// $labels = array(
@@ -275,12 +276,12 @@ function register_post_types()
 		'label' => 'Ludzie',
 		'public' => true,
 		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
-		'rewrite' => array('slug'=>'ludzie',)
+		'rewrite' => array('slug' => 'ludzie',)
 	));
 
-	register_post_type( 'education', array(
+	register_post_type('education', array(
 		'label' 							=> 'Edukacja',
-		'supports'            => [ 'title', 'editor', 'custom-fields', 'thumbnail'], 
+		'supports'            => ['title', 'editor', 'custom-fields', 'thumbnail'],
 		'has_archive'         => true,
 		'public'              => true,
 		'hierarchical'        => true,
@@ -288,4 +289,4 @@ function register_post_types()
 		'menu_icon'           => 'dashicons-database',
 	));
 }
-add_action( 'init', 'register_post_types' );
+add_action('init', 'register_post_types');

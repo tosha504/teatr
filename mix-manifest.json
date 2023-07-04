@@ -5,5 +5,6 @@
     "/blocks/css/news.css": "/blocks/css/news.css",
     "/blocks/css/banner.css": "/blocks/css/banner.css",
     "/src/index.css": "/src/index.css",
-    "/src/js/index.js": "/src/js/index.js"
+    "/src/js/index.js": "/src/js/index.js",
+    "/blocks/css/choose-form.css": "/blocks/css/choose-form.css"
 }
