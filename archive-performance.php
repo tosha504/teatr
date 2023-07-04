@@ -1,16 +1,16 @@
-<?php 
+<?php
+
 /**
-*Template Name: Shows
-* @package teatr
-*/
+ *Template Name: Shows
+ * @package teatr
+ */
 
 $parmas_array = [];
-$description =  get_field('performaces_in', 'options') ;
+$description =  get_field('performaces_in', 'options');
 $month = '';
 if (isset($_GET['month']) && !empty($_GET['month'])) {
   $month = sanitize_text_field($_GET['month']);
-}
-else {
+} else {
   $month = date_i18n('Y-m');
 }
 if (isset($_GET['type']) && $_GET['type'] === 'out') {
@@ -19,16 +19,18 @@ if (isset($_GET['type']) && $_GET['type'] === 'out') {
 }
 
 get_header(); ?>
- 
+
 <main id="primary" class="site-main">
-  
+
   <section class="shows-page">
-  <?php 
+    <?php
+
     echo search_nav();
-    echo breadcrumb_block('Spektakle', $description); ?>
-  <div class="container">
-    <?php echo performance_render_template($month);?>
-  </div>
+    $page_title = $_GET['type'] !== null ? 'Repertuar imprez gościnnych' : 'Repertuar teatru';
+    echo breadcrumb_block($page_title, $description); ?>
+    <div class="container">
+      <?php echo performance_render_template($month); ?>
+    </div>
   </section>
 
 </main><!-- #main -->

@@ -11,21 +11,23 @@ defined('ABSPATH') || exit;
 function pageSwitcher($type = null)
 {
 	$show = is_post_type_archive('show')  ? 'class="active"' : '';
-	$perfomances =  $type !== 'out' && !is_post_type_archive('show') ? 'class="active"' : '';
+	$perfomances =  $type !== 'out' && !is_post_type_archive('show') && !$_GET['children'] ? 'class="active"' : '';
 	$perfomances_out =  $type === 'out' ? 'class="active"' : '';
-
+	$children = $_GET['children'] ? 'class="active"' : '';
 	$url = get_site_url();
 
 	return <<<HTML
   <ul class="pages">
     <li>
-      <a href="$url/show/" $show>Spektakle</a>
+      <a href="$url/spektakl/" $show>Spektakle</a>
     </li>
     <li>
-      <a href="$url/performance/" $perfomances>Repertuar teatru</a>
+      <a href="$url/repertuar/" $perfomances>Repertuar teatru</a>
     </li>
     <li>
-      <a href="$url/performance/?type=out" $perfomances_out>Repertuar imprez gościnnych</a>
+      <a href="$url/repertuar/?type=out" $perfomances_out>Repertuar imprez gościnnych</a>
+    </li><li>
+      <a href="$url/repertuar/?children=yes" $children>Repertuar dzieci</a>
     </li>
   </ul>
   HTML;
@@ -106,7 +108,9 @@ function breadcrumb_block($title, $description = null)
 
 function performance_render_template($month)
 {
-
+	if (isset($_GET['children']) && !empty($_GET['children']) && $_GET['children'] !== 'no') {
+		$parmas_array['children'] =  $_GET['children'];
+	}
 	$parmas_array['type'] = 'in';
 	$type_out_input = '';
 	if (isset($_GET['type']) && $_GET['type'] === 'out') {
@@ -140,13 +144,12 @@ function performance_render_template($month)
 	$uniq_categories = array_keys($uniq_categories);
 
 	$category = '';
-	if (isset($_GET['category']) && !empty($_GET['category'])) {
-		$category = sanitize_text_field($_GET['category']);
-		$parmas_array['category'] = $category;
+	if (isset($_GET['categories']) && !empty($_GET['categories'])) {
+		$category = sanitize_text_field($_GET['categories']);
+		$parmas_array['categories'] = $category;
 	}
 
-	if (isset($parmas_array['category']) || (isset($parmas_array['datefrom']) && isset($parmas_array['dateto']))) {
-
+	if (isset($parmas_array['categories']) || (isset($parmas_array['datefrom']) && isset($parmas_array['dateto']))) {
 		$params_str = http_build_query($parmas_array);
 		$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 		$performances = json_decode($performances);
@@ -194,13 +197,13 @@ function performance_render_template($month)
 	<form id="filter_form">
 		<input type="text" name="u" style="display: none" value="1" />
 		<input type="text" id="filter_month" name="month" style="display: none" value="<?php echo $month ?>" />
-		<input type="text" id="filter_category" name="category" style="display: none" value="<?php echo $category; ?>" />
+		<input type="text" id="filter_category" name="categories" style="display: none" value="<?php echo $category; ?>" />
 		<?php echo $type_out_input;
 
 		if (count($uniq_categories) > 1) { ?>
 			<div class="shows-list">
 				<ul class="shows-list__categories">
-					<li <?php echo $parmas_array['category'] == null ? 'class="active"' : ''; ?>><button name="filter_category" value="">wszystkie</button></li>
+					<li <?php echo $parmas_array['categories'] == null ? 'class="active"' : ''; ?>><button name="filter_category" value="">wszystkie</button></li>
 					<?php
 					foreach ($uniq_categories as $category) {
 						$active_class = $parmas_array['category'] == $category ? 'class="active"' : '';

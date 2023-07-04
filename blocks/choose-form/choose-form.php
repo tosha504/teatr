@@ -13,13 +13,8 @@
  */
 
 // Load values and assign defaults.
-$choose_form = get_field('choose_form');
-?>
-<?php
-// foreach ($choose_form as $key => $form) {
-//   var_dump($form['email']);
-// }
-?>
+$choose_form = get_field('choose_form'); ?>
+
 <section class="choose-form">
   <div class="choose-form__forms">
     <select id="select-form" data-page-id="<?php echo get_the_ID(); ?>">
