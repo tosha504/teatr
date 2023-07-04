@@ -4,6 +4,7 @@
 }
 .wpcf7-form {
   input , textarea { 
+    
     background: transparent;
     border: none;
     font-family: $pop;
@@ -12,7 +13,7 @@
     padding: 10px 0;
     margin-bottom: 10px;
     width: 100%;
-    color: $milk;    
+    color: $dark;    
     border-bottom: 1px solid #F4F2EF;
   }
 
