@@ -118,56 +118,26 @@ function get_category_person()
 
 function ajax_choose_form()
 {
-	$sel_form = $_POST['sel_form'];
-	// var_dump($sel_form);
-	$id = intval($_POST['pageContactId']);
-	if (has_block('acf/choose-form', $id)) {
-		$post_obj = get_post($id);
-		$post_data = parse_blocks($post_obj->post_content);
-		$block_name = 'acf/choose-form';
-		foreach ($post_data as $block) {
-			if ($block['blockName'] === $block_name) {
-				$key = array_search($sel_form, $block["attrs"]["data"]);
-				$output = preg_replace('/[^0-9]/', '', $key);
-				foreach ($block["attrs"]["data"] as $key => $value) {
-					if ($key === "choose_form_{$output}_short_code") {
-						echo do_shortcode($value);
+	if (isset($_POST['sel_form']) && !empty($_POST['sel_form']) && isset($_POST['pageContactId']) && !empty($_POST['pageContactId'])) {
+		$sel_form = $_POST['sel_form'];
+		$id = intval($_POST['pageContactId']);
+		if (has_block('acf/choose-form', $id)) {
+			$post_obj = get_post($id);
+			$post_data = parse_blocks($post_obj->post_content);
+			$block_name = 'acf/choose-form';
+			foreach ($post_data as $block) {
+				if ($block['blockName'] === $block_name) {
+					$key = array_search($sel_form, $block["attrs"]["data"]);
+					$output = preg_replace('/[^0-9]/', '', $key);
+					foreach ($block["attrs"]["data"] as $key => $value) {
+						if ($key === "choose_form_{$output}_short_code") {
+							echo do_shortcode($value);
+						}
 					}
 				}
 			}
 		}
 	}
-
-
-
-
-
-	// var_dump($_POST['block_name']);
-	// $block_name = $_POST['block_name'];
-	// var_dump($block_name);
-	// var_dump(has_block('acf/choose-form'));
-	// if (has_block($block_name)) {
-	// 	// Block exists
-	// 	echo 'Block exists!';
-	// } else {
-	// 	// Block does not exist
-	// 	echo 'Block does not exist!';
-	// }
-	// if (isset($_POST['sel_form']) && !empty($_POST['sel_form']) && isset($_POST['pageContactId']) && !empty($_POST['pageContactId'])) {
-	// 	// $sel_form = sanitize_text_field($_POST['sel_form']);
-	// 	var_dump(has_block('acf/choose-form'));
-	// 	$choose_form = get_field('choose_form');
-	// 	var_dump($choose_form);
-	// 	if (has_block('acf/choose-form')) {
-	// 		// $choose_form = get_field('choose_form');
-
-	// 		// foreach ($choose_form as $key => $form) {
-	// 		// 	if ($form['email'] == $sel_form) {
-	// 		// 		echo do_shortcode($form['short_code']);
-	// 		// 	}
-	// 		// }
-	// 	}
-	// }
 
 	die();
 }

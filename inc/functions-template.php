@@ -27,7 +27,7 @@ function pageSwitcher($type = null)
     <li>
       <a href="$url/repertuar/?type=out" $perfomances_out>Repertuar imprez gościnnych</a>
     </li><li>
-      <a href="$url/repertuar/?children=yes" $children>Repertuar dzieci</a>
+      <a href="$url/repertuar/?children=yes" $children>Dla dzieci</a>
     </li>
   </ul>
   HTML;
@@ -200,13 +200,15 @@ function performance_render_template($month)
 		<input type="text" id="filter_category" name="categories" style="display: none" value="<?php echo $category; ?>" />
 		<?php echo $type_out_input;
 
+
 		if (count($uniq_categories) > 1) { ?>
 			<div class="shows-list">
 				<ul class="shows-list__categories">
 					<li <?php echo $parmas_array['categories'] == null ? 'class="active"' : ''; ?>><button name="filter_category" value="">wszystkie</button></li>
 					<?php
+					$categories = explode(',', $parmas_array['categories']);
 					foreach ($uniq_categories as $category) {
-						$active_class = $parmas_array['category'] == $category ? 'class="active"' : '';
+						$active_class = in_array($category, $categories) ? 'class="active"' : '';
 						echo '<li ' . $active_class . '><button name="filter_category" value="' . $category . '">' . $category . '</button></li>';
 					}
 					?>
@@ -214,7 +216,7 @@ function performance_render_template($month)
 			</div>
 		<?php } ?>
 		<div class="shows-list">
-			<ul class="shows-list__categories">
+			<ul class="shows-list__data">
 				<?php
 				$prev_momth = clone $month_date;
 				$prev_momth->modify('first day of last month');
@@ -231,10 +233,10 @@ function performance_render_template($month)
 				$prev_month_btn = '';
 				$next_month_btn = '';
 				if ($this_month_int - $prev_month_int < 1) {
-					$prev_month_btn = "<li><button value=\"$formated_prev_momth\" name=\"filter_month\"><</button></li>";
+					$prev_month_btn = "<li class='prev'><button value=\"$formated_prev_momth\" name=\"filter_month\"><</button></li>";
 				}
 				if ($next_month_int - $this_month_int < 4) {
-					$next_month_btn = "<li><button value=\"$formated_next_momth\" name=\"filter_month\">></button></li>";
+					$next_month_btn = "<li class='next'><button value=\"$formated_next_momth\" name=\"filter_month\">></button></li>";
 				}
 				?>
 				<?php echo $prev_month_btn; ?>

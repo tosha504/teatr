@@ -46,7 +46,7 @@
     display: inline-block;
     border-radius: 50px;
     margin-bottom: 40px;
-    &__categories {
+    &__categories, &__data {
       padding: 0 30px;
       display: flex;
       flex-wrap: wrap;
@@ -84,6 +84,18 @@
             }
           }
         }
+      }
+    }
+
+    &__data {
+      li {
+        &.next,&.prev {
+          padding: 0;
+          button {
+            padding: 5px 10px;
+           }
+        }
+      
       }
     }
   }
