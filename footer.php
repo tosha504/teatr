@@ -78,9 +78,11 @@ $image_after = $pre_footer['image_after'];
 					echo '<div class="partners__items_item">';
 					$partners = $sub_item['partners'];
 					if ($sub_item['title']) echo '<h6>' . $sub_item['title'] . '</h6>';
+					echo '<div>';
 					foreach ($partners as $key => $partner) {
 						echo '<a href="' . esc_url($partner['link']['url']) . '" target="' . $partner['link']['target'] . '">' . wp_get_attachment_image($partner['partner'], 'full') . ' </a>';
 					}
+					echo '</div>';
 					echo '</div>';
 				}
 			} ?>
