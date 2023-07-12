@@ -12,8 +12,9 @@
 
 // PREFOOTER
 $pre_footer = get_field('pre_footer', 'options');
-$pre_footer_left = $pre_footer['left'];
+$items_partners = $pre_footer['items_partners'];
 $pre_footer_right = $pre_footer['right'];
+
 
 // FOOTER 
 $footer = get_field('footer', 'options');
@@ -25,6 +26,8 @@ $logos = $footer["logos"];
 $logos_right = $footer['logos_right'];
 $content_right = $footer['content_right'];
 $image_after = $pre_footer['image_after'];
+
+
 ?>
 
 <footer id="colophon" class="footer">
@@ -69,26 +72,19 @@ $image_after = $pre_footer['image_after'];
 	<!-- Partners start -->
 	<section class="partners">
 		<div class="partners__items container">
-			<div class="partners__items_item">
-				<?php if ($pre_footer_left['title']) echo '<h6>' . $pre_footer_left['title'] . '</h6>';
-				if ($pre_footer_left['partners']) {
-					echo '<div>';
-					foreach ($pre_footer_left['partners'] as $partner) {
+			<?php
+			foreach ($items_partners as $key => $item) {
+				foreach ($item as $key => $sub_item) {
+					echo '<div class="partners__items_item">';
+					$partners = $sub_item['partners'];
+					if ($sub_item['title']) echo '<h6>' . $sub_item['title'] . '</h6>';
+					foreach ($partners as $key => $partner) {
 						echo '<a href="' . esc_url($partner['link']['url']) . '" target="' . $partner['link']['target'] . '">' . wp_get_attachment_image($partner['partner'], 'full') . ' </a>';
 					}
 					echo '</div>';
-				} ?>
-			</div>
-			<div class="partners__items_item">
-				<?php if ($pre_footer_right['title_right']) echo '<h6>' . $pre_footer_right['title_right'] . '</h6>';
-				if ($pre_footer_left['partners']) {
-					echo '<div>';
-					foreach ($pre_footer_right['partners'] as $partner) {
-						echo '<a href="' . esc_url($partner['link']['url']) . '" target="' . $partner['link']['target'] . '">' . wp_get_attachment_image($partner['partner'], 'full') . ' </a>';
-					}
-					echo '</div>';
-				} ?>
-			</div>
+				}
+			} ?>
+
 		</div>
 	</section>
 	<!-- Partners end -->
