@@ -45,6 +45,11 @@ body {
             }
           }
         }
+        .date {
+          color: $primary;
+          font-weight: 600;
+          margin-bottom: 25px;
+        }
         h4 {
           @include fontz( 20px, 9);
           font-weight: 400;
