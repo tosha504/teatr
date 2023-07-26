@@ -260,18 +260,6 @@ function create_taxonomy()
 add_action('init', 'create_taxonomy');
 function register_post_types()
 {
-	// $labels = array(
-	// 	'name' => 'People',
-	// 	'menu_name'     => 'Ludzie',
-	// );
-
-	// $args = array(
-	// 	'labels' => $labels,
-	// 	'public' => true,
-	// 	'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
-	// 	'rewrite' => array('slug'=>'ludzie',)
-	// );
-
 	register_post_type('people', array(
 		'label' => 'Ludzie',
 		'public' => true,
@@ -288,5 +276,51 @@ function register_post_types()
 		'show_in_rest'				=> true,
 		'menu_icon'           => 'dashicons-database',
 	));
+
+	register_post_type('price', array(
+		'label' 							=> 'Cennik',
+		'supports'            => ['title', 'custom-fields'],
+		// 'has_archive'         => true,
+		'public'              => true,
+		'hierarchical'        => true,
+		// 'show_in_rest'				=> true,
+		'menu_icon'           => 'dashicons-database',
+	));
 }
 add_action('init', 'register_post_types');
+
+// Hook into the save_post action
+add_action('save_post', 'update_custom_post_title');
+
+function update_custom_post_title($post_id)
+{
+	// Check if this is an autosave or a revision
+	if (wp_is_post_autosave($post_id) || wp_is_post_revision($post_id)) {
+		return;
+	}
+
+	// Check if the current post type is your custom post type
+	$post_type = get_post_type($post_id);
+	if ('price' !== $post_type) {
+		return;
+	}
+
+	// Get the ACF field value
+	$custom_title = get_field('titile', $post_id);
+
+	// Update the post title with the ACF field value
+	if (!empty($custom_title)) {
+		$post_data = array(
+			'ID' => $post_id,
+			'post_title' => $custom_title->post_title,
+		);
+
+		// Unhook this function to prevent an infinite loop
+		remove_action('save_post', 'update_custom_post_title');
+		// Update the post with the new title
+		wp_update_post($post_data);
+
+		// Re-hook this function
+		add_action('save_post', 'update_custom_post_title');
+	}
+}

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  *Template Name: Teheme-template
  * @package teatr
@@ -10,40 +11,48 @@ $tour = get_field('tour');
 $kontakt = get_field('kontakt');
 
 get_header(); ?>
- 
+
 <main id="primary" class="site-main">
 
-  <?php echo do_shortcode('[search_nav]'); 
-  echo breadcrumb_block(get_the_title(),$description_theme_template);	?>
+  <?php echo do_shortcode('[search_nav]');
+  echo breadcrumb_block(get_the_title(), $description_theme_template);  ?>
   <div class="theme">
     <div class="container">
-      <?php if(get_the_post_thumbnail()) { ?>
+      <?php if (get_the_post_thumbnail()) { ?>
         <div class="image">
           <?php the_post_thumbnail(); ?>
         </div>
-      <?php } ?>  
+      <?php } ?>
       <div class="single-artist">
-        <?php if($kontakt) {
+        <?php if ($kontakt) {
           echo "<div class='single-artist__kontakt'>
            {$kontakt}
           </div>";
-         } else {?>
+        } else { ?>
           <div class="single-artist__fields">
-            
+
           </div>
         <?php } ?>
         <div class="single-artist__content">
           <?php the_content(); ?>
         </div>
       </div>
-      <?php if($tour ==true && $title && $html) { ?>
+      <?php if ($tour == true && $title && $html) { ?>
         <div class="tour">
-          <?php echo '<h3>' . $title . '</h3>' .'<div class="tour__frame"> ' . $html . '</div>' ;?>
+          <?php echo '<h3>' . $title . '</h3>' . '<div class="tour__frame"> ' . $html . '</div>'; ?>
         </div>
       <?php } ?>
     </div>
   </div>
+  <?php
 
+  $prices_block = get_field('prices_block');
+
+  // show_price_perfomance();
+
+  ?>
+  <?php
+  show_price_perfomance($prices_block); ?>
 </main><!-- #main -->
 
 <?php get_footer();

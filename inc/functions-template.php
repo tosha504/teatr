@@ -250,3 +250,50 @@ function performance_render_template($month)
 	<?php echo $list_html; ?>
 	</div>
 <?php }
+
+
+
+function show_price_perfomance($id_for_prices = null)
+{
+	$title_page_price = get_post_type() == 'page' ? '<h3>' . get_field('title') . '</h3>'  : '';
+	$prices = $id_for_prices == null ? array(get_field('prices')) : $id_for_prices;
+?>
+	<div class="price">
+		<div class="container">
+			<div class="price__arrow">
+			</div>
+			<div class="wrap">
+				<?php
+				echo $title_page_price;
+				foreach ($prices as $key => $current_id_price) {
+					$table_settings = get_field('table_settings', $current_id_price);
+					$title =  get_post_type() !== "performance" ?  get_the_title($current_id_price)  : "Cennik";
+					if (!empty($table_settings)) {
+				?>
+						<div class="price__content">
+							<h4><?php echo $title; ?></h4>
+							<ul>
+								<li></li>
+								<li>Strefa I</li>
+								<li>Strefa II</li>
+								<li>Strefa III</li>
+								<li>Strefa IV</li>
+							</ul>
+							<?php
+							foreach ($table_settings as $key => $table) {
+								$class_name = $table["type_biltes"] === "VIP" ? 'class="vip"' : "";
+								echo "<ul {$class_name}><li>{$table["type_biltes"]}</li>";
+								$p = $table["areas"];
+								foreach ($p as $key => $value) {
+									echo "<li>{$value["price_for_zone"]}</li>";
+								}
+								echo "</ul>";
+							}
+							?>
+						</div>
+				<?php }
+				} ?>
+			</div>
+		</div>
+	</div>
+<?php 	}
