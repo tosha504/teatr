@@ -1,4 +1,3 @@
-
 .people {
   padding: 50px 0;
 
@@ -20,22 +19,21 @@
       }
       padding: 5px 20px;
       border: 1px solid $milk;
-      border-radius: 50px;  
+      border-radius: 50px;
       transition: 0.35s;
       background: transparent;
       color: $dark;
       font-size: 14px;
-      @media (min-width:$bp3) {
+      @media (min-width: $bp3) {
         &:hover {
           background: $primary;
-          color: $milk ;
+          color: $milk;
           border: 1px solid transparent;
 
           &.active {
             background: transparent;
             color: $dark;
             border: 1px solid #ccc;
-
           }
         }
       }
@@ -47,58 +45,61 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    @media (min-width:$bp3) {
+    @media (min-width: $bp3) {
       gap: 50px;
     }
-   &_item {
-    flex: 1 1 100%;
-    position: relative;
-    background: rgb(216,29,74);
-    background: linear-gradient(0deg, rgba(216,29,74,1) 0%, rgba(255,255,255,0.09007352941176472) 49%);
-    
-    @media (min-width:$bp2) {
-      flex: 1 1 45%;
-    }
-    @media (min-width:$bp3) {
-      flex: 0 1 30%;
-    }
-    min-height: 500px;
-    overflow: hidden;
-    // height: 400px;
-    a {
-      color: $milk;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      
-    }
+    &_item {
+      flex: 1 1 100%;
+      position: relative;
+      background: rgb(216, 29, 74);
+      background: linear-gradient(
+        0deg,
+        rgba(216, 29, 74, 1) 0%,
+        rgba(255, 255, 255, 0.09007352941176472) 49%
+      );
 
-    p {
-      position: absolute;
-      bottom: 40px;
-      left: 40px;
-      font-size: 20px;
-      &::before {
-        content: '';
+      @media (min-width: $bp2) {
+        flex: 1 1 45%;
+      }
+      @media (min-width: $bp3) {
+        flex: 0 1 30%;
+      }
+      min-height: 500px;
+      overflow: hidden;
+      // height: 400px;
+      a {
+        color: $milk;
         position: absolute;
-        width: 27px;
-        height: 27px;
-        bottom: 20px;
-        transform: translateY(-50%);
-        background: url('../assets/image/strzalka-teatr-white.svg');
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      p {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        font-size: 20px;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 27px;
+          height: 27px;
+          bottom: 20px;
+          transform: translateY(-50%);
+          background: url("../assets/image/strzalka-teatr-white.svg");
+        }
+      }
+
+      img {
+        z-index: -1;
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
       }
     }
-
-    img {
-      z-index: -1;
-      position: absolute;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
 
     .category {
       &__wrap {
@@ -108,18 +109,19 @@
         flex: 1 1 100%;
         padding-bottom: 10px;
         &-name {
-          @include fontz(20px,10);
+          @include fontz(20px, 10);
           color: $primary;
           padding: 20px 0 30px;
-          @media (min-width:$bp2) {
+          @media (min-width: $bp2) {
             margin-left: 45px;
             position: relative;
             &::before {
-              content: '';
+              content: "";
               position: absolute;
               width: 25px;
               height: 25px;
-              background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+              background: url("../assets/image/strzalka-teatr.svg") no-repeat
+                center/cover;
               bottom: 43px;
               left: -50px;
               transform: rotate(90deg);
@@ -130,14 +132,14 @@
           display: flex;
           flex-wrap: wrap;
           gap: 20px;
-          justify-content: space-between;
           align-items: center;
-          a, p {
+          a,
+          p {
             color: $dark;
             @include fontz(16px, 4);
             flex: 1 1 100%;
-            @media (min-width:$bp1) {
-              flex: 1 1 30%;
+            @media (min-width: $bp1) {
+              flex: 0 1 30%;
             }
           }
         }
