@@ -281,8 +281,8 @@ function show_price_perfomance($id_for_prices = null)
 							</ul>
 							<?php
 							foreach ($table_settings as $key => $table) {
-								$class_name = $table["type_biltes"] === "VIP" ? 'class="vip"' : "";
-								echo "<ul {$class_name}><li>{$table["type_biltes"]}</li>";
+								$class_name = $table["type_biltes"] === "I" ? 'class="vip"' : "";
+								echo "<ul {$class_name}><li>{$table['name_type']}</li>";
 								$p = $table["areas"];
 								foreach ($p as $key => $value) {
 									echo "<li>{$value["price_for_zone"]}</li>";
