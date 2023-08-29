@@ -13,7 +13,7 @@ get_header(); ?>
   <?php
   $q = get_queried_object();
   echo search_nav();
-  echo breadcrumb_block($q->name, $description); ?>
+  echo breadcrumb_block($q->label, $description); ?>
   <div class="container">
     <?php if (have_posts()) : ?>
       <div class="news">
