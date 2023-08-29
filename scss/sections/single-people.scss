@@ -1,6 +1,9 @@
 .single-artist {
   ul {
     list-style: disc;
+    li {
+      margin-left: 20px;
+    }
   }
   padding: 50px 0;
   display: flex;
