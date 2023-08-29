@@ -1,18 +1,21 @@
 body {
-  &.single-post, &.single-education {
+  &.single-post,
+  &.single-education {
     a {
       color: $primary;
     }
   }
 
-  &.blog , &.search-results, &.post-type-archive-education {
+  &.blog,
+  &.search-results,
+  &.post-type-archive-education {
     .news {
       display: flex;
       flex-wrap: wrap;
       padding: 25px 0;
-      justify-content: space-between;
+      // justify-content: space-between;
       gap: 15px;
-      @media (min-width:$bp2) {
+      @media (min-width: $bp2) {
         padding: 50px 0;
         gap: 30px;
       }
@@ -23,12 +26,12 @@ body {
         padding: 25px 0;
         flex: 1 1 100%;
         border-top: 1px solid $milk;
-        @media (min-width:$bp1) {
+        @media (min-width: $bp1) {
           flex: 1 1 45%;
         }
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           flex: 1 1 30%;
-          max-width: 30%;
+          max-width: 33%;
         }
         .categories {
           display: flex;
@@ -38,7 +41,7 @@ body {
           p {
             padding: 5px 20px;
             border: 1px solid $milk;
-            border-radius: 50px;  
+            border-radius: 50px;
             transition: 0.35s;
             &:not(:last-child) {
               background: $milk;
@@ -51,24 +54,25 @@ body {
           margin-bottom: 25px;
         }
         h4 {
-          @include fontz( 20px, 9);
+          @include fontz(20px, 9);
           font-weight: 400;
           line-height: 1.4;
           margin-bottom: 30px;
-          @media (min-width:$bp3) {
+          @media (min-width: $bp3) {
             position: relative;
             &::after {
-              content: '';
+              content: "";
               position: absolute;
               width: 15px;
               height: 15px;
-              background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+              background: url("../assets/image/strzalka-teatr.svg") no-repeat
+                center/cover;
               bottom: 15px;
               margin-left: 20px;
             }
           }
         }
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           a {
             &:hover {
               h4 {

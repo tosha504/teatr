@@ -1,23 +1,26 @@
 .single-artist {
+  ul {
+    list-style: disc;
+  }
   padding: 50px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 60px;
-  font-family: $ala;
   &__fields {
     order: 2;
     flex: 1 1 100%;
-    @media (min-width:$bp2) {
+    @media (min-width: $bp2) {
       order: 1;
       flex: 1 1 40%;
       padding-top: 400px;
       position: relative;
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 100px;
         height: 100px;
-        background: url('../assets/image/strzalka-zespol-opis-teatr-nowy.svg') no-repeat center/cover;
+        background: url("../assets/image/strzalka-zespol-opis-teatr-nowy.svg")
+          no-repeat center/cover;
         top: 0px;
         left: 0;
       }
@@ -25,47 +28,49 @@
     p {
       font-size: 14px;
       color: $primary;
-      span{
+      span {
         font-weight: bold;
       }
     }
-  } 
+  }
 
   &__kontakt {
     flex: 1 1 100%;
-    @media (min-width:$bp2) {
+    @media (min-width: $bp2) {
       order: 1;
       flex: 1 1 20%;
       padding-top: 40px;
       position: relative;
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 20px;
         height: 20px;
-        background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+        background: url("../assets/image/strzalka-teatr.svg") no-repeat
+          center/cover;
         top: 0px;
         left: 0;
       }
     }
-    p,a {
+    p,
+    a {
       font-size: 15px;
       color: $primary;
     }
 
     a {
-      @media (min-width:$bp2) {
+      @media (min-width: $bp2) {
         &:hover {
           color: $dark;
         }
       }
     }
   }
-  
+
   &__content {
     order: 1;
     flex: 1 1 100%;
-    @media (min-width:$bp2) {
+    @media (min-width: $bp2) {
       order: 2;
       flex: 1 1 50%;
     }
@@ -80,4 +85,3 @@
     }
   }
 }
-
