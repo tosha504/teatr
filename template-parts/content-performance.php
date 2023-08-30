@@ -86,8 +86,9 @@ if (!empty($performances)) {
 							$preson_name = $individual["person"] !== false ? $person->post_title : $individual["person_text"];
 							$person_link = get_permalink($person->ID);
 							$link = $person->ID ?  "<a href='{$person_link}'>" . $preson_name . "</a> &#10230" : $preson_name;
-							$line_content .= $link . '</p></li>';
+							$line_content .= $link . '<br>';
 						}
+						$line_content .= '</p></li>';
 					}
 					$line_content .= '</ul>';
 					echo 	$line_content;
