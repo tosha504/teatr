@@ -49,6 +49,7 @@ function get_category_person()
 		$taxonomy = 'categories';
 		$args = array(
 			'post_type' => 'people',
+			'posts_per_page'   => -1,
 			'tax_query' => array(
 				array(
 					'taxonomy' => $taxonomy,
@@ -86,6 +87,7 @@ function get_category_person()
 					echo '<div class="category__wrap-name">' . $term->name . '</div>';
 					$args = array(
 						'post_type' => 'people',
+						'posts_per_page'   => -1,
 						'tax_query' => array(
 							array(
 								'taxonomy' => $taxonomy,
