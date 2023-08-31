@@ -9,7 +9,8 @@
  */
 
 $info = get_field('info') ? '<p class="position-job">' . get_field('info') . '</p>' : '';
-$time = get_field('time') ? '<p>' . get_field('time') . '</p>' : '';
+$time = get_field('time') ? '<p class="time">' . get_field('time') . '</p>' : '';
+$info_time_block = "<div class='info-time'>{$info}{$time}</div>";
 $video = get_field('video');
 $slides = get_field('slides');
 $excerpt = get_the_excerpt() ? '<p>' . get_the_excerpt() . '</p>' : '';
@@ -29,7 +30,7 @@ $contractors = get_field('contractors');
 					<p id="breadcrumbs">', '</p>
 				</nav>');
 			}
-			echo '<div class="top_info__right">' . $title . $info . $time . $excerpt . '</div>';
+			echo '<div class="top_info__right">' . $title . $info_time_block . $excerpt . '</div>';
 			?>
 		</div>
 

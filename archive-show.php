@@ -18,6 +18,9 @@ get_header(); ?>
     $shows = json_decode($shows);
     $list_html = '';
     $list_html .= '<div class="performances">';
+    $reserve = get_field('link_reserved', 'options');
+    $reserve_link = !empty($reserve) ? '<a href="' . esc_url($reserve['url']) . '" class="dark" target="__blank">' . $reserve['title'] . '</a>' : '';
+
     foreach ($shows as $date => $show) {
       $trim_words = 20;
       $short_descr = wp_trim_words($show->short, $trim_words);
@@ -32,7 +35,7 @@ get_header(); ?>
             <div class="performance__header">
               <h6 class="performance__header_title title">Spektakl</h6>
               <div class="performance__header_buttons">
-                <a href="#" class="dark">Rezerwuj</a>
+                ' . $reserve_link . '
                 <a href="' . $show->url . '#cast">Obsada</a>
               </div>
               <p class="performance__header_category ' . $show->category_slug . '">' . $show->category . '</p>
@@ -59,7 +62,8 @@ get_header(); ?>
 
     <?php echo pageSwitcher(); ?>
 
-    <?php echo $list_html; ?>
+    <?php
+    echo $list_html; ?>
     </div>
   </section>
 

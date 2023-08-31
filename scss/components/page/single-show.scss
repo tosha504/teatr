@@ -1,30 +1,33 @@
 body {
-  &.single-show , &.single-performance {
+  &.single-show,
+  &.single-performance {
     article {
       padding: 0 0 50px;
     }
     font-size: 14px;
-    .top_info, .info-content {
+    .top_info,
+    .info-content {
       padding: 50px 0;
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
     }
-    
+
     .top_info {
-      &__left, &__right {
+      &__left,
+      &__right {
         flex: 1 1 100%;
         p {
           font-size: 14px;
         }
       }
-      &__left{
-        @media (min-width:$bp3) {
+      &__left {
+        @media (min-width: $bp3) {
           flex: 1 1 30%;
         }
       }
       &__right {
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           flex: 1 1 50%;
         }
         h1 {
@@ -36,45 +39,35 @@ body {
           margin: 10px 0;
           font-weight: 500;
         }
-        .position-job {
-          border-radius: 50px;
-          display: inline;
-          font-weight: normal;
-          padding: 5px 20px;
-          background-color: $milk;
-          font-size: 14px;
-          span {
-            font-weight: 600;
-          }
-        }
       }
     }
 
     .info-content {
-      border-top:1px solid $milk;
-      border-bottom:1px solid $milk;
-      
+      border-top: 1px solid $milk;
+      border-bottom: 1px solid $milk;
+
       &__people {
         a {
           color: $primary;
         }
         color: $primary;
         flex: 1 1 100%;
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           flex: 1 1 30%;
         }
 
-        h3{
+        h3 {
           padding: 25px 0 10px;
           font-weight: normal;
           &:first-child {
             position: relative;
             &::before {
-              content: '';
+              content: "";
               position: absolute;
               width: 15px;
               height: 15px;
-              background: url('../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+              background: url("../assets/image/strzalka-teatr.svg") no-repeat
+                center/cover;
               top: 0;
               left: 0;
             }
@@ -82,8 +75,8 @@ body {
         }
         ul {
           margin-bottom: 20px;
-          @media (min-width:$bp2) {
-            margin-bottom: 100px
+          @media (min-width: $bp2) {
+            margin-bottom: 100px;
           }
           li {
             p {
@@ -99,7 +92,7 @@ body {
       }
       &__content {
         flex: 1 1 100%;
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           flex: 1 1 50%;
         }
 
@@ -119,70 +112,69 @@ body {
       height: 0;
       padding-bottom: 56.25%;
       background-color: #000000;
-    
-    
-    &_link {
+
+      &_link {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-    }
-    
-    &__media {
+      }
+
+      &__media {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         border: none;
-    }
-    
-    &__button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 222;
-      padding: 0;
-      width: 68px;
-      height: 48px;
-      border: none;
-      background-color: transparent;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-    }
-    
-    &__button-shape {
+      }
+
+      &__button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 222;
+        padding: 0;
+        width: 68px;
+        height: 48px;
+        border: none;
+        background-color: transparent;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+
+      &__button-shape {
         fill: #212121;
         fill-opacity: 0.8;
-    }
-    
-    &__button-icon {
+      }
+
+      &__button-icon {
         fill: #ffffff;
-    }
-    
-    &__button:focus {
+      }
+
+      &__button:focus {
         outline: none;
-    }
-    
-    &:hover {
-      .video__button-shape,
-      .video__button:focus .video__button-shape {
-        fill: #ff0000;
-        fill-opacity: 1;
+      }
+
+      &:hover {
+        .video__button-shape,
+        .video__button:focus .video__button-shape {
+          fill: #ff0000;
+          fill-opacity: 1;
+        }
+      }
+
+      /* Enabled */
+
+      .video--enabled {
+        cursor: pointer;
+      }
+
+      .video--enabled .video__button {
+        display: block;
       }
     }
-    
-    /* Enabled */
-    
-    .video--enabled {
-      cursor: pointer;
-    }
-    
-    .video--enabled .video__button {
-      display: block;
-    }
-    } 
   }
 
   .show__slider {
@@ -197,7 +189,7 @@ body {
       position: relative;
       height: 70vh;
       img {
-        top: 0 ;
+        top: 0;
         left: 0;
         width: 100%;
         height: 100%;

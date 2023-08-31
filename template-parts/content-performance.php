@@ -9,7 +9,10 @@
  */
 $id = get_field('show')->ID;
 $info = get_field('info', $id) ? '<p class="position-job">' . get_field('info', $id) . '</p>' : '';
-$time = get_field('time', $id) ? '<p>' . get_field('time', $id) . '</p>' : '';
+$time = get_field('time', $id) ? '<p class="time">' . get_field('time', $id) . '</p>' : '';
+$info_time_block = "<div class='info-time'>{$info}{$time}</div>";
+
+
 $video = get_field('video', $id);
 $slides = get_field('slides', $id);
 $excerpt = get_the_excerpt($id) ? '<p>' . get_the_excerpt($id) . '</p>' : '';
@@ -68,7 +71,7 @@ if (!empty($performances)) {
 					<p id="breadcrumbs">', '</p>
 				</nav>');
 			}
-			echo '<div class="top_info__right">' . $title . $info . $time . $excerpt . '</div>';
+			echo '<div class="top_info__right">' . $title . $info_time_block . $excerpt . '</div>';
 			?>
 		</div>
 

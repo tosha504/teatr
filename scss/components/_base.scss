@@ -5,36 +5,43 @@
   margin: 0;
   padding: 0;
 }
-html,body{
-  @include fontz(14px ,2);
-	height: 100%;
-	width: 100%;
+html,
+body {
+  @include fontz(14px, 2);
+  height: 100%;
+  width: 100%;
   position: relative;
   font-weight: normal;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-	color: $dark;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: $dark;
   font-family: $pop;
   line-height: 1.6;
   &.wcag_big {
-    * { 
-      line-height: 1!important;
-      font-family: $pop!important;
-      font-weight: 600!important;
+    * {
+      line-height: 1 !important;
+      font-family: $pop !important;
+      font-weight: 600 !important;
       h1 {
-        font-size: calc(50px + ( 50 * (100vw / 1920)))!important;  
+        font-size: calc(50px + (50 * (100vw / 1920))) !important;
         line-height: 1 !important;
       }
-       h2, h3, h4, h5, h6 {
-        font-size: calc(20px + ( 20 * (100vw / 1920))) !important;
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: calc(20px + (20 * (100vw / 1920))) !important;
       }
-      p, span, a ,div, button{
-        font-size: calc(20px + ( 6 * (100vw / 1920))) !important; 
-  
+      p,
+      span,
+      a,
+      div,
+      button {
+        font-size: calc(20px + (6 * (100vw / 1920))) !important;
       }
     }
-  
   }
 
   &.wcag_contrast {
@@ -45,11 +52,20 @@ html,body{
       background: linear-gradient(90deg, transparent 50%, rgb(255, 217, 0) 50%);
       border-radius: 50%;
     }
-    div, section, input, textarea, ul, header, footer, a, p, button {
+    div,
+    section,
+    input,
+    textarea,
+    ul,
+    header,
+    footer,
+    a,
+    p,
+    button {
       svg {
-        fill : rgb(255, 217, 0) !important;
+        fill: rgb(255, 217, 0) !important;
         .st0 {
-          fill : rgb(255, 217, 0) !important;
+          fill: rgb(255, 217, 0) !important;
           color: rgb(255, 217, 0) !important;
         }
       }
@@ -60,7 +76,8 @@ html,body{
       }
       img {
         &.size-thumbnail {
-          filter: invert(69%) sepia(99%) saturate(436%) hue-rotate(0deg) brightness(104%) contrast(107%);
+          filter: invert(69%) sepia(99%) saturate(436%) hue-rotate(0deg)
+            brightness(104%) contrast(107%);
           opacity: 1 !important;
         }
       }
@@ -70,10 +87,22 @@ html,body{
       img {
         opacity: 0.5;
       }
-      p, span, a, h1 , h2, h3, h4, h5, h6 ,div, li, button{
+      p,
+      span,
+      a,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      div,
+      li,
+      button {
         color: rgb(255, 217, 0) !important;
       }
-      input, textarea {
+      input,
+      textarea {
         color: rgb(255, 217, 0) !important;
         &::placeholder {
           color: rgb(255, 217, 0) !important;
@@ -96,31 +125,31 @@ html,body{
   overflow: hidden;
 }
 
-.wrapper{
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-main{
-	flex: 1 1 100%;
+main {
+  flex: 1 1 100%;
 }
 .container {
   max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-  @media (max-width:$bp4) {
+  @media (max-width: $bp4) {
     max-width: 1140px;
   }
-  @media (max-width:$bp3) {
+  @media (max-width: $bp3) {
     max-width: 960px;
   }
-  @media (max-width:$bp2) {
+  @media (max-width: $bp2) {
     max-width: 720px;
   }
 
-  @media (max-width:$bp1) {
+  @media (max-width: $bp1) {
     max-width: 100%;
     padding: 0px 15px;
   }
@@ -153,7 +182,7 @@ textarea {
 
 button {
   transition: 0.35s;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
   max-width: 200px;
@@ -167,7 +196,12 @@ img {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $ala;
 }
 
@@ -184,49 +218,45 @@ h6 {
 }
 
 .box {
-  
   display: none;
   align-items: center;
   justify-content: center;
-	border-radius: 3px;
-	font-size: 30px;
-	padding: 1em;
-	position: relative;
-	margin-bottom: .25em;
-	vertical-align: top;
-	transition: .3s color, .3s border, .3s transform, .3s opacity;
- 
+  border-radius: 3px;
+  font-size: 30px;
+  padding: 1em;
+  position: relative;
+  margin-bottom: 0.25em;
+  vertical-align: top;
+  transition: 0.3s color, 0.3s border, 0.3s transform, 0.3s opacity;
+
   &.active {
-  	display: flex;
+    display: flex;
   }
 }
 
-
 .loader {
   display: inline-block;
-	width: 2em;
-	height: 2em;
-	color: inherit;
-	vertical-align: middle;
-	pointer-events: none;
-  border: .2em solid transparent;
+  width: 2em;
+  height: 2em;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+  border: 0.2em solid transparent;
   border-top-color: $primary;
   border-radius: 50%;
   animation: 1s loader linear infinite;
   position: relative;
   &:before {
-    content: '';
+    content: "";
     display: block;
     width: inherit;
     height: inherit;
     position: absolute;
-    top: -.2em;
-    ;
-    left: -.2em;
-    ;
-    border: .2em solid currentcolor;
+    top: -0.2em;
+    left: -0.2em;
+    border: 0.2em solid currentcolor;
     border-radius: 50%;
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -244,4 +274,28 @@ h6 {
   color: red;
   font-size: 14px;
   padding: 20px 0;
+}
+
+.info-time {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  .position-job,
+  .time {
+    border-radius: 50px;
+    display: inline;
+    font-weight: normal;
+    padding: 5px 20px;
+    background-color: $milk;
+    font-size: 14px;
+    margin: 0;
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .position-job {
+    background-color: $primary;
+    color: $milk;
+  }
 }
