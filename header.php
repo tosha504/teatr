@@ -101,7 +101,6 @@
 
 
 		if (is_front_page()) {
-			// echo do_shortcode('[search_nav]');
 			if (isset($_GET['month']) && !empty($_GET['month'])) {
 				$month = $_GET['month'];
 			} else {

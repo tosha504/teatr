@@ -152,19 +152,31 @@
     }
   });
   jQuery(".shows-list__categories li button").on("click", function (e) {
-    e.preventDefault();
-    jQuery(e.target).parent().toggleClass("active");
-    var actives = "";
-    if (jQuery(e.target).val() !== "") {
-      actives = jQuery(".shows-list__categories li.active");
+    var attrName = jQuery(e.target).attr("name");
+    if (attrName === "filter_month") {
+      jQuery("#filter_month").val(e.target.value);
     }
-    var newInputValue = actives.length > 0 ? actives.toArray().map(function (i) {
-      return i.children[0].value;
-    }) : "";
-    var newInputValueStr = newInputValue.length > 0 ? newInputValue.join(",") : "";
-    jQuery("#filter_category").val(newInputValueStr);
-    jQuery("#filter_form").submit();
   });
+
+  // jQuery(".shows-list__categories li button").on("click", function (e) {
+  //   e.preventDefault();
+  //   jQuery(e.target).parent().toggleClass("active");
+  //   let actives = "";
+  //   if (jQuery(e.target).val() !== "") {
+  //     actives = jQuery(".shows-list__categories li.active");
+  //   }
+  //   const newInputValue =
+  //     actives.length > 0
+  //       ? actives.toArray().map((i) => i.children[0].value)
+  //       : "";
+  //   const newInputValueStr =
+  //     newInputValue.length > 0 ? newInputValue.join(",") : "";
+  //   console.log(jQuery("#filter_category").val(), newInputValueStr);
+
+  //   jQuery("#filter_category").val(newInputValueStr);
+  //   // jQuery("#filter_form").submit();
+  // });
+
   function cardsPeopleCatergories(target) {
     //AJAX
     jQuery.ajax({
