@@ -96,11 +96,21 @@ body {
           flex: 1 1 50%;
         }
 
+        ul {
+          list-style: disc;
+          li {
+            margin-left: 20px;
+          }
+        }
+
         &_img {
           margin-bottom: 50px;
         }
         a {
           color: $primary;
+        }
+        p {
+          margin-bottom: 20px;
         }
       }
     }
