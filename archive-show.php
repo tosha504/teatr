@@ -9,6 +9,7 @@ if (isset($_GET['type']) && $_GET['type'] === 'out') {
   $parmas_array['type'] = 'out';
   $params_str = http_build_query($parmas_array);
 }
+$page_title = $_GET['type'] !== 'out' ? 'Spektakle' : 'Przedstawienia gościnne';
 get_header(); ?>
 
 <main id="primary" class="site-main">
@@ -16,7 +17,7 @@ get_header(); ?>
   <section class="shows-page">
     <?php
     echo search_nav();
-    echo breadcrumb_block('Spektakle', $description);
+    echo breadcrumb_block($page_title, $description);
     echo '<div class="container">';
     $shows = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/shows?' . $params_str);
     $shows = json_decode($shows);

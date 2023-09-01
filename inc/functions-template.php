@@ -135,7 +135,6 @@ function performance_render_template($month)
 	$parmas_array['dateto'] = $formated_last_day_of_this_month;
 
 	$params_str = http_build_query($parmas_array);
-	var_dump($params_str);
 	$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 	$performances = json_decode($performances);
 	$uniq_categories = [];
