@@ -10,7 +10,8 @@ defined('ABSPATH') || exit;
 
 function pageSwitcher($type = null)
 {
-	$show = is_post_type_archive('show')  ? 'class="active"' : '';
+	$show = is_post_type_archive('show') && !isset($_GET['type'])   ? 'class="active"' : '';
+	$show_out = is_post_type_archive('show') && isset($_GET['type']) && $_GET['type'] === 'out' ? 'class="active"' : '';
 	$perfomances =  $type !== 'out' && !is_post_type_archive('show') && !$_GET['children'] ? 'class="active"' : '';
 	$perfomances_out =  $type === 'out' ? 'class="active"' : '';
 	$children = $_GET['children'] ? 'class="active"' : '';
@@ -20,6 +21,8 @@ function pageSwitcher($type = null)
   <ul class="pages">
     <li>
       <a href="$url/spektakl/" $show>Spektakle</a>
+    </li><li>
+      <a href="$url/spektakl/?type=out" $show_out>Przedstawienia gościnne</a>
     </li>
     <li>
       <a href="$url/repertuar/" $perfomances>Repertuar teatru</a>
@@ -132,7 +135,7 @@ function performance_render_template($month)
 	$parmas_array['dateto'] = $formated_last_day_of_this_month;
 
 	$params_str = http_build_query($parmas_array);
-
+	var_dump($params_str);
 	$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 	$performances = json_decode($performances);
 	$uniq_categories = [];
@@ -154,6 +157,8 @@ function performance_render_template($month)
 		$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 		$performances = json_decode($performances);
 	}
+
+
 	$list_html = '';
 	$list_html .= '<div class="performances">';
 	foreach ($performances as $date => $datePerfomaces) {

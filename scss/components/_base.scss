@@ -299,3 +299,22 @@ h6 {
     color: $milk;
   }
 }
+// .ml-form-checkboxRow {
+//   &.ml-error {
+//     .label-description {
+//       background-color: red;
+//       p {
+//         background-color: green;
+//         color: white !important;
+//       }
+//     }
+//   }
+// }
+#mlb2-7411315.ml-form-embedContainer
+  .ml-form-embedWrapper
+  .ml-form-embedBody
+  .ml-form-checkboxRow.ml-error
+  .label-description
+  p {
+  color: white !important;
+}

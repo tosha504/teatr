@@ -5,6 +5,10 @@
  * @package teatr
  */
 $description = get_field('description', 'options');
+if (isset($_GET['type']) && $_GET['type'] === 'out') {
+  $parmas_array['type'] = 'out';
+  $params_str = http_build_query($parmas_array);
+}
 get_header(); ?>
 
 <main id="primary" class="site-main">
@@ -14,7 +18,7 @@ get_header(); ?>
     echo search_nav();
     echo breadcrumb_block('Spektakle', $description);
     echo '<div class="container">';
-    $shows = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/shows');
+    $shows = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/shows?' . $params_str);
     $shows = json_decode($shows);
     $list_html = '';
     $list_html .= '<div class="performances">';

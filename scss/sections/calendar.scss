@@ -1,6 +1,6 @@
 .calendar {
   background: $milk;
-  @media (max-width:$bp4) {
+  @media (max-width: $bp4) {
     padding-top: 20px;
   }
   .shows-list {
@@ -13,7 +13,7 @@
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      @media (max-width:$bp3) {
+      @media (max-width: $bp3) {
         justify-content: center;
       }
     }
@@ -23,54 +23,52 @@
       height: 20px;
       &.next {
         transform: rotate(180deg);
-        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat
+          center/cover;
       }
 
       &.prev {
-        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+        background: url(../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat
+          center/cover;
       }
     }
   }
-  
-  
-  &__items{
+
+  &__items {
     font-size: 16px;
     font-family: $ala;
     display: flex;
     justify-content: center;
-    @media (max-width:$bp4) {
+    @media (max-width: $bp4) {
       flex-wrap: wrap;
     }
-    @media (min-width:$bp4) {
+    @media (min-width: $bp4) {
       justify-content: space-between;
     }
     align-items: center;
     &_nav {
       display: flex;
-
     }
-    @media (max-width:$bp3) {
+    @media (max-width: $bp3) {
       position: relative;
     }
-
   }
 
-  
   .days {
     font-family: $pop;
-    @media (max-width:$bp3) {
+    @media (max-width: $bp3) {
       overflow-x: auto;
       width: 100%;
     }
-    
+
     ul {
       display: flex;
     }
-    li{
+    li {
       display: inline-block;
       padding: 15px 7px;
       transition: 0.35s;
-      @media (min-width:$bp3) {
+      @media (min-width: $bp3) {
         position: relative;
       }
       a {
@@ -83,13 +81,13 @@
       &.has-event {
         font-weight: 900;
         &:hover {
+          cursor: pointer;
           background-color: $primary;
           color: $milk;
           .shows-display {
             opacity: 1;
             visibility: visible;
             display: flex;
-          
           }
         }
       }
@@ -98,8 +96,7 @@
         pointer-events: none;
         opacity: 0.7;
       }
-      
-      
+
       .shows-display {
         display: flex;
         display: none;
@@ -109,15 +106,14 @@
         position: absolute;
         top: 100%;
         width: 300px;
-        padding: 10px 20px; 
+        padding: 10px 20px;
         align-items: flex-start;
         visibility: hidden;
         opacity: 0;
         gap: 20px;
         transition: 0.15s;
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           width: 400px;
-
         }
         p {
           color: $dark;
@@ -126,7 +122,6 @@
         // flex-wrap: wrap;
         p {
           font-size: 56px;
-        
         }
 
         .span-wrap {
@@ -139,12 +134,11 @@
               border-bottom: 1px solid $dark;
             }
           }
-          span{ 
+          span {
             color: $dark;
           }
         }
       }
     }
   }
-
 }

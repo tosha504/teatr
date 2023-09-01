@@ -10,8 +10,6 @@ defined('ABSPATH') || exit;
 if (!function_exists('teatr_scripts')) {
 	function teatr_scripts()
 	{
-
-
 		$theme_uri = get_template_directory_uri();
 		//Slick	slider 
 		wp_enqueue_script('slick_theme_functions', $theme_uri . '/libery/slick.min.js', [], false, true);
@@ -38,7 +36,8 @@ if (!function_exists('teatr_scripts')) {
 		}
 	}
 }
-add_action('wp_enqueue_scripts', 'teatr_scripts',);
+add_action('wp_enqueue_scripts', 'teatr_scripts');
+
 
 add_action('wp_ajax_get_category_person', 'get_category_person');
 add_action('wp_ajax_nopriv_get_category_person', 'get_category_person');

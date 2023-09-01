@@ -24,12 +24,13 @@ get_header(); ?>
 
   <section class="shows-page">
     <?php
-
     echo search_nav();
     $page_title = $_GET['type'] !== null ? 'Repertuar imprez gościnnych' : 'Repertuar teatru';
     echo breadcrumb_block($page_title, $description); ?>
     <div class="container">
-      <?php echo performance_render_template($month); ?>
+      <?php
+
+      echo performance_render_template($month); ?>
     </div>
   </section>
 

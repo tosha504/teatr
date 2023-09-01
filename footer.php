@@ -14,7 +14,7 @@
 $pre_footer = get_field('pre_footer', 'options');
 $items_partners = $pre_footer['items_partners'];
 $pre_footer_right = $pre_footer['right'];
-
+$data_administrator = $pre_footer['data_administrator'];
 
 // FOOTER 
 $footer = get_field('footer', 'options');
@@ -34,34 +34,18 @@ $image_after = $pre_footer['image_after'];
 	<!-- Newsletter start -->
 	<section class="newsletter">
 		<div class="container">
-			<form class="items">
-				<h5>Newsletter</h5>
+			<div class="items">
 				<div>
+					<h5>Newsletter</h5>
 					<p class="title">Zapisz się do newslettera, a nic Cię nie ominie</p>
-					<input type="email" placeholder="Twój email*" />
-					<span style="font-size:8px">Administratorem danych osobowych jest dyrektor Teatru Muzycznego w Łodzi, z siedzibą ul. Północna 47/51, 91-425 Łódź. Podmiotem przetwarzającym (administratorem strony www.teatr-muzyczny.lodz.pl) jest MakoLab S.A. z siedzibą ul. Demokratyczna 46, 93-430 Łódź. Administrator danych wyznaczył Inspektora Ochrony Danych (inspektor@teatr-muzyczny.lodz.pl). Dane będą przetwarzane w celu przesyłania korespondencji elektronicznej od administratorów strony oraz informacji komercyjnych od partnerów teatru. Dane będą przechowywane w bazie administratora przez czas funkcjonowania newslettera. Osoby zapisujące się do newslettera mają prawo do żądania od administratora dostępu do swoich danych osobowych oraz do ich sprostowania, usunięcia lub ograniczenia przetwarzania, prawo do przenoszenia danych, prawo do wniesienia sprzeciwu wobec przetwarzania, wycofania zgody na otrzymywanie newslettera (link rezygnacji, umieszczony w stopce każdego maila) a także prawo do wniesienia skargi do organu nadzorczego, gdy przetwarzanie danych narusza przepisy ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. Podanie danych jest dobrowolne. Newslettery są wysyłane automatycznie do wielu użytkowników naraz. Korzystanie z newslettera jest bezpłatne.</span>
+					<div class="ml-embedded" data-form="QWF5xg"></div>
 				</div>
 				<div>
-					<label>
-						<input type="checkbox" value="option1" />
-						<span class="checkmark"></span>
-						<p>
-							wyrażam zgodę na otrzymywanie korespondencji elektronicznej od administratorów strony www.teatr-muzyczny.lodz.pl
-						</p>
-					</label>
-					<label>
-						<input type="checkbox" value="option2" />
-						<p>
-							wyrażam zgodę na otrzymywanie informacji komercyjnych od partnerów Teatru Muzycznego w Łodzi
-						</p>
-					</label>
-					<label>
-						<input type="checkbox" value="option3" />
-						<p> Zapoznałem/-am się i akceptuję klauzulę, dotyczącą przetwarzania danych osobowych przez Teatr Muzyczny w Łodzi</p>
-					</label>
-					<input type="submit" value="Zapisz się" />
+					<?php if (!empty($data_administrator)) { ?>
+						<span class="admin"><?php echo $data_administrator; ?></span>
+					<?php } ?>
 				</div>
-			</form>
+			</div>
 		</div>
 		<?php if ($image_after) echo '<div class="blockImage">' .
 			wp_get_attachment_image($image_after, 'full')

@@ -1,6 +1,6 @@
 .newsletter {
-  background-color: $primary; 
-}  
+  background-color: $primary;
+}
 
 .items {
   display: flex;
@@ -18,7 +18,7 @@
     flex: 1 1 47%;
     display: flex;
     flex-direction: column;
-    input[type=email] {
+    input[type="email"] {
       background: transparent;
       border: none;
       font-family: $pop;
@@ -27,16 +27,34 @@
       padding: 10px 0;
       margin-bottom: 10px;
       width: 100%;
-      color: $milk;    
-      border-bottom: 1px solid #F4F2EF;
+      color: $milk;
+      border-bottom: 1px solid #f4f2ef;
       &::placeholder {
         color: $milk;
       }
     }
+
+    .admin {
+      position: relative;
+      font-size: 12px;
+      max-width: 85%;
+      margin-top: 40px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: url("../assets/image/strzalka-teatr-white.svg") no-repeat
+          50% / cover;
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
-    
+
   .title {
-    @include fontz(20px,27);
+    font-family: $ala;
+    @include fontz(20px, 27);
   }
 
   label {
@@ -50,8 +68,8 @@
       max-width: 370px;
     }
 
-    input[type=checkbox] {
-      @media (min-width:$bp3) {
+    input[type="checkbox"] {
+      @media (min-width: $bp3) {
         &:hover {
           cursor: pointer;
         }
@@ -59,7 +77,7 @@
     }
   }
 
-  input[type=submit] {
+  input[type="submit"] {
     margin-top: 50px;
     flex: 1 1 100%;
     max-width: 100px;
@@ -69,7 +87,7 @@
     background-color: transparent;
     color: $milk;
     transition: 0.35s;
-    @media (min-width:$bp3) {
+    @media (min-width: $bp3) {
       &:hover {
         cursor: pointer;
         color: $dark;
@@ -80,7 +98,7 @@
 }
 
 .blockImage {
-  @media (max-width:$bp2) {
+  @media (max-width: $bp2) {
     display: none;
   }
   display: flex;
