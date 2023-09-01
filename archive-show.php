@@ -5,10 +5,11 @@
  * @package teatr
  */
 $description = get_field('description', 'options');
+$parmas_array['type'] = 'in';
 if (isset($_GET['type']) && $_GET['type'] === 'out') {
   $parmas_array['type'] = 'out';
-  $params_str = http_build_query($parmas_array);
 }
+$params_str = http_build_query($parmas_array);
 $page_title = $_GET['type'] !== 'out' ? 'Spektakle' : 'Przedstawienia gościnne';
 get_header(); ?>
 
