@@ -157,7 +157,6 @@ function performance_render_template($month)
 		$performances = json_decode($performances);
 	}
 
-
 	$list_html = '';
 	$list_html .= '<div class="performances">';
 	foreach ($performances as $date => $datePerfomaces) {
