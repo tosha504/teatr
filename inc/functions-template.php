@@ -10,8 +10,9 @@ defined('ABSPATH') || exit;
 
 function pageSwitcher($type = null)
 {
-	$show = is_post_type_archive('show') && !isset($_GET['type'])   ? 'class="active"' : '';
+	$show = is_post_type_archive('show') && !isset($_GET['type']) && empty($_GET['is_archive'])   ? 'class="active"' : '';
 	$show_out = is_post_type_archive('show') && isset($_GET['type']) && $_GET['type'] === 'out' ? 'class="active"' : '';
+	$show_archive = is_post_type_archive('show') && isset($_GET['is_archive']) && $_GET['is_archive'] === 'yes' ? 'class="active"' : '';
 	$perfomances =  $type !== 'out' && !is_post_type_archive('show') && !$_GET['children'] ? 'class="active"' : '';
 	$perfomances_out =  $type === 'out' ? 'class="active"' : '';
 	$children = $_GET['children'] ? 'class="active"' : '';
@@ -31,6 +32,8 @@ function pageSwitcher($type = null)
       <a href="$url/repertuar/?type=out" $perfomances_out>Repertuar imprez gościnnych</a>
     </li><li>
       <a href="$url/repertuar/?children=yes" $children>Dla dzieci</a>
+    </li><li>
+      <a href="$url/spektakl/?is_archive=yes" $show_archive>Archive</a>
     </li>
   </ul>
   HTML;
