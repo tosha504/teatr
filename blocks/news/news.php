@@ -26,13 +26,13 @@ $newses = get_field('news') ?: 'news..'; ?>
         $post_category =  get_the_category($newses[0]->ID);
         echo '<article><a href="' . esc_url(get_permalink($newses[0]->ID)) . '">';
         echo $image .
-        '<div class="categories"><p>' . $post_category[0]->name  . '</p><p>News</p></div>';
+          '<div class="categories"><p>' . $post_category[0]->name  . '</p><p>News</p></div>';
         echo '<h4>' . $newses[0]->post_title . '</h4>';
         echo '<p>' . $excerpt . '</p>';
         echo '</a></article>';
         ?>
       </div>
-      
+
       <div class="newses__items_right">
         <?php for ($i = 1; $i < 4; $i++) {
           echo '<article><a href="' . esc_url(get_permalink($newses[$i]->ID)) . '">';

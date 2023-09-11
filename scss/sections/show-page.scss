@@ -301,6 +301,13 @@
             }
           }
 
+          &.premiera {
+            &::before {
+              background: url(../assets/categories/warsztat-ikona-teatr-muzyczny.svg)
+                no-repeat center/cover;
+            }
+          }
+
           &:first-letter {
             text-transform: uppercase;
           }
