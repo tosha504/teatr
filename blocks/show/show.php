@@ -22,11 +22,10 @@ $shows = get_field('shows') ?: 'Your shows..';
 
 
       foreach ($shows as $key => $show) {
-        // var_dump($show);
-        $current_show = get_field('show', $show->ID);
+
         $category = get_field('category', $show->ID);
         $link = get_permalink($show->ID);
-        $image = get_the_post_thumbnail($current_show->ID, 'full') ?  get_the_post_thumbnail($current_show->ID, 'full') : '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="teatr-nowy brak zdjecia">';
+        $image = get_the_post_thumbnail($show->ID, 'full') ?  get_the_post_thumbnail($show->ID, 'full') : '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="teatr-nowy brak zdjecia">';
         echo '<div class="shows__item">' . '<a href=" ' . $link . '">' .
           $image . '</a>' .
           '<p class="categories">' . $category['value'] . '</p>' .
