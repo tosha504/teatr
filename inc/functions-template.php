@@ -241,9 +241,9 @@ function performance_render_template($month)
 				if ($this_month_int - $prev_month_int < 1) {
 					$prev_month_btn = "<li class='prev'><button value=\"$formated_prev_momth\" name=\"filter_month\"><</button></li>";
 				}
-				if ($next_month_int - $this_month_int < 4) {
-					$next_month_btn = "<li class='next'><button value=\"$formated_next_momth\" name=\"filter_month\">></button></li>";
-				}
+				// if ($next_month_int - $this_month_int < 4) {
+				$next_month_btn = "<li class='next'><button value=\"$formated_next_momth\" name=\"filter_month\">></button></li>";
+				// }
 				?>
 				<?php echo $prev_month_btn; ?>
 				<li>
