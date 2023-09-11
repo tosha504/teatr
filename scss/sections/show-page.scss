@@ -219,6 +219,7 @@
           }
           &.widowisko-muzyczne {
             &::before {
+              width: 55px;
               background: url(../assets/categories/widowisko-muzyczne-ikona-teatr-muzyczny.svg)
                 no-repeat center/cover;
             }
@@ -262,6 +263,8 @@
           }
           &.koncert-familijny {
             &::before {
+              width: 17px;
+              height: 40px;
               background: url(../assets/categories/koncert-familijny-ikona-teatr-muzyczny.svg)
                 no-repeat center/cover;
             }
