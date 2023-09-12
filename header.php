@@ -161,7 +161,7 @@
 				$display_shows .= '<p>' . $date . '</p><div class="span-wrap">';
 				if ($performances->$first_month_date_formated) foreach ($performances->$first_month_date_formated as $key => $show) {
 					$time = date('H:i', strtotime($show->date_time));
-					$display_shows .= '<div><a href="' . $show->show_url . '">' . $show->title . '<br><span>godz. ' . $time . '</span></div></a>';
+					$display_shows .= '<div><a href="' . $show->url . '">' . $show->title . '<br><span>godz. ' . $time . '</span></div></a>';
 				}
 				$display_shows .= '</div></div>';
 				$display_shows = $performances->$first_month_date_formated ? $display_shows : '';
