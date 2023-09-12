@@ -24,15 +24,13 @@ $slides = get_field('slides') ?: 'slides..'; ?>
         $title_banner = $slide['titile_banner'] ?: 'Your titile here...';
         $title =  $key ? '<h2 class="slide__content_title">' . $title_banner . '</h2>' : '<h1 class="slide__content_title">' . $title_banner . '</h1>';
         $banner_descr = $slide['descr_banner'] ? $slide['descr_banner'] : 'Description banner..';
-        $trim_word_descr = 50;
-        $descr_count = wp_trim_words($banner_descr, $trim_word_descr);
         echo '<div class="banner__slider_slide slide">
         <div class="slide__img">' .
           $image .
           '</div>
         <div class="slide__content">
           <p class="slide__content_pre-title">' . $slide['pre_title'] . '</p>' .
-          $title . '<p class="slide__content_descr">' . $descr_count . '</p>
+          $title . '<p class="slide__content_descr">' . $banner_descr . '</p>
         </div>
       </div>';
       }

@@ -33,7 +33,7 @@ function pageSwitcher($type = null)
     </li><li>
       <a href="$url/repertuar/?children=yes" $children>Dla dzieci</a>
     </li><li>
-      <a href="$url/spektakl/?is_archive=yes" $show_archive>Archive</a>
+      <a href="$url/spektakl/?is_archive=yes" $show_archive>Archiwum</a>
     </li>
   </ul>
   HTML;
