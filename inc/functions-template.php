@@ -17,10 +17,18 @@ function pageSwitcher($type = null)
 	$perfomances_out =  $type === 'out' ? 'class="active"' : '';
 	$children = $_GET['children'] ? 'class="active"' : '';
 	$url = get_site_url();
-	$download_button = get_field('download_button', 'options');
-	$download_button_render = !empty($download_button) ? "<li>
-	<a href='{$download_button['url']}' target='{$download_button['target']}'>{$download_button['title']}</a>
+	$button_performance = get_field('button_performance', 'options');
+	$button_performance_render = !empty($button_performance) ? "<li>
+	<a href='{$button_performance['url']}' target='{$button_performance['target']}'>{$button_performance['title']}</a>
 	</li>" : '';
+
+	$button_performance_out = get_field('button_performance_out', 'options');
+	$button_performance_out_render = !empty($button_performance_out) ? "<li>
+	<a href='{$button_performance_out['url']}' target='{$button_performance_out['target']}'>{$button_performance_out['title']}</a>
+	</li>" : '';
+
+	$button_performance_render_display = $perfomances ? $button_performance_render : '';
+	$button_performance_out_display = $perfomances_out ? $button_performance_out_render : '';
 
 	return <<<HTML
   <ul class="pages">
@@ -38,7 +46,7 @@ function pageSwitcher($type = null)
       <a href="$url/repertuar/?children=yes" $children>Dla dzieci</a>
     </li><li>
       <a href="$url/spektakl/?is_archive=yes" $show_archive>Archiwum</a>
-    </li>$download_button_render
+    </li>$button_performance_out_display $button_performance_render_display
   </ul>
   HTML;
 }
