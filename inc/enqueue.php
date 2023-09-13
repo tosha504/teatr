@@ -100,7 +100,7 @@ function get_category_person()
 					if ($n_query->have_posts()) {
 						while ($n_query->have_posts()) {
 							$n_query->the_post();
-							$link = get_the_content() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>' : '<p>' . get_the_title() . '</p>';
+							$link = get_the_content() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>'  : '<p>' . get_the_title() . '</p>';
 							echo $link;
 						}
 						echo '</div>';

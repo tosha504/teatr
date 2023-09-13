@@ -66,12 +66,8 @@ get_header(); ?>
           // Постов не найдено
           echo 'Sorry!';
         }
-
         // Возвращаем оригинальные данные поста. Сбрасываем $post.
         wp_reset_postdata(); ?>
-
-
-
       </div>
     </div>
   </section>
