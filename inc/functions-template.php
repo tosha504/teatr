@@ -126,9 +126,12 @@ function breadcrumb_block($title, $description = null)
 
 function performance_render_template($month)
 {
-	if (isset($_GET['children']) && !empty($_GET['children']) && $_GET['children'] !== 'no') {
-		$parmas_array['children'] =  $_GET['children'];
+	$type_children_input = '';
+	if (isset($_GET['children']) && $_GET['children'] === 'yes') {
+		$parmas_array['children'] = 'yes';
+		$type_children_input = "<input type=\"text\" name=\"children\" style=\"display: none\" value=\"{$parmas_array['children']}\" />";
 	}
+
 	$parmas_array['type'] = 'in';
 	$type_out_input = '';
 	if (isset($_GET['type']) && $_GET['type'] === 'out') {
@@ -148,7 +151,6 @@ function performance_render_template($month)
 	$last_day_of_this_month->modify('last day of this month');
 	$formated_last_day_of_this_month = $last_day_of_this_month->format('Y-m-d');
 	$parmas_array['dateto'] = $formated_last_day_of_this_month;
-
 	$params_str = http_build_query($parmas_array);
 	$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 	$performances = json_decode($performances);
@@ -217,7 +219,7 @@ function performance_render_template($month)
 		<input type="text" id="filter_month" name="month" style="display: none" value="<?php echo $month ?>" />
 		<input type="text" id="filter_category" name="categories" style="display: none" value="<?php echo $category; ?>" />
 		<?php echo $type_out_input;
-
+		echo $type_children_input;
 
 		if (count($uniq_categories) > 1) { ?>
 			<div class="shows-list">

@@ -18,10 +18,14 @@ if (isset($_GET['type']) && $_GET['type'] === 'out') {
   $description =  get_field('performaces_out', 'options');
 }
 
+
+// if (isset($_GET['children']) && $_GET['children'] === 'yes') {
+//   $parmas_array['children'] = 'yes';
+// }
+var_dump($parmas_array);
 get_header(); ?>
 
 <main id="primary" class="site-main">
-
   <section class="shows-page">
     <?php
     echo search_nav();

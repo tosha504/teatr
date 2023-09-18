@@ -9,6 +9,7 @@ $parmas_array['type'] = 'in';
 if (isset($_GET['type']) && $_GET['type'] === 'out') {
   $parmas_array['type'] = 'out';
 }
+
 $parmas_array['is_archive'] = 'no';
 if (isset($_GET['is_archive']) && $_GET['is_archive'] === 'yes') {
   $parmas_array['is_archive'] = 'yes';
@@ -19,7 +20,6 @@ $page_title = $_GET['type'] !== 'out' ? 'Spektakle' : 'Przedstawienia gościnne'
 get_header(); ?>
 
 <main id="primary" class="site-main">
-
   <section class="shows-page">
     <?php
     echo search_nav();
