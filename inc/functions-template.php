@@ -19,7 +19,7 @@ function pageSwitcher($type = null)
 	$url = get_site_url();
 	$button_performance = get_field('button_performance', 'options');
 	$button_performance_render = !empty($button_performance) ? "<li>
-	<a href='{$button_performance['url']}' target='{$button_performance['target']}'>{$button_performance['title']}</a>
+	<a class='black' href='{$button_performance['url']}' target='{$button_performance['target']}'>{$button_performance['title']}</a>
 	</li>" : '';
 
 	$button_performance_out = get_field('button_performance_out', 'options');
