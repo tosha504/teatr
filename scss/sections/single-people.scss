@@ -86,5 +86,53 @@
     a {
       color: $primary;
     }
+
+    .currently-playing {
+      padding: 20px 0;
+      border-top: 1px solid $gray;
+      border-bottom: 1px solid $gray;
+      &__title {
+        font-size: 14px;
+        line-height: 110%;
+        padding: 5px 15px;
+        background-color: $primary;
+        border-radius: 50px;
+        color: $milk;
+        transition: 0.3s;
+        border: 1px solid transparent;
+      }
+
+      ul {
+        margin-top: 30px;
+        list-style: none;
+        li {
+          margin-left: 0;
+          a {
+            @include fontz(20px, 10);
+            width: 400px;
+            color: $dark;
+            position: relative;
+            &::after {
+              position: absolute;
+              width: 15px;
+              height: 15px;
+              background: url(../assets/image/strzalka-teatr.svg) no-repeat 50% /
+                cover;
+              top: 15px;
+              right: -30px;
+              @media (min-width: $bp2) {
+                content: "";
+              }
+            }
+
+            @media (hover: hover) {
+              &:hover {
+                color: $primary;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
