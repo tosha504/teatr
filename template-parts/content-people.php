@@ -14,7 +14,7 @@
 	<?php
 	$curent_person_ID =  get_the_ID();
 	$performances = array(
-		'post_type' => 'performance',
+		'post_type' => 'show',
 		'posts_per_page'   => -1,
 	);
 	$performances_query = new WP_Query($performances);
@@ -73,12 +73,24 @@
 							<?php while ($performances_query->have_posts()) {
 								$performances_query->the_post(); ?>
 								<?php
-								$realists = get_field('realists',  get_the_ID());
-								foreach ($realists as $key => $realist) {
-									foreach ($realist['people'] as $key => $people) {
-										if ($curent_person_ID === $people['person']->ID) { ?>
-											<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+								$realists = get_field('realists');
+								$contractors = get_field('contractors');
+								if (!empty($realists)) {
+									foreach ($realists as $key => $realist) {
+										foreach ($realist['people'] as $key => $people) {
+											if ($curent_person_ID === $people['person']->ID) { ?>
+												<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+											<?php }
+										}
+									}
+								}
+								if (!empty($contractors)) {
+									foreach ($contractors as $key => $contractor) {
+										foreach ($contractor['people'] as $key => $contractors_people) {
+											if ($curent_person_ID === $contractors_people['person']->ID) { ?>
+												<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
 								<?php }
+										}
 									}
 								}
 								?>
