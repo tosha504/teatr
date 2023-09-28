@@ -67,38 +67,46 @@
 				the_content();
 
 				if ($performances_query->have_posts()) { ?>
+
+					<?php
+					$currently_playing = [];
+					while ($performances_query->have_posts()) {
+						$performances_query->the_post();
+						$realists = get_field('realists');
+						$contractors = get_field('contractors');
+						if (!empty($realists)) {
+							foreach ($realists as $key => $realist) {
+								foreach ($realist['people'] as $key => $people) {
+									if ($curent_person_ID === $people['person']->ID) {
+										$currently_playing[] = get_the_ID();
+									}
+								}
+							}
+						}
+						if (!empty($contractors)) {
+							foreach ($contractors as $key => $contractor) {
+								foreach ($contractor['people'] as $key => $contractors_people) {
+									if ($curent_person_ID === $contractors_people['person']->ID) {
+										$currently_playing[] = get_the_ID();
+									}
+								}
+							}
+						}
+					}
+				}
+				$currently_playing_display = array_unique($currently_playing);
+				if (!empty($currently_playing_display)) { ?>
 					<div class="currently-playing">
 						<span class="currently-playing__title">Aktualnie gra w</span>
 						<ul>
-							<?php while ($performances_query->have_posts()) {
-								$performances_query->the_post(); ?>
-								<?php
-								$realists = get_field('realists');
-								$contractors = get_field('contractors');
-								if (!empty($realists)) {
-									foreach ($realists as $key => $realist) {
-										foreach ($realist['people'] as $key => $people) {
-											if ($curent_person_ID === $people['person']->ID) { ?>
-												<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
-											<?php }
-										}
-									}
-								}
-								if (!empty($contractors)) {
-									foreach ($contractors as $key => $contractor) {
-										foreach ($contractor['people'] as $key => $contractors_people) {
-											if ($curent_person_ID === $contractors_people['person']->ID) { ?>
-												<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
-								<?php }
-										}
-									}
-								}
-								?>
-						<?php }
-						} ?>
+							<?php foreach ($currently_playing_display as $key => $p) { ?>
+								<li><a href="<?php echo get_permalink($p); ?>"><?php echo get_the_title($p); ?></a></li>
+							<?php 	} ?>
 						</ul>
 					</div>
-					<?php wp_reset_query(); ?>
+				<?php } ?>
+
+				<?php wp_reset_query(); ?>
 			</div>
 		</div>
 	</div>
