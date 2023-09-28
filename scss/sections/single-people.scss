@@ -107,29 +107,35 @@
         list-style: none;
         li {
           margin-left: 0;
+          display: flex;
+          align-items: center;
           a {
             @include fontz(20px, 10);
             width: 400px;
             color: $dark;
-            position: relative;
-            &::after {
-              position: absolute;
-              width: 15px;
-              height: 15px;
-              background: url(../assets/image/strzalka-teatr.svg) no-repeat 50% /
-                cover;
-              top: 15px;
-              right: -30px;
-              @media (min-width: $bp2) {
-                content: "";
-              }
-            }
+            // position: relative;
+            // &::after {
+            //   position: absolute;
+            //   width: 15px;
+            //   height: 15px;
+            //   background: url(../assets/image/strzalka-teatr.svg) no-repeat 50% /
+            //     cover;
+            //   top: 15px;
+            //   right: -30px;
+            //   @media (min-width: $bp2) {
+            //     content: "";
+            //   }
+            // }
 
             @media (hover: hover) {
               &:hover {
                 color: $primary;
               }
             }
+          }
+
+          img {
+            margin-bottom: 0;
           }
         }
       }
