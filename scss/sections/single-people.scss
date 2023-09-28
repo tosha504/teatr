@@ -113,6 +113,7 @@
             @include fontz(20px, 10);
             width: 400px;
             color: $dark;
+            flex: 1 1 100%;
             // position: relative;
             // &::after {
             //   position: absolute;
