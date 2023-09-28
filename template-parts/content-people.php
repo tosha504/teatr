@@ -97,7 +97,7 @@
 				$currently_playing_display = array_unique($currently_playing);
 				if (!empty($currently_playing_display)) { ?>
 					<div class="currently-playing">
-						<span class="currently-playing__title">Aktualnie gra w</span>
+						<span class="currently-playing__title">Spektakle</span>
 						<ul>
 							<?php foreach ($currently_playing_display as $key => $p) { ?>
 								<li><a href="<?php echo get_permalink($p); ?>"><?php echo get_the_title($p); ?></a><img src="<?php echo get_template_directory_uri() . '/assets/image/strzalka-teatr.svg' ?>" alt=""></li>
