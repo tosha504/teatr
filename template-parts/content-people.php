@@ -100,7 +100,7 @@
 						<span class="currently-playing__title">Aktualnie gra w</span>
 						<ul>
 							<?php foreach ($currently_playing_display as $key => $p) { ?>
-								<li><a href="<?php echo get_permalink($p); ?>"><?php echo get_the_title($p); ?></a><img src="<?php echo get_template_directory_uri() . '../assets/image/strzalka-teatr.svg' ?>" alt=""></li>
+								<li><a href="<?php echo get_permalink($p); ?>"><?php echo get_the_title($p); ?></a><img src="<?php echo get_template_directory_uri() . '/assets/image/strzalka-teatr.svg' ?>" alt=""></li>
 							<?php 	} ?>
 						</ul>
 					</div>
