@@ -7,7 +7,6 @@
  *
  * @package teatr
  */
-$id = get_the_ID();
 get_header(); ?>
 <main id="primary" class="site-main">
   <?php
@@ -20,9 +19,9 @@ get_header(); ?>
         <?php
         /* Start the Loop */
         while (have_posts()) :
-          $trim_words = 20;
-          $excerpt = wp_trim_words(get_the_excerpt(), $trim_words);
           the_post();
+          $trim_words = 20;
+          $excerpt = wp_trim_words(get_the_content(), $trim_words);
           /*
             * Include the Post-Type-specific template for the content.
             * If you want to override this in a child theme, then include a file
@@ -30,9 +29,8 @@ get_header(); ?>
             */
         ?>
           <?php
-          echo '<article><a href="' . esc_url(get_permalink($id)) . '">';
-          // echo '<div class="categories"><p>' .  get_the_category()[0]->name . '</p><p>News</p></div>';
-          echo '<h4>' . get_the_title($id) . '</h4>';
+          echo '<article><a href="' . esc_url(get_permalink()) . '">';
+          echo '<h4>' . get_the_title() . '</h4>';
           echo '<p>' . $excerpt . '</p>';
           echo '</a></article>';
           ?>
