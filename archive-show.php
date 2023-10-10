@@ -37,7 +37,7 @@ get_header(); ?>
       $short_descr = wp_trim_words($show->short, $trim_words);
       $descr = wp_trim_words($show->descr, $trim_words);
       $description = !empty($show->short) ? '<p>' . $short_descr . '</p>' : '<p>' . $descr . '</p>';
-      $date = $show->premiere_date ? '<span>Premiera:</span><br>' . date('d/m/y', strtotime($show->premiere_date)) : '';
+      $dateShow = $show->premiere_date ? '<span>Premiera:</span><br>' . date('d/m/y', strtotime($show->premiere_date)) : '';
       $image = !empty($show->image) ?
         '<img src=' . $show->image . ' width="213" height="300" alt="alternative_name">' :
         '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' width="213" height="300" alt="alternative_name">';
@@ -53,7 +53,7 @@ get_header(); ?>
             </div>
             <div class="performance__body">
               <div class="performance__body_date">
-                <p>' . $date . '</p>
+                <p>' . $dateShow . '</p>
               </div>
               <div class="performance__body_image">
                 <a href="' . $show->url . '">' . $image . '</a>

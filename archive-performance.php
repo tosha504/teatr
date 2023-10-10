@@ -1,7 +1,7 @@
 <?php
 
 /**
- *Template Name: Shows
+ *Template Name: Performance
  * @package teatr
  */
 

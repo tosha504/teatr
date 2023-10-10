@@ -83,12 +83,12 @@ if (!empty($performances)) {
 					$line_content = '<ul>';
 					if ($realists) foreach ($realists as $key => $realist) {
 						$people = $realist['people'];
-						$line_content .= '<li><p><span>' . $realist["title"] . '/</span>';
+						$line_content .= '<li><p><span>' . $realist["title"] . '</span>';
 						foreach ($people as $key => $individual) {
 							$person = $individual["person"];
 							$preson_name = $individual["person"] !== false ? $person->post_title : $individual["person_text"];
 							$person_link = get_permalink($person->ID);
-							$link = $person->ID ?  "<a href='{$person_link}'>" . $preson_name . "</a> &#10230" : $preson_name;
+							$link = $person->ID ?  "<a href='{$person_link}'>" . $preson_name . "</a>" : $preson_name;
 							$line_content .= $link . '<br>';
 						}
 						$line_content .= '</p></li>';

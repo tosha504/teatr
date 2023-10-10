@@ -1,11 +1,10 @@
 @import "../scss/components/_varibles";
 
-
 .breadcrumbs {
   margin: 20px 0;
-  &__content{ 
+  &__content {
     padding: 10px;
-    @media (min-width:$bp2) {
+    @media (min-width: $bp2) {
       padding: 20px 40px 20px 40px;
     }
     &_wrap {
@@ -14,27 +13,17 @@
       flex-wrap: wrap;
       gap: 20px;
       padding: 20px 0;
-      @media (min-width:$bp1) {
-        position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          width: 25px;
-          height: 25px;
-          background: url('../../assets/image/strzalka-teatr.svg') no-repeat center/cover;
-          top: -20px;
-          right: 0;
-        }
-      }
 
-      div, h1, p {
+      div,
+      h1,
+      p {
         flex: 1 1 100%;
-        @media (min-width:$bp2) {
+        @media (min-width: $bp2) {
           flex: 1 1 40%;
         }
 
         .position {
-          border:1px solid $primary;
+          border: 1px solid $primary;
           border-radius: 50px;
           padding: 5px 10px;
           display: initial;
@@ -47,12 +36,13 @@
         font-weight: 400;
       }
 
-      a,p {
+      a,
+      p {
         color: $primary;
       }
 
       a {
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           &:hover {
             color: $dark;
           }
@@ -61,12 +51,11 @@
 
       p {
         font-size: 14px;
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           max-width: 700px;
           margin-right: 100px;
         }
       }
     }
-    
   }
 }

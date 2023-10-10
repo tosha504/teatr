@@ -149,7 +149,7 @@
 			$last_month_date->modify('last day of this month');
 			$last_month_date_formated = $last_month_date->format('Y-m-d');
 
-			$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?');
+			$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?type=in');
 			$performances = json_decode($performances);
 
 			$ul = '<div class="days"><ul>';
@@ -165,6 +165,7 @@
 				}
 				$display_shows .= '</div></div>';
 				$display_shows = $performances->$first_month_date_formated ? $display_shows : '';
+
 				$bold = !empty($display_shows) ? 'has-event' : 'none-event';
 				$active_class  = intval(date_i18n('Ymd')) == intval($first_month_date->format('Ymd')) ? 'active ' : '';
 				$ul .= '<li class="' . $active_class . $bold . '"><p>' . $first_month_date->format('j') . '</p>' . $display_shows . '</li>';

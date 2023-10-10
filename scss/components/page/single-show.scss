@@ -59,25 +59,9 @@ body {
         h3 {
           padding: 25px 0 10px;
           font-weight: normal;
-          &:first-child {
-            position: relative;
-            &::before {
-              content: "";
-              position: absolute;
-              width: 15px;
-              height: 15px;
-              background: url("../assets/image/strzalka-teatr.svg") no-repeat
-                center/cover;
-              top: 0;
-              left: 0;
-            }
-          }
         }
         ul {
           margin-bottom: 20px;
-          @media (min-width: $bp2) {
-            margin-bottom: 100px;
-          }
           li {
             p {
               text-transform: uppercase;

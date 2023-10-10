@@ -35,20 +35,9 @@
     }
 
     .admin {
-      position: relative;
       font-size: 12px;
       max-width: 85%;
       margin-top: 40px;
-      &::before {
-        content: "";
-        position: absolute;
-        top: -40px;
-        right: 0;
-        background: url("../assets/image/strzalka-teatr-white.svg") no-repeat
-          50% / cover;
-        width: 20px;
-        height: 20px;
-      }
     }
   }
 
