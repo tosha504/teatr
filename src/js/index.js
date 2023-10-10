@@ -172,43 +172,6 @@
     jQuery("#filter_category").val(newInputValueStr);
     jQuery("#filter_form").submit();
   });
-
-  // function cardsPeopleCatergories(target) {
-  //   //AJAX
-  //   jQuery.ajax({
-  //     type: "post",
-  //     url: localizedObject.ajaxurl,
-  //     data: {
-  //       action: "get_category_person",
-  //       category_slug: target,
-  //     },
-  //     beforeSend: function (response) {
-  //       jQuery(".box").addClass("active");
-  //       jQuery(".people__categories li a").addClass("disabled");
-  //       jQuery(".people__items").hide();
-  //     },
-  //     success: function (response) {
-  //       jQuery(".box").removeClass("active");
-  //       jQuery(".people__items").html(response).fadeIn(1500);
-  //       jQuery(".people__categories li a").removeClass("disabled");
-  //     },
-  //     error: function (jqXhr, textStatus, errorMessage) {
-  //       jQuery(".box").removeClass("active");
-  //       jQuery(".box").after('<p class="error">Something went wrong</p>');
-  //     },
-  //   });
-  // }
-
-  jQuery(".people__categories li a").on("click", function (e) {
-    e.preventDefault();
-    var slug = jQuery(e.target).attr("data-term-slug");
-    jQuery("#filter_role").val(slug);
-    if (jQuery(e.target).parent().siblings().children().hasClass("active")) {
-      jQuery(e.target).parent().siblings().children().removeClass("active");
-    }
-    jQuery(e.target).addClass("active");
-    jQuery("#role").submit();
-  });
   function findVideos() {
     var videos = document.querySelectorAll(".video");
     for (var i = 0; i < videos.length; i++) {

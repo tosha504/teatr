@@ -40,7 +40,7 @@ get_header(); ?>
           if ($term->parent === 0) {
             $active_class = $term->slug == $query->tax_query->queries[0]['terms'][0] ? 'class="active"' : '';
             echo ' <li>
-                <a href="#" ' . $active_class . ' data-term-id="' . $term->term_id . '" data-term-slug="' . $term->slug . '">' . $term->name . '</a>
+                <a href="' . get_site_url() . '/zespol/?rola=' . $term->slug . '" ' . $active_class . '>' . $term->name . '</a>
               </li>';
           }
         } ?>
