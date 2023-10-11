@@ -24,10 +24,14 @@ get_header(); ?>
   );
   $query = new WP_Query($args);
 
+
   $terms = get_terms([
     'taxonomy' => $taxonomy,
     'hide_empty' => false,
-  ]); ?>
+  ]);
+  $role_term_id = get_term_by('slug', $role, $taxonomy);
+
+  ?>
 
   <section class="people">
     <div class="container">
@@ -50,58 +54,59 @@ get_header(); ?>
       </div>
       <div class="people__items">
         <?php
-        if ($query->have_posts()) {
-          while ($query->have_posts()) {
-
-            $query->the_post();
-            if ($query->tax_query->queries[0]['terms'][0] == 'dyrekcja' || $query->tax_query->queries[0]['terms'][0] == 'kierownictwo') {
+        if ($query->tax_query->queries[0]['terms'][0] == 'dyrekcja' || $query->tax_query->queries[0]['terms'][0] == 'kierownictwo') {
+          if ($query->have_posts()) {
+            while ($query->have_posts()) {
+              $query->the_post();
               $avatar = get_the_post_thumbnail() ?
                 get_the_post_thumbnail() :
-                '<img src="' . get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp" alt="avtar-image">'; ?>
-              <div class="people__items_item">
-                <a href="<?php echo get_permalink(); ?>">
-                  <?php echo $avatar; ?>
-                  <p><?php the_title(); ?></p>
-                </a>
-              </div>
-        <?php
-            } else if ($terms) {
-              foreach ($terms as $term) {
-                if ($term->count != 0) {
-                  echo '<div class="category__wrap">';
-                  echo '<div class="category__wrap-name">' . $term->name . '</div>';
-                  $args = array(
-                    'post_type' => 'people',
-                    'posts_per_page'   => -1,
-                    'tax_query' => array(
-                      array(
-                        'taxonomy' => $taxonomy,
-                        'field'    => 'id',
-                        'terms'    => $term->term_id
-                      )
-                    )
-                  );
-                  echo '<div class="category__wrap-items">';
-                  $n_query = new WP_Query($args);
-                  if ($n_query->have_posts()) {
-                    while ($n_query->have_posts()) {
-                      $n_query->the_post();
-                      $link = get_the_content() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>'  : '<p>' . get_the_title() . '</p>';
-                      echo $link;
-                    }
-                    echo '</div>';
-                  }
-                  echo '</div>';
-                  wp_reset_postdata();
-                }
-              }
+                '<img src="' . get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp" alt="avtar-image">';
+              echo '<div class="people__items_item">
+        <a href="' .  get_permalink() . '">' .
+                $avatar . '
+          <p>' . get_the_title() . '</p>
+        </a>
+      </div>';
+              wp_reset_postdata();
             }
           }
         } else {
-          // Постов не найдено
-          echo 'Tu nic nie ma!';
+
+          $sub_terms = get_terms($taxonomy, [
+            'parent'       => $role_term_id->term_id,
+            'hide_empty' => true,
+          ]);
+          foreach ($sub_terms as $term) {
+
+            if ($term->count != 0) {
+              echo '<div class="category__wrap">';
+              echo '<div class="category__wrap-name">' . $term->name . '</div>';
+              $args = array(
+                'post_type' => 'people',
+                'posts_per_page'   => -1,
+                'tax_query' => array(
+                  array(
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => $term->slug
+                  )
+                )
+              );
+              echo '<div class="category__wrap-items">';
+              $n_query = new WP_Query($args);
+              if ($n_query->have_posts()) {
+                while ($n_query->have_posts()) {
+                  $n_query->the_post();
+                  $link = get_the_content() ? '<a href="' . get_permalink() . '">' . get_the_title() . '</a>'  : '<p>' . get_the_title() . '</p>';
+                  echo $link;
+                }
+                echo '</div>';
+              }
+              echo '</div>';
+              wp_reset_postdata();
+            }
+          }
         }
-        // Возвращаем оригинальные данные поста. Сбрасываем $post.
         wp_reset_postdata(); ?>
       </div>
     </div>
