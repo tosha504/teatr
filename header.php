@@ -28,7 +28,7 @@
 				n = d.getElementsByTagName(e)[0], n.parentNode.insertBefore(l, n);
 		})
 		(window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
-		ml('account', '579064');
+		ml('account', '515393');
 	</script>
 	<!-- End MailerLite Universal -->
 	<?php wp_head(); ?>

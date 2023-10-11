@@ -38,7 +38,7 @@ $image_after = $pre_footer['image_after'];
 				<div>
 					<h5>Newsletter</h5>
 					<p class="title">Zapisz się do newslettera, a nic Cię nie ominie</p>
-					<div class="ml-embedded" data-form="QWF5xg"></div>
+					<div class="ml-embedded" data-form="bMAbBb"></div>
 				</div>
 				<div>
 					<?php if (!empty($data_administrator)) { ?>
