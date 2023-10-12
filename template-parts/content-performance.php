@@ -105,7 +105,7 @@ if (!empty($performances)) {
 							$actor = $person["person"];
 							$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
 							$actor_link = get_permalink($actor->ID);
-							$link = $actor->ID ?  "<a href='{$actor_link}'>" . $actor_name . "</a> &#10230" : $actor_name;
+							$link = $actor->ID ?  "<a href='{$actor_link}'>" . $actor_name . "</a>" : $actor_name;
 							$line_content_actors .= $link . '</br>';
 						}
 					}
