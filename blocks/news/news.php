@@ -20,7 +20,7 @@ $newses = get_field('news') ?: 'news..'; ?>
     <div class="newses__items">
       <div class="newses__items_left">
         <?php
-        $image =  get_the_post_thumbnail($newses[0]->ID) ?  get_the_post_thumbnail($newses[0]->ID, 'full') : '<img src="' .  get_template_directory_uri() . '/assets/image/teatr-muzyczny-zdjecie.webp">';
+        $image =  get_the_post_thumbnail($newses[0]->ID) ?  get_the_post_thumbnail($newses[0]->ID, 'full') : '<img src="' .  get_template_directory_uri() . '/assets/image/teatr-muzyczny-zdjecie.webp" alt="teatr-muzyczny">';
         $trim_words_excerpt = 25;
         $excerpt = wp_trim_words($newses[0]->post_excerpt, $trim_words_excerpt);
         $post_category =  get_the_category($newses[0]->ID);

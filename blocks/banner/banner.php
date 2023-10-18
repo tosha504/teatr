@@ -20,7 +20,7 @@ $slides = get_field('slides') ?: 'slides..'; ?>
     <div class="banner__slider">
       <?php
       foreach ($slides as $key => $slide) {
-        $image = $slide['banner_img'] ? wp_get_attachment_image($slide['banner_img'], 'full') : '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-muzyczny-zdjecie.webp' . ' alt="alternative_name">';
+        $image = $slide['banner_img'] ? wp_get_attachment_image($slide['banner_img'], 'full') : '<img src=' .  get_template_directory_uri() . '/assets/image/teatr-muzyczny-zdjecie.webp' . '  alt="teatr-muzyczny">';
         $title_banner = $slide['titile_banner'] ?: 'Your titile here...';
         $title =  $key ? '<h2 class="slide__content_title">' . $title_banner . '</h2>' : '<h1 class="slide__content_title">' . $title_banner . '</h1>';
         $banner_descr = $slide['descr_banner'] ? $slide['descr_banner'] : 'Description banner..';
