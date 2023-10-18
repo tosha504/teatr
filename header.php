@@ -135,10 +135,10 @@
 			$prev_month_btn = '';
 			$next_month_btn = '';
 			if ($this_month_int - $prev_month_int < 1) {
-				$prev_month_btn = "<li><button class='prev' value=\"$prev_month_formated\" name=\"filter_month\"></button></li>";
+				$prev_month_btn = "<li><button class='prev' value=\"$prev_month_formated\" name=\"filter_month\" aria-label='filter_month'></button></li>";
 			}
 			// if ($next_month_int - $this_month_int < 4) {
-			$next_month_btn = "<li><button class='next' value=\"$next_month_formated\" name=\"filter_month\"></button></li>";
+			$next_month_btn = "<li><button class='next' value=\"$next_month_formated\" name=\"filter_month\" aria-label='filter_month'></button></li>";
 			// }
 
 			$first_month_date = clone $current_month_date;
