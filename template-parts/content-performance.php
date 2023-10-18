@@ -19,11 +19,9 @@ $excerpt = get_the_excerpt($id) ? '<p>' . get_the_excerpt($id) . '</p>' : '';
 $title = get_the_title() ? '<h1>' . get_the_title() . '</h1>' : '';
 $realists = get_field('realists');
 $contractors = get_field('contractors');
-$content = trim(get_the_content(get_the_ID()));
-$content = empty($content) ? get_field('show')->post_content : '';
+$content =  get_field('show')->post_content;
 $current_day = date_i18n('Y-m-d');
 $content = apply_filters('the_content', $content);
-
 $parmas_array = [];
 $parmas_array['show_id'] = $id;
 $parmas_array['datefrom'] = $current_day;

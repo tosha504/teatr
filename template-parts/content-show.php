@@ -16,8 +16,7 @@ $slides = get_field('slides');
 $excerpt = get_the_excerpt() ? '<p>' . get_the_excerpt() . '</p>' : '';
 $title = get_the_title() ? '<h1>' . get_the_title() . '</h1>' : '';
 $realists = get_field('realists');
-$contractors = get_field('contractors');
-?>
+$contractors = get_field('contractors'); ?>
 
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -82,7 +81,7 @@ $contractors = get_field('contractors');
 					get_the_post_thumbnail() :
 					'<img src=' .  get_template_directory_uri() . '/assets/image/teatr-nowy-brak-zdjecia.webp' . ' alt="alternative_name">';
 				echo '<div class="info-content__content_img">' . $image . '</div>';
-				the_content() ?>
+				the_content(); ?>
 			</div>
 		</div>
 
