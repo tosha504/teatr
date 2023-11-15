@@ -99,12 +99,14 @@ if (!empty($performances)) {
 						$role = $contractor['title'];
 						$line_content_actors .= '<li><p><span>' . $role . '</span>';
 						$preson_con = $contractor["people"];
-						foreach ($preson_con as $key => $person) {
-							$actor = $person["person"];
-							$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
-							$actor_link = get_permalink($actor->ID);
-							$link = $actor->ID ?  "<a href='{$actor_link}'>" . $actor_name . "</a>" : $actor_name;
-							$line_content_actors .= $link . '</br>';
+						if ($preson_con) {
+							foreach ($preson_con as $key => $person) {
+								$actor = $person["person"];
+								$actor_name = $actor !== false ? $actor->post_title : $person["person_text"];
+								$actor_link = get_permalink($actor->ID);
+								$link = $actor->ID ?  "<a href='{$actor_link}'>" . $actor_name . "</a>" : $actor_name;
+								$line_content_actors .= $link . '</br>';
+							}
 						}
 					}
 					$line_content_actors .= '</p></li></ul>';

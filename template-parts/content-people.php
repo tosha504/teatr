@@ -85,9 +85,11 @@
 						}
 						if (!empty($contractors)) {
 							foreach ($contractors as $key => $contractor) {
-								foreach ($contractor['people'] as $key => $contractors_people) {
-									if ($curent_person_ID === $contractors_people['person']->ID) {
-										$currently_playing[] = get_the_ID();
+								if (!empty($contractor['people'])) {
+									foreach ($contractor['people'] as $key => $contractors_people) {
+										if ($curent_person_ID === $contractors_people['person']->ID) {
+											$currently_playing[] = get_the_ID();
+										}
 									}
 								}
 							}
