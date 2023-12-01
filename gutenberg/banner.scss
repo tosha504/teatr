@@ -1,4 +1,4 @@
-@import "../scss/components/_varibles", './slick.scss';
+@import "../scss/components/_varibles", "./slick.scss";
 
 .banner {
   padding-bottom: 15px;
@@ -8,25 +8,28 @@
       img {
         object-fit: cover;
         width: 100%;
-        height: 500px;
+        @media (min-width: $bp2) {
+          height: 500px;
+        }
       }
     }
 
     &__content {
-      display: flex; 
+      display: flex;
       flex-wrap: wrap;
       background-color: $milk;
       padding: 40px;
       gap: 20px;
-      min-height: 200px;
       position: relative;
-      @media (min-width:$bp2) {
+      min-height: 200px;
+      @media (min-width: $bp2) {
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           width: 27px;
           height: 27px;
-          background: url('../../assets/image/strzalka-teatr.svg') no-repeat center/cover;
+          background: url("../../assets/image/strzalka-teatr.svg") no-repeat
+            center/cover;
           top: 47px;
           right: 47px;
         }
@@ -40,18 +43,17 @@
 
       &_title {
         font-family: $ala;
-        @include fontz(26px,10);
+        @include fontz(26px, 10);
         flex: 1 1 30%;
       }
 
-      &_descr { 
+      &_descr {
         color: $primary;
         font-size: 14px;
         flex: 1 1 58%;
         margin-left: auto;
-        @media (min-width:$bp3) {
+        @media (min-width: $bp3) {
           padding: 0 100px;
-        
         }
       }
     }

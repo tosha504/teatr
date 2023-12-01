@@ -1,157 +1,160 @@
 /* Slider */
 
 .slick-slider {
-    position: relative;
-    // display: block;
-    box-sizing: border-box;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent;
+  position: relative;
+  // display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
 }
 .slick-list {
-    position: relative;
-    overflow: hidden;
-    display: block;
-    margin: 0;
-    padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &.dragging {
-        cursor: pointer;
-        cursor: hand;
-    }
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
 }
 .slick-slider .slick-track,
 .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .slick-track {
-    position: relative;
-    left: 0;
-    top: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
-    &:before,
-    &:after {
-        content: "";
-        display: table;
-    }
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
 
-    &:after {
-        clear: both;
-    }
+  &:after {
+    clear: both;
+  }
 
-    .slick-loading & {
-        visibility: hidden;
-    }
+  .slick-loading & {
+    visibility: hidden;
+  }
 }
 .slick-slide {
-    float: left;
-    height: 100%;
-    min-height: 1px;
-    [dir="rtl"] & {
-        float: right;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  [dir="rtl"] & {
+    float: right;
+  }
+  @media (min-width: 769px) {
+    img {
+      display: block;
     }
-    @media (min-width: 769px) {
-        img {
-            display: block;
-        }   
-    }
-    
-    &.slick-loading img {
-        display: none;
-    }
+  }
 
+  &.slick-loading img {
     display: none;
+  }
 
-    &.dragging img {
-        pointer-events: none;
-    }
+  display: none;
 
-    .slick-initialized & {
-        display: block;
-    }
+  &.dragging img {
+    pointer-events: none;
+  }
 
-    .slick-loading & {
-        visibility: hidden;
-    }
+  .slick-initialized & {
+    display: block;
+  }
 
-    .slick-vertical & {
-        display: block;
-        height: auto;
-        border: 1px solid transparent;
-    }
+  .slick-loading & {
+    visibility: hidden;
+  }
+
+  .slick-vertical & {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
 }
 .slick-arrow.slick-hidden {
-    display: none;
+  display: none;
 }
-.slick-arrow{
-    display: none !important; 
-    @media (min-width:768px) {
-        display: inline-block !important;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        border: none;
-        cursor: pointer;
-        z-index: 10;
-    }
-    
+.slick-arrow {
+  display: none !important;
+  @media (min-width: 768px) {
+    display: inline-block !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
 }
 
-.slick-arrow.slick-next{
-    right: -30px;
-    transform: rotate(180deg);
-    background: url(../../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+.slick-arrow.slick-next {
+  right: -30px;
+  transform: rotate(180deg);
+  background: url(../../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat
+    center/cover;
 }
 
 .slick-arrow.slick-prev {
-    left: -30px;
-    background: url(../../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat center/cover;
+  left: -30px;
+  background: url(../../assets/image/strzalka-teatr-muzyczny2.svg) no-repeat
+    center/cover;
 }
 
-
-.slick-dots{
-    display: flex;
-    position: absolute;
-    top: 470px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: none;
-    cursor: pointer;
-    li {
-        margin: 0 5px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: $milk;
-        transition: 0.3s;
-        button {
-            display: none;
-        }
-        &.slick-active{
-            background-color: $primary;
-        }
-        &:hover {
-            background-color: $primary;
-        }
+.slick-dots {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  cursor: pointer;
+  li {
+    margin: 0 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $milk;
+    transition: 0.3s;
+    button {
+      display: none;
     }
+    &.slick-active {
+      background-color: $primary;
+    }
+    &:hover {
+      background-color: $primary;
+    }
+  }
+  @media (min-width: $bp2) {
+    top: 470px;
+  }
 }

@@ -17,6 +17,17 @@
     );
   }
 
+  if ("ontouchstart" in document.documentElement) {
+    // Remove the hover effect for mobile devices
+    jQuery(".has-event").on("click", function () {
+      jQuery(".calendar.days.shows-display").css({
+        display: "flex",
+        opacity: 1,
+        visibility: "visible",
+      });
+    });
+  }
+
   jQuery(window).scroll(function () {
     var scrollTop = jQuery(window).scrollTop();
     jQuery(".calendar").css({

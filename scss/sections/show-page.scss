@@ -69,14 +69,15 @@
           font-family: $ala;
           color: $primary;
           font-size: 14px;
-          text-transform: capitalize;
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
 
         padding: 5px 10px;
         a {
           color: $primary;
           font-size: 14px;
-          text-transform: capitalize;
 
           @media (min-width: $bp3) {
             &:hover {

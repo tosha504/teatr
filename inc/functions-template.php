@@ -224,7 +224,7 @@ function performance_render_template($month)
 		if (count($uniq_categories) > 1) { ?>
 			<div class="shows-list">
 				<ul class="shows-list__categories">
-					<li <?php echo $parmas_array['categories'] == null ? 'class="active"' : ''; ?>><button name="filter_category" value="">wszystkie</button></li>
+					<li <?php echo $parmas_array['categories'] == null ? 'class="active"' : ''; ?>><button name="filter_category" value="">Wszystkie</button></li>
 					<?php
 					$categories = explode(',', $parmas_array['categories']);
 					foreach ($uniq_categories as $category) {
