@@ -27,8 +27,8 @@ function pageSwitcher($type = null)
 	<a class='black' href='{$button_performance_out['url']}' target='{$button_performance_out['target']}'>{$button_performance_out['title']}</a>
 	</li>" : '';
 
-	$button_performance_render_display = $perfomances ? $button_performance_render : '';
-	$button_performance_out_display = $perfomances_out ? $button_performance_out_render : '';
+// 	$button_performance_render_display = $perfomances ? $button_performance_render : '';
+// 	$button_performance_out_display = $perfomances_out ? $button_performance_out_render : '';
 
 	return <<<HTML
   <ul class="pages">
@@ -155,13 +155,14 @@ function performance_render_template($month)
 	$performances = file_get_contents(get_site_url() . '/wp-json/teatr_muzyczny/v1/performances?' . $params_str);
 	$performances = json_decode($performances);
 	$uniq_categories = [];
+	if(!empty($performances)) {
 	foreach ($performances as $date => $datePerfomaces) {
 		foreach ($datePerfomaces as $perfomance) {
 			$uniq_categories[$perfomance->category] = '';
 		}
 	}
 	$uniq_categories = array_keys($uniq_categories);
-
+    }
 	$category = '';
 	if (isset($_GET['categories']) && !empty($_GET['categories'])) {
 		$category = sanitize_text_field($_GET['categories']);
@@ -176,6 +177,7 @@ function performance_render_template($month)
 
 	$list_html = '';
 	$list_html .= '<div class="performances">';
+	if(!empty($performances)){
 	foreach ($performances as $date => $datePerfomaces) {
 		foreach ($datePerfomaces as $perfomance) {
 			$cat_slug = sanitize_title($perfomance->category);
@@ -210,6 +212,7 @@ function performance_render_template($month)
 						</div>
 				</div>';
 		}
+	}
 	}
 	$list_html .= '</div>';
 ?>
